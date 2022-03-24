@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlatesTable extends Migration
+class CategoryUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreatePlatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('plates', function (Blueprint $table) {
-            $table->id();
+        Schema::create('category_user', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string("name");
-            $table->text("description");
-            $table->float("price");
-            $table->text("ingredients");
-            $table->boolean("visible");
-            $table->string("preview");
-            $table->timestamps();
         });
     }
 
@@ -38,7 +36,6 @@ class CreatePlatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plates');
-        
+        Schema::dropIfExists('category_user');
     }
 }

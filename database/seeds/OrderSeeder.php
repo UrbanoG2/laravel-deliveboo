@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
+use App\Order;
 
 class OrderSeeder extends Seeder
 {
@@ -9,8 +11,13 @@ class OrderSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        for ($i = 0; $i < 8; $i++) {
+            $newOrder = new Order();
+            $newOrder->totalPrice = $faker->randomFloat(null, 0, 1000);
+            $newOrder->state_id = $faker->numberBetween(1, 3);
+            $newOrder->save();
+        }
     }
 }

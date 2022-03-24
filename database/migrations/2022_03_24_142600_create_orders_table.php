@@ -15,6 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('state_id');
+            $table->foreign('state_id')
+                ->references('id')
+                ->on('states')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->float("totalPrice");
             $table->timestamps();
         });

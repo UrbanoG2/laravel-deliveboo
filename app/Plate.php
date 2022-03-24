@@ -14,4 +14,15 @@ class Plate extends Model
         "visible",
         "preview",
     ];
+
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function order()
+    {
+        return $this->belongsToMany('App\Order');
+    }
 }

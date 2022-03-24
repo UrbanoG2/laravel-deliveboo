@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGuestsTable extends Migration
+class OrderPlateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateGuestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('guests', function (Blueprint $table) {
-            $table->id();
+        Schema::create('order_plate', function (Blueprint $table) {
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')
                 ->references('id')
                 ->on('orders')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->string("firstname");
-            $table->string("lastname");
-            $table->string("email");
-            $table->string("address");
-            $table->string("phoneNumber");
-            $table->timestamps();
+            $table->unsignedBigInteger('plate_id');
+            $table->foreign('plate_id')
+                ->references('id')
+                ->on('plates')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
@@ -37,6 +36,6 @@ class CreateGuestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists('order_plate');
     }
 }

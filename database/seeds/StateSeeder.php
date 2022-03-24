@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
+use App\State;
 
 class StateSeeder extends Seeder
 {
@@ -9,8 +11,15 @@ class StateSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+
+        $array = ['pending', 'processing', 'preparation'];
+        foreach ($array as $key => $value) {
+
+            $newstate = new State();
+            $newstate->name = $value;
+            $newstate->save();
+        }
     }
 }
