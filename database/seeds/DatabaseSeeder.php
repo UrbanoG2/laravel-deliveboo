@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(StateSeeder::class);
         $this->call(OrderSeeder::class);
+        $this->call(TagSeeder::class);
         $this->call(PlateSeeder::class);
         $this->call(CategoryUserSeeder::class);
         $this->call(OrderPlateSeeder::class);
+        
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Plate;
 
+
 class PlateSeeder extends Seeder
 {
     /**
@@ -17,6 +18,7 @@ class PlateSeeder extends Seeder
             for ($x = 0; $x < 5; $x++) { 
                 $newPlate = new Plate();
                 $newPlate->user_id = $i + 1;
+                $newPlate->tag_id = $faker->numberBetween(1, 7);
                 $newPlate->name = $faker->words(2, true);
                 $newPlate->description = $faker->paragraph(5, true);
                 $newPlate->price = $faker->randomFloat(null, 0, 1000);

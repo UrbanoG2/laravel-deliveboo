@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'totalPrice'
+        'totalPrice',
+        'state_id'
     ];
 
     public function plates()

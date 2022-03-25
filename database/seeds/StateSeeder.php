@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
+
 use App\State;
 
 class StateSeeder extends Seeder
@@ -11,7 +11,7 @@ class StateSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
 
         $array = ['pending', 'processing', 'preparation'];

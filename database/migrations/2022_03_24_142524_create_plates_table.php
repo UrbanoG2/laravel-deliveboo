@@ -21,6 +21,12 @@ class CreatePlatesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->unsignedBigInteger('tag_id');
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string("name");
             $table->text("description");
             $table->float("price");
