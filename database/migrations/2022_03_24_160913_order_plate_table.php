@@ -26,7 +26,8 @@ class OrderPlateTable extends Migration
                 ->on('plates')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-        });
+            $table->integer('quantity');
+            });
     }
 
     /**

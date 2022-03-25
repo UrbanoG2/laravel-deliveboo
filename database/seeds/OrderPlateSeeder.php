@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 use App\Plate;
 use App\Order;
 
@@ -11,23 +12,27 @@ class OrderPlateSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $plates = Plate::where();
-        foreach ($plates as $plate) {
-            $orders = Order::inRandomOrder()->limit(5)->get();
-            $plate->orders()->attach($orders);
-        }
-
-
+        // $plates = Plate::all();
         $orders = Order::all();
         foreach ($orders as $order) {
-            $randNumOfPlate = rand(1, 5);
-            $plates = Plate::where($order->id);
-
-            foreach ($artistOf as $who) {
-                $comic->artist()->attach($who);
+            $randomPlates = Plate::inRandomOrder()->limit(5)->get();
+            foreach ($randomPlates as $plate) {
+                $randomQuantity = $faker->numberBetween(1,10);
+                $order->plates()->attach($plate, ['quantity'=> $randomQuantity]);
             }
         }
+
+
+        // $orders = Order::all();
+        // foreach ($orders as $order) {
+        //     $randNumOfPlate = rand(1, 5);
+        //     $plates = Plate::where($order->id);
+
+        //     foreach ($artistOf as $who) {
+        //         $comic->artist()->attach($who);
+        //     }
+        // }
     }
 }
