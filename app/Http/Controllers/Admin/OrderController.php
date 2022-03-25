@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.orders.index', ['orders'=> $orders]);
     }
 
     /**
@@ -35,7 +37,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'totalPrice'=> 'required|numeric',
+            'state_id'=> 'required|exists:App\State,id',
+        ]);
+
+        $data = $request->all();
+        $newOrder = new Order();
+        $newOrder->fill($data);
+        $newOrder->save();
+        return redirect()->route('admin.orders.show', $newOrder->id);
     }
 
     /**
@@ -44,9 +55,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        $data = [
+            'order'=> $order,
+        ];
+        return view('admin.orders.show', $data);
     }
 
     /**
