@@ -28,11 +28,11 @@ class CreatePlatesTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string("name");
-            $table->text("description");
+            $table->text("description")->nullable();
             $table->float("price");
             $table->text("ingredients");
             $table->boolean("visible");
-            $table->string("preview");
+            $table->string("preview")->nullable();
             $table->timestamps();
         });
     }

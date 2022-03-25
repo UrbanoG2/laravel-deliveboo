@@ -50,7 +50,7 @@ class PlateController extends Controller
             'name'=> 'required|max:255',
             'description'=> 'nullable',
             'price'=> 'required|numeric',
-            'ingredients'=> 'nullable',
+            'ingredients'=> 'required',
             'visible'=> 'required|boolean',
             'preview'=> 'nullable|image',
         ]);
