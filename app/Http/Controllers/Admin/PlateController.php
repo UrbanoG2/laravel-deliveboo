@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Plate;
+use App\Tag;
 
 class PlateController extends Controller
 {
@@ -14,7 +19,8 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        $plates = Plate::orderBy('created_at', 'desc')->paginate(20);
+        return view('admin.plates.index', ['plates' => $plates]);
     }
 
     /**
@@ -24,7 +30,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        //
+        $plates = Plate::all();
+        $tags = Tag::all();
+        return view('admin.plates.create', ['plates'=>$plates, 'tags'=>$tags]);
     }
 
     /**
@@ -35,7 +43,25 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+        $validateData = $request->validate([
+            'tag_id'=> 'required|exists:App\Tag,id',
+            'name'=> 'required|max:255',
+            'description'=> 'nullable',
+            'price'=> 'required|numeric',
+            'ingredients'=> 'nullable',
+            'visible'=> 'required|boolean',
+            'preview'=> 'nullable|image',
+        ]);
+        if (!empty($data['preview'])) {
+            $img_path = Storage::put('uploads', $data['preview']);
+            $data['preview'] = $img_path;
+        }
+        $newPlate = new Plate();
+        $newPlate->fill($data);
+        $newPlate->save();
+        return redirect()->route('admin.plates.show', $newPlate);
     }
 
     /**
@@ -44,9 +70,12 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Plate $plate)
     {
-        //
+        $data = [
+            'plate'=> $plate,
+        ];
+        return view('admin.plates.show', $data);
     }
 
     /**

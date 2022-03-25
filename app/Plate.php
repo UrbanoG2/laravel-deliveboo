@@ -8,6 +8,7 @@ class Plate extends Model
 {
     protected $fillable = [
         "tag_id",
+        "user_id",
         "name",
         "description",
         "price",
