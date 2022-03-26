@@ -17,8 +17,14 @@
                 <h1>
                     {{ $plate->name }}
                 </h1>
+                <h2>
+                    {{ $plate->tag_id }}
+                </h2>
                 <p>
                     {{ $plate->description }}
+                </p>
+                <p>
+                    {{ $plate->ingredients }}
                 </p>
             </div>
         </div>
