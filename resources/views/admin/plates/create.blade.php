@@ -21,8 +21,8 @@
                 @csrf
                 @method('POST')
                 <div class="mb-3">
-                    <select class="form-select" name="tag_id">
-                        <option value="">Select a tag</option>
+                    <select required class="form-select" name="tag_id">
+                        <option value>Select a tag</option>
                         @foreach ($tags as $tag)
                             <option @if (old('tag_id') == $tag->id) selected @endif value="{{ $tag->id }}">
                                 {{ $tag->name }}</option>
@@ -42,7 +42,8 @@
                 <!--Nome piatto-->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value=" {{ old('name') }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id=" name"
+                        value="{{ old('name') }}" required autocomplete="name" autofocus name="name">
                     @error('name')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -53,7 +54,8 @@
                 <!--Descrizione piatto-->
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="3" name="description"> {{ old('description') }}</textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" id=" description" rows="3"
+                        name="description"> </textarea>
                     @error('description')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -66,15 +68,17 @@
                     <label for="price" class="form-label">Price</label>
                     <div class="input-group">
                         <span class="input-group-text">&euro;</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest euro)" step="0.01"
-                            value="{{ old('price') }}" name="price" id="price">
+                        <input type="number" class="form-control @error('price') is-invalid @enderror"
+                            aria-label="Amount (to the nearest euro)" step="0.01" value="{{ old('price') }}" name="price"
+                            id="price" required autocomplete="price" autofocus>
                     </div>
                 </div>
 
                 <!--Ingredienti piatto-->
                 <div class="mb-3">
                     <label for="ingredients" class="form-label">Ingredients</label>
-                    <textarea class="form-control" id="ingredients" rows="3" name="ingredients"> {{ old('ingredients') }}</textarea>
+                    <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" rows="3" name="ingredients"
+                        required autocomplete="ingredients" autofocus> {{ old('ingredients') }}</textarea>
                     @error('ingredients')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -97,7 +101,8 @@
                             Non visibile
                         </label>
                     </div>
-                </div <!--Upload immagine di preview-->
+                </div>
+                <!--Upload immagine di preview-->
 
                 <div class="mb-3">
                     <label for="preview" class="form-label">Preview</label>

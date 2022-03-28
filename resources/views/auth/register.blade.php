@@ -59,10 +59,6 @@
                                 </div>
                             </div>
 
-                            <?php
-                            use App\Category;
-                            $categories = Category::all();
-                            ?>
 
                             <fieldset class="mb-3">
                                 <legend>Categories</legend>
