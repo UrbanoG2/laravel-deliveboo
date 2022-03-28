@@ -100,6 +100,7 @@ class PlateController extends Controller
             abort('403');
         }
 
+        // $plate = Plate::all();
         $tags = Tag::all();
         return view('admin.plates.edit', ['plate' => $plate, 'tags' => $tags]);
     }
@@ -154,7 +155,7 @@ class PlateController extends Controller
             $plate->visible = $data['visible'];
         }
 
-        $plate->update();
+        $plate->update($data);
 
         // Problema con il detach di tag
         if (!empty($data['tag_id'])) {
@@ -162,8 +163,8 @@ class PlateController extends Controller
             // $plate->tag()->sync($data['tag_id']);
             $plate->tag()->associate($data['tag_id']);
         } else {
-            $plate->tag()->dissociate($data['tag_id']);
-            // $plate->tag()->detach(); 
+            // $plate->tag()->dissociate($data['tag_id']);
+            $plate->tag()->detach();
             //  stesso problema sul detach 
         }
 

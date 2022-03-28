@@ -24,7 +24,7 @@
                     <select class="form-select" name="tag_id">
                         <option value="">Select a tag</option>
                         @foreach ($tags as $tag)
-                            <option @if (old('tag_id') == $tag->id) selected @endif value="{{ $tag->name }}">
+                            <option @if (old('tag_id') == $tag->id) selected @endif value="{{ $tag->id }}">
                                 {{ $tag->name }}</option>
                         @endforeach
                     </select>

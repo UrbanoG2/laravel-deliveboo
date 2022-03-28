@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -38,6 +39,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        $categories = Category::all();
+
+        $this->categories = $categories;
         $this->middleware('guest');
     }
 
@@ -53,6 +57,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'iva' => ['required', 'string', 'min:11', 'unique:users'],
+            'category' => ['required', 'string', 'max:255'],
+            // 'logo' => ['string', 'string', 'max:255'],
+            // 'banner' => ['string', 'string', 'max:255'],
         ]);
     }
 
@@ -64,10 +73,52 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        //     $user = new User();
+        //     $user->fill($data);
+        //     $user->save();
+
+
+        //     if (!empty($data['categories'])) {
+        //         $categories = explode(", ", $data['categories']);
+        //         $category_id = [];
+        //         foreach ($categories as $element) {
+        //             $category = rtrim($element, ".");
+        //             $checkCategory = Category::where('name', $category)->first();
+        //             if (empty($checkCategory)) {
+        //                 $newCategory = new Category();
+        //                 $newCategory->name = $category;
+        //                 $newCategory->save();
+        //             }
+        //             $item_id = Category::where('name', $category)->first();
+        //             array_push($category_id, $item_id->id);
+        //         }
+
+
+
+        //         $user->categories()->associate($category_id);
+        //     } else {
+        //         //if we don't have tags we detach all
+        //         $user->categories()->detach();
+        //     }
+
+
+
+
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'address' => $data['address'],
+            'iva' => $data['iva'],
+            // 'category' => $data['category'],
+            'logo' => $data['logo'],
+            // 'banner' => $data['banner'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->categories()->sync($data['categories']);
+
+        return $user;
     }
 }

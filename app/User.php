@@ -21,8 +21,8 @@ class User extends Authenticatable
         'password',
         'address',
         'iva',
-        'logo-img',
-        'banner-img'
+        // 'logo-img',
+        // 'banner-img'
     ];
 
     /**
