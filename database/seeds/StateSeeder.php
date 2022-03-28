@@ -14,7 +14,7 @@ class StateSeeder extends Seeder
     public function run()
     {
 
-        $array = ['pending', 'processing', 'preparation'];
+        $array = ['pending'];
         foreach ($array as $key => $value) {
 
             $newstate = new State();

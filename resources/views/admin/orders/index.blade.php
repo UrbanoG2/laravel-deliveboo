@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-  <div class="container">
+    <div class="container">
         <div class="row">
             @if (session('status'))
                 <div class="alert alert-danger">
@@ -36,13 +36,12 @@
                             <td>{{ $order->updated_at }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ route('admin.orders.show', $order->id) }}">View</a>
-                                <a class="btn btn-primary" href="{{ route('admin.orders.edit', $order->id) }}">>Edit</a>
                             </td>
                             <td>
                                 <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input class="btn btn-danger" type="submit" value="Delete">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input class="btn btn-danger" type="submit" value="Delete">
                                 </form>
                             </td>
                         </tr>
@@ -51,7 +50,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5">{{ $orders->links() }}</td>
+                        {{-- <td colspan="5">{{ $orders->links() }}</td> --}}
                     </tr>
                 </tfoot>
             </table>

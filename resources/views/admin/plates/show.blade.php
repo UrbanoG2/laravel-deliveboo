@@ -17,8 +17,11 @@
                 <h1>
                     {{ $plate->name }}
                 </h1>
+                <p>
+                    {{ $plate->price }} &euro;
+                </p>
                 <h2>
-                    {{ $plate->tag_id }}
+                    {{ $plate->tag()->first()->name }}
                 </h2>
                 <p>
                     {{ $plate->description }}

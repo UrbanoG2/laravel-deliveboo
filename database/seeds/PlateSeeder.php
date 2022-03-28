@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 use App\Plate;
 
 
@@ -15,11 +16,12 @@ class PlateSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i < 5; $i++) {
-            for ($x = 0; $x < 5; $x++) { 
+            for ($x = 0; $x < 5; $x++) {
                 $newPlate = new Plate();
                 $newPlate->user_id = $i + 1;
                 $newPlate->tag_id = $faker->numberBetween(1, 7);
                 $newPlate->name = $faker->words(2, true);
+                $newPlate->slug = Str::slug($newPlate->name . '-' . $i, '-');
                 $newPlate->description = $faker->paragraph(5, true);
                 $newPlate->price = $faker->randomFloat(null, 0, 1000);
                 $newPlate->ingredients = $faker->paragraph(3, true);

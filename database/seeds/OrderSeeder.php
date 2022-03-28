@@ -16,7 +16,7 @@ class OrderSeeder extends Seeder
         for ($i = 0; $i < 8; $i++) {
             $newOrder = new Order();
             $newOrder->totalPrice = $faker->randomFloat(null, 0, 1000);
-            $newOrder->state_id = $faker->numberBetween(1, 3);
+            $newOrder->state_id = 1;
             $newOrder->save();
         }
     }

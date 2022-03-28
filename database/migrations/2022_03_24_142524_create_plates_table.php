@@ -28,6 +28,7 @@ class CreatePlatesTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string("name");
+            $table->string("slug")->unique();
             $table->text("description")->nullable();
             $table->float("price");
             $table->text("ingredients");
@@ -45,6 +46,5 @@ class CreatePlatesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('plates');
-        
     }
 }

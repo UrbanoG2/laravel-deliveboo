@@ -35,7 +35,7 @@ class PlateController extends Controller
     {
         $plates = Plate::all();
         $tags = Tag::all();
-        return view('admin.plates.create', ['plates'=>$plates, 'tags'=>$tags]);
+        return view('admin.plates.create', ['plates' => $plates, 'tags' => $tags]);
     }
 
     /**
@@ -49,22 +49,25 @@ class PlateController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $validateData = $request->validate([
-            'tag_id'=> 'required|exists:App\Tag,id',
-            'name'=> 'required|max:255',
-            'description'=> 'nullable',
-            'price'=> 'required|numeric',
-            'ingredients'=> 'required',
-            'visible'=> 'required|boolean',
-            'preview'=> 'nullable|image',
+            'tag_id' => 'required|exists:App\Tag,id',
+            'name' => 'required|max:255',
+            'description' => 'nullable',
+            'price' => 'required|numeric',
+            'ingredients' => 'required',
+            'visible' => 'required|boolean',
+            'preview' => 'nullable|image',
         ]);
         if (!empty($data['preview'])) {
             $img_path = Storage::put('uploads', $data['preview']);
             $data['preview'] = $img_path;
         }
+
+
         $newPlate = new Plate();
         $newPlate->fill($data);
+        $newPlate->slug = $newPlate->createSlug($data['name']);
         $newPlate->save();
-         if (!empty($data['tag_id'])) {
+        if (!empty($data['tag_id'])) {
             // $newPlate->tag()->attach($data['tag_id']);
             $newPlate->tag()->associate($data['tag_id']);
         }
@@ -79,10 +82,10 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
-        $data = [
-            'plate'=> $plate,
-        ];
-        return view('admin.plates.show', $data);
+        // $data = [
+        //     'plate' => $plate,
+        // ];
+        return view('admin.plates.show', ["plate" => $plate]);
     }
 
     /**
@@ -96,6 +99,7 @@ class PlateController extends Controller
         if (Auth::user()->id != $plate->user_id) {
             abort('403');
         }
+
         $tags = Tag::all();
         return view('admin.plates.edit', ['plate' => $plate, 'tags' => $tags]);
     }
@@ -113,14 +117,14 @@ class PlateController extends Controller
         if (Auth::user()->id != $plate->user_id) {
             abort('403');
         }
-         $validateData = $request->validate([
-            'tag_id'=> 'required|exists:App\Tag,id',
-            'name'=> 'required|max:255',
-            'description'=> 'nullable',
-            'price'=> 'required|numeric',
-            'ingredients'=> 'required',
-            'visible'=> 'required|boolean',
-            'preview'=> 'nullable|image',
+        $validateData = $request->validate([
+            'tag_id' => 'required|exists:App\Tag,id',
+            'name' => 'required|max:255',
+            'description' => 'nullable',
+            'price' => 'required|numeric',
+            'ingredients' => 'required',
+            'visible' => 'required|boolean',
+            'preview' => 'nullable|image',
         ]);
 
         if (!empty($data['preview'])) {
@@ -133,6 +137,7 @@ class PlateController extends Controller
         // Inserire controlli vari
         if ($data['name'] != $plate->name) {
             $plate->name = $data['name'];
+            $plate->slug = $plate->createSlug($data['name']);
         }
         if ($data['description'] != $plate->description) {
             $plate->description = $data['description'];
@@ -162,8 +167,10 @@ class PlateController extends Controller
             //  stesso problema sul detach 
         }
 
+
+
         return redirect()->route('admin.plates.show', $plate)
-        ->with('status', "Plate $plate->name Saved!");
+            ->with('status', "Plate $plate->name Saved!");
     }
 
     /**
@@ -182,4 +189,10 @@ class PlateController extends Controller
 
         return redirect()->route('admin.plates.index')->with('status', "Plate id $plate->id deleted");
     }
+
+    // public function myFunction()
+    // {
+    //     if (!confirm("Are You Sure to delete this"))
+    //         event . preventDefault();
+    // }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Order;
 
@@ -14,10 +15,27 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // public function index()
+    // {
+    //     $orders = Order::orderBy('created_at', 'desc')->paginate(10);
+    //     return view('admin.orders.index', ['orders' => $orders]);
+    // }
+
+
     public function index()
+    // FROM orders, order_plate, plates WHERE user_id = 1
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
-        return view('admin.orders.index', ['orders'=> $orders]);
+
+        $orders = DB::table("orders")
+            ->join('order_plate', 'orders.id', '=', 'order_plate.order_id')
+            ->join('plates', 'plates.id', '=', 'order_plate.plate_id')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+        // ->orderBy('created_at', 'desc')
+        // ->paginate(10);
+        return view('admin.orders.index', ['orders' => $orders]);
     }
 
     /**
@@ -39,8 +57,8 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'totalPrice'=> 'required|numeric',
-            'state_id'=> 'required|exists:App\State,id',
+            'totalPrice' => 'required|numeric',
+            'state_id' => 'required|exists:App\State,id',
         ]);
 
         $data = $request->all();
@@ -59,7 +77,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $data = [
-            'order'=> $order,
+            'order' => $order,
         ];
         return view('admin.orders.show', $data);
     }

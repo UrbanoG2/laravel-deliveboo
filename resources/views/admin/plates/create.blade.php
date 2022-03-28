@@ -24,7 +24,7 @@
                     <select class="form-select" name="tag_id">
                         <option value="">Select a tag</option>
                         @foreach ($tags as $tag)
-                            <option @if (old('tag_id') == $tag->id) selected @endif value="{{ $tag->id }}">
+                            <option @if (old('tag_id') == $tag->id) selected @endif value="{{ $tag->name }}">
                                 {{ $tag->name }}</option>
                         @endforeach
                     </select>
@@ -66,7 +66,8 @@
                     <label for="price" class="form-label">Price</label>
                     <div class="input-group">
                         <span class="input-group-text">&euro;</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest euro)" step="0.01" value="{{ old('price') }}" name="price" id="price">
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest euro)" step="0.01"
+                            value="{{ old('price') }}" name="price" id="price">
                     </div>
                 </div>
 
@@ -96,10 +97,7 @@
                             Non visibile
                         </label>
                     </div>
-                </div
-                 
-
-                <!--Upload immagine di preview-->
+                </div <!--Upload immagine di preview-->
 
                 <div class="mb-3">
                     <label for="preview" class="form-label">Preview</label>

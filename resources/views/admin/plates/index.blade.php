@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-  <div class="container">
+    <div class="container">
         <div class="row">
             @if (session('status'))
                 <div class="alert alert-danger">
@@ -28,7 +28,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Visible</th>
+                        <th scope="col">Available</th>
                         <th colspan="3" scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -38,16 +38,18 @@
                             <td>{{ $plate->id }}</td>
                             <td>{{ $plate->name }}</td>
                             <td>{{ $plate->price }} &euro;</td>
-                            <td>{{ $plate->visible}}</td>
+                            <td>{{ $plate->visible }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ route('admin.plates.show', $plate->id) }}">View</a>
-                                <a class="btn btn-primary" href="{{ route('admin.plates.edit', $plate->id) }}">>Edit</a>
+                                <a class="btn btn-primary" href="{{ route('admin.plates.show', $plate->slug) }}">View</a>
+                                <a class="btn btn-primary" href="{{ route('admin.plates.edit', $plate->slug) }}">Edit</a>
+
                             </td>
                             <td>
-                                <form action="{{ route('admin.plates.destroy', $plate->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input class="btn btn-danger" type="submit" value="Delete">
+                                <form action="{{ route('admin.plates.destroy', $plate->slug) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input onclick="return confirm('Vuoi eliminare questo piatto?')" class="btn btn-danger"
+                                        type="submit" value="Delete">
                                 </form>
                             </td>
                         </tr>
