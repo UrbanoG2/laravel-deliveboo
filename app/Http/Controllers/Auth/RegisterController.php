@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
-use App\Category;
+// use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -39,9 +39,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $categories = Category::all();
-
-        $this->categories = $categories;
         $this->middleware('guest');
     }
 
@@ -52,6 +49,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
+
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -59,7 +57,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:255'],
             'iva' => ['required', 'string', 'min:11', 'unique:users'],
-            'category' => ['required', 'string', 'max:255'],
+            'category.*' => ['exists:App\Category,id'],
             // 'logo' => ['string', 'string', 'max:255'],
             // 'banner' => ['string', 'string', 'max:255'],
         ]);
@@ -112,7 +110,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'iva' => $data['iva'],
             // 'category' => $data['category'],
-            'logo' => $data['logo'],
+            // 'logo' => $data['logo'],
             // 'banner' => $data['banner'],
             'password' => Hash::make($data['password']),
         ]);

@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string("address");
             $table->string("iva");
-            $table->string("logo_img");
-            $table->string("banner_img");
+            $table->string("logo_img")->nullable();
+            $table->string("banner_img")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

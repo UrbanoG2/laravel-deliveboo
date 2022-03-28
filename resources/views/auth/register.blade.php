@@ -59,16 +59,33 @@
                                 </div>
                             </div>
 
+                            <?php
+                            use App\Category;
+                            $categories = Category::all();
+                            ?>
 
-                            @foreach ($categories as $category)
+                            <fieldset class="mb-3">
+                                <legend>Categories</legend>
+                                @foreach ($categories as $category)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $category->id }}"
+                                            name="categories[]"
+                                            {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ $category->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </fieldset>
+
+                            {{-- @foreach ($categories as $category)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}"
-                                        id="flexCheckDefault">
+                                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}">
                                     <label class="form-check-label" for="flexCheckDefault">
                                         {{ $category->name }}
                                     </label>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
 
 
                             <div class="form-group row">
