@@ -45,12 +45,43 @@
 
                             </td>
                             <td>
-                                <form action="{{ route('admin.plates.destroy', $plate->slug) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input onclick="return confirm('Vuoi eliminare questo piatto?')" class="btn btn-danger"
-                                        type="submit" value="Delete">
-                                </form>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Delete
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Conferma cancellazione
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Sei sicuro di voler cancellare questo piatto?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <form action="{{ route('admin.plates.destroy', $plate->slug) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input {{-- onclick="return confirm('Vuoi eliminare questo piatto?')" --}} class="btn btn-danger" type="submit"
+                                                        value="Delete">
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </td>
                         </tr>
                     @endforeach
