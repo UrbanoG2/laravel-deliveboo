@@ -2,6 +2,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import App from './views/App';
 import Home from './pages/Home';
+import Search from './pages/Search';
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 Vue.use(VueRouter);
@@ -12,6 +13,11 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search
         },
     ]
 });
