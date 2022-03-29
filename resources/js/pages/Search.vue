@@ -8,8 +8,8 @@
                 <select class="form-select form-select" name="orderbysort" id="orderbysort" v-model="orderOption" @change.prevent="OrderBy">
                     <option value="asc,name">Nome A-Z</option>
                     <option value="desc,name">Nome Z-A</option>
-                    <option value="asc,created_at">Più recente</option>
-                    <option value="desc,created_at">Meno recente</option>
+                    <option value="desc,created_at">Più recente</option>
+                    <option value="asc,created_at">Meno recente</option>
                 </select>
               <div>
                 <input class="btn btn-primary mt-3" type="button" value="filtra" @click.prevent="searchRestaurants">
@@ -105,7 +105,7 @@ import Main from '../components/Main.vue';
                             this.searching = false;
                         }, 2000);
                         this.searching = true;
-                        event.preventDefault();
+                        // event.preventDefault();
                     }
                 },
                 deep: true

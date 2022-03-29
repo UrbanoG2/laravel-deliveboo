@@ -82,14 +82,11 @@
                             </td>
                         </tr>
                     @endforeach
-
                 </tbody>
-                <tfoot>
-                    <tr>
-                        {{-- <td colspan="5">{{ $orders->links() }}</td> --}}
-                    </tr>
-                </tfoot>
             </table>
+            <div class="col-3">
+                <a  class="btn btn-danger"  aria-current="page" href="{{ route('admin.home') }}">Go to Home</a>
+            </div>
         </div>
     </div>
 @endsection
