@@ -16,14 +16,6 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    // public function index()
-    // {
-    //     $orders = Order::orderBy('created_at', 'desc')->paginate(10);
-    //     return view('admin.orders.index', ['orders' => $orders]);
-    // }
-
-
     public function index()
     // FROM orders, order_plate, plates WHERE user_id = 1
     {

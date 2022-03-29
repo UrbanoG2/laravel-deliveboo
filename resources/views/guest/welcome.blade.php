@@ -1,4 +1,4 @@
 @extends('layouts.app')
-    @section('script')
+@section('script')
     <script src="{{asset('js/front.js')}}" defer></script>
-    @endsection    
+@endsection    

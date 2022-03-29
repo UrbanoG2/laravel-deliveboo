@@ -1,18 +1,67 @@
 <template>
-  <div>
-      <h1>BALLA</h1>
+  <div class="container">
+    <div class="row g-4" v-if="cards.restaurants">
+      <div class="col-12 col-md-4" v-for="(restaurant, index) in cards.restaurants" :key="index">
+        <div class="card">
+          <img src="\storage\app\uploads\default.png" class="card-img-top" :alt="restaurant.name">
+          <div class="card-body">
+            <h5 class="card-title">{{ restaurant.name }}</h5>
+            <p class="card-text">{{ restaurant.description }}</p>
+          </div>
+          <router-link class="btn btn-secondary" :to="{ name: 'search', params: { id: restaurant.id } }">View</router-link>
+        </div>
+      </div>
+    </div>
+    <div v-if="!cards.restaurants == null" class="row text-center">
+      <div class="col">
+        <h1>Nessun risultato</h1>
+      </div>
+    </div>
+    <div class="row bottom" v-if="cards.prev_page_url || cards.next_page_url">
+      <ul class="list-inline d-flex justify-content-center align-items-center">
+        <li v-if="!cards.next_page_url && cards.prev_page_url" class="list-inline-item"> 
+          <h1> {{cards.current_page}} </h1>
+        </li>
+        <li class="list-inline-item"> 
+          <button v-if="cards.prev_page_url" class="btn btn-primary" @click="changePage('prev_page_url')">Prev</button>
+        </li>
+        <li v-if="cards.prev_page_url && cards.next_page_url" class="list-inline-item"> 
+          <h1>{{cards.current_page}}</h1>
+        </li>
+        <li class="list-inline-item"> 
+          <button v-if="cards.next_page_url" class="btn btn-primary" @click="changePage('next_page_url')">Next</button>
+        </li>
+        <li v-if="!cards.prev_page_url" class="list-inline-item"> 
+          <h1> {{cards.current_page}} </h1>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
+
 <script>
-export default {
-    name: 'Main',
-    components: {
-        
+  export default {
+    name: "Main",
+    props: ['cards'],
+    methods: {
+      changePage(vs) {
+        this.$emit('changePage', vs);
+      }
+    },
+    watch: {
+      cards: {
+        handler () {
+          
+        },
+        deep: true
+      }
     }
-}
+  }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.bottom {
+  margin-top: 3em;
+}
 </style>
