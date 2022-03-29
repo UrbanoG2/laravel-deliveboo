@@ -27,14 +27,15 @@ class OrderController extends Controller
     public function index()
     // FROM orders, order_plate, plates WHERE user_id = 1
     {
-
+        // $orders = Order::all();
+        // dd($orders);
         $orders = DB::table("orders")
+            ->select('orders.id', 'orders.totalPrice', 'orders.created_at', 'orders.updated_at')
+            ->distinct()
             ->join('order_plate', 'orders.id', '=', 'order_plate.order_id')
             ->join('plates', 'plates.id', '=', 'order_plate.plate_id')
             ->where('user_id', Auth::user()->id)
             ->get();
-        // ->orderBy('created_at', 'desc')
-        // ->paginate(10);
         return view('admin.orders.index', ['orders' => $orders]);
     }
 
@@ -111,8 +112,13 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        if (Auth::user()->id != $order->user_id) {
+            abort('403');
+        }
+        $order->delete();
+
+        return redirect()->route('admin.orders.index')->with('status', "Order id $order->id deleted");
     }
 }

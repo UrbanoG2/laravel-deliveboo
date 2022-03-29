@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Plate;
 use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class OrderPlateSeeder extends Seeder
 {
@@ -14,25 +15,14 @@ class OrderPlateSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // $plates = Plate::all();
         $orders = Order::all();
         foreach ($orders as $order) {
-            $randomPlates = Plate::inRandomOrder()->limit(5)->get();
+            $randInt = random_int(1, 6);
+            $randomPlates = Plate::inRandomOrder()->where('user_id', $randInt)->get();
             foreach ($randomPlates as $plate) {
                 $randomQuantity = $faker->numberBetween(1,10);
                 $order->plates()->attach($plate, ['quantity'=> $randomQuantity]);
             }
         }
-
-
-        // $orders = Order::all();
-        // foreach ($orders as $order) {
-        //     $randNumOfPlate = rand(1, 5);
-        //     $plates = Plate::where($order->id);
-
-        //     foreach ($artistOf as $who) {
-        //         $comic->artist()->attach($who);
-        //     }
-        // }
     }
 }
