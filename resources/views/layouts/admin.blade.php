@@ -28,7 +28,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -40,14 +40,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -83,31 +83,31 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
         <div class="row m-0">
             <div class="col-2 p-0 h-100">
                                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                    <span class="fs-4">Sidebar</span>
+                    <span class="fs-4">Admin Panel</span>
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
                         <a href="#" class="nav-link active" aria-current="page">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                        Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                         Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="{{route('admin.plates.index')}}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        Plates
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.orders.index')}}" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                         Orders
                         </a>
@@ -115,13 +115,13 @@
                     <li>
                         <a href="#" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                        Products
+                        Preview Profile
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link text-white">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                        Customers
+                        Statistics
                         </a>
                     </li>
                     </ul>
@@ -136,7 +136,7 @@
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
                     </ul>
                     </div>
                 </div>
