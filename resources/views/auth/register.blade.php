@@ -64,7 +64,7 @@
                                 <legend>Categories</legend>
                                 @foreach ($categories as $category)
                                     <div class="form-check">
-                                        <input required  class="form-check-input" type="checkbox" value="{{ $category->id }}"
+                                        <input class="form-check-input" type="checkbox" value="{{ $category->id }}"
                                             name="categories[]"
                                             {{ in_array($category->id, old('categories', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="flexCheckDefault">
@@ -72,23 +72,8 @@
                                         </label>
                                     </div>
                                 @endforeach
+                                <div id="message"></div>
                             </fieldset>
-                            @error('categories')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                            @enderror
-
-                            {{-- @foreach ($categories as $category)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $category->id }}">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        {{ $category->name }}
-                                    </label>
-                                </div>
-                            @endforeach --}}
-
-
                             <div class="form-group row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -134,7 +119,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" id="register-button" class="btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -146,3 +131,30 @@
         </div>
     </div>
 @endsection
+<script>
+        window.onload = () => {
+
+            let checkboxes = document.querySelctorAll('input[type=checkbox]');
+            let message = document.getElementById('message');
+            let register = document.getElementById('register-button');
+
+            checkboxes.forEach(function (checkbox){
+                checkbox.addEventListener('click', function(){
+                    message.innerHTML = ''; 
+                });
+            });
+            
+            register.addEventListener('click', fucntion (){
+                let atLeastOneChecked = false; 
+                checkboxes.forEach(checkbox => {
+                    if(checkbox.checked){
+                        atLeastOneChecked = true;
+                    }
+                })
+                if(!atLeastOneChecked){
+                    message.innerHTML = `<div class="alert alert-danger mt-3" role="alert"> Scelgi almeno una categoria </div>`; 
+                    return false;
+                }
+            });
+        }
+    </script>
