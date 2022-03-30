@@ -63,8 +63,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:255'],
             'iva' => ['required', 'string', 'min:11', 'unique:users'],
-            'category.*' => ['exists:App\Category,id'],
             'category'=> ['required'],
+            'category.*' => ['exists:App\Category,id'],
         ]);
     }
 
