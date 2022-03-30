@@ -26,6 +26,7 @@ class PlateController extends Controller
         return view('admin.plates.index', ['plates' => $plates]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

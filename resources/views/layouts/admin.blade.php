@@ -23,10 +23,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
+    <style>
+        
+        .my-overflow{
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .over{
+            height: 100%;
+        }
+        .auto{
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="my-overflow">
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -88,7 +103,6 @@
             <div class="col-2 p-0 vh-100">
                                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
                     <span class="fs-4">Admin Panel</span>
                     </a>
                     <hr>
@@ -130,21 +144,34 @@
                     <hr>
                     <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>mdo</strong>
+                        <img src="{{ asset('storage/' . Auth::user()->logo_img) }}" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Log out</a></li>
                     </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-10">
-                <main class="py-4">
+            <div class="col-10 p-0 auto">
+                <header class="p-3 bg-dark text-white">
+                    <div class="container">
+                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <!-- Bottone per entrare nella vue  -->
+                            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                                    Decremento 
+                            </a>
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                            @endif
+
+                            <strong>{{ Auth::user()->name }}</strong> {{ __(' welcome to control panel') }}
+                        </div>
+                    </div>
+                </header>
+                <main class="over">
                     @yield('content')
                 </main>
             </div>

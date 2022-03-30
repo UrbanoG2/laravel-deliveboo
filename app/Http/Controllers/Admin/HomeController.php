@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Plate;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $plates = Plate::orderBy('created_at', 'desc')->limit(5)->get();
+        $orders = Order::orderBy('created_at', 'desc')->limit(5)->get();
+        return view('admin.home', ['plates' => $plates, 'orders'=> $orders]);
+
     }
 }
 
