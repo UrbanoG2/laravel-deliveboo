@@ -13,7 +13,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/admin.js') }}" defer></script>
 
-
     {{-- script per provare gli errors senza bestemmiations
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
@@ -86,7 +85,7 @@
         </nav> -->
 
         <div class="row m-0">
-            <div class="col-2 p-0 h-100">
+            <div class="col-2 p-0 vh-100">
                                 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -95,32 +94,35 @@
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                        <a href="{{route('admin.home')}}" class="nav-link text-white {{'admin.home' === Route::currentRouteName() ? 'active' : '' }}" aria-current="page">
+                        <i class="fa-solid fa-house"></i>
                         Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.plates.index')}}" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                        <a href="{{route('admin.plates.index')}}" class="nav-link text-white {{'admin.plates.index' === Route::currentRouteName() ? 'active' : '' }}">
+                        <i class="fa-solid fa-pizza-slice"></i>
                         Plates
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.orders.index')}}" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                        <a href="{{route('admin.orders.index')}}" class="nav-link text-white {{'admin.orders.index' === Route::currentRouteName() ? 'active' : '' }}">
+                        <i class="fa-solid fa-sack-dollar"></i>
                         Orders
                         </a>
                     </li>
+
+                    <!-- Rotte future  -->
+                    
                     <li>
                         <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        <i class="fa-solid fa-id-card"></i>
                         Preview Profile
                         </a>
                     </li>
                     <li>
                         <a href="#" class="nav-link text-white">
-                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        <i class="fa-solid fa-chart-line"></i>
                         Statistics
                         </a>
                     </li>
@@ -148,6 +150,7 @@
             </div>
         </div>    
     </div>
+
 </body>
 
 </html>
