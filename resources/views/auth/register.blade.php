@@ -155,9 +155,8 @@
                         }
                     })
                     if(!atLeastOneChecked){
-                        console.log('entro');
-                        message.innerHTML = `<div class="alert alert-danger mt-3" role="alert"> Scelgi almeno una categoria </div>`; 
-                        return false;
+                        event.preventDefault();
+                        return message.innerHTML = `<div class="alert alert-danger mt-3" role="alert"> Scelgi almeno una categoria </div>`;
                     }
                 });
             }
