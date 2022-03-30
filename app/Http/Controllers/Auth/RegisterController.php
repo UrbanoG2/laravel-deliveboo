@@ -63,9 +63,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'max:255'],
             'iva' => ['required', 'string', 'min:11', 'unique:users'],
-            'category.*' => ['required', 'exists:App\Category,id'],
-            // 'logo' => ['string', 'string', 'max:255'],
-            // 'banner' => ['string', 'string', 'max:255'],
+            'category.*' => ['exists:App\Category,id'],
+            'category'=> ['required'],
         ]);
     }
 
@@ -115,9 +114,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'address' => $data['address'],
             'iva' => $data['iva'],
-            // 'category' => $data['category'],
-            // 'logo' => $data['logo'],
-            // 'banner' => $data['banner'],
             'password' => Hash::make($data['password']),
         ]);
 

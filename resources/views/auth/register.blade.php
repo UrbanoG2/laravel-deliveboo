@@ -72,8 +72,13 @@
                                         </label>
                                     </div>
                                 @endforeach
-                                <div id="message"></div>
                             </fieldset>
+                            <div id="message"></div>
+                            @error('categories')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div class="form-group row">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -130,31 +135,30 @@
             </div>
         </div>
     </div>
-@endsection
-<script>
-        window.onload = () => {
-
-            let checkboxes = document.querySelctorAll('input[type=checkbox]');
-            let message = document.getElementById('message');
-            let register = document.getElementById('register-button');
-
-            checkboxes.forEach(function (checkbox){
-                checkbox.addEventListener('click', function(){
-                    message.innerHTML = ''; 
+    <script>
+            window.onload = () => {
+                let checkboxes = document.querySelectorAll('input[type=checkbox]');
+                let message = document.getElementById('message');
+                let register = document.getElementById('register-button');
+    
+                checkboxes.forEach(function (checkbox){
+                    checkbox.addEventListener('click', function(){
+                        message.innerHTML = ''; 
+                    });
                 });
-            });
-            
-            register.addEventListener('click', fucntion (){
-                let atLeastOneChecked = false; 
-                checkboxes.forEach(checkbox => {
-                    if(checkbox.checked){
-                        atLeastOneChecked = true;
+                
+                register.addEventListener('click', function (){
+                    let atLeastOneChecked = false; 
+                    checkboxes.forEach(checkbox => {
+                        if(checkbox.checked){
+                            atLeastOneChecked = true;
+                        }
+                    })
+                    if(!atLeastOneChecked){
+                        message.innerHTML = `<div class="alert alert-danger mt-3" role="alert"> Scelgi almeno una categoria </div>`; 
+                        return false;
                     }
-                })
-                if(!atLeastOneChecked){
-                    message.innerHTML = `<div class="alert alert-danger mt-3" role="alert"> Scelgi almeno una categoria </div>`; 
-                    return false;
-                }
-            });
-        }
+                });
+            }
     </script>
+@endsection
