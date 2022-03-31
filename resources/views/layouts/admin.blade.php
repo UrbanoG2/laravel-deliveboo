@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/admin.js') }}" defer></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
 
     {{-- script per provare gli errors senza bestemmiations
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,21 +23,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('style')
-    <style>
-        
-        .my-overflow{
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .over{
-            height: 100%;
-        }
-        .auto{
-            overflow: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -101,7 +86,7 @@
 
         <div class="row m-0">
             <div class="col-2 p-0 vh-100">
-                                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
+                    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-4">Admin Panel</span>
                     </a>
@@ -153,7 +138,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-10 p-0 auto">
+            <div class="col-10 p-0">
                 <header class="p-3 bg-dark text-white">
                     <div class="container">
                         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -171,7 +156,7 @@
                         </div>
                     </div>
                 </header>
-                <main class="over">
+                <main class="over auto">
                     @yield('content')
                 </main>
             </div>

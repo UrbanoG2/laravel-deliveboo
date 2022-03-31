@@ -1,8 +1,4 @@
 @extends('layouts.admin')
-@section('style')
-    <style>
-    </style>
-@endsection
 
 @section('content')
 <!-- <div class="container">
