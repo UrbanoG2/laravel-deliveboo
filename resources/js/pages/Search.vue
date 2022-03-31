@@ -1,35 +1,56 @@
 <template>
-    <div class="my-container">
-        <div class="row">
-            <form class="d-flex flex-column align-content-center">
-                <label for="">Search</label>
-                <input
-                    type="text"
-                    name="searchedElement"
-                    v-model="form.searchedElement"
-                />
-                <label for="">Group by:</label>
-                <select
-                    class="form-select form-select"
-                    name="orderbysort"
-                    id="orderbysort"
-                    v-model="orderOption"
-                    @change.prevent="OrderBy"
-                >
-                    <option value="asc,name">Nome A-Z</option>
-                    <option value="desc,name">Nome Z-A</option>
-                    <option value="desc,created_at">Più recente</option>
-                    <option value="asc,created_at">Meno recente</option>
-                </select>
-                <div>
-                    <input
-                        class="btn btn-primary mt-3"
-                        type="button"
-                        value="filtra"
-                        @click.prevent="searchRestaurants"
-                    />
+    <div>
+        <div class="my-container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="mt-5 mb-3">
+                        Ricerca Avanzata
+                    </h1>
                 </div>
-            </form>
+            </div>
+            <div class="row search mb-3 p-3 bg-light">
+                <div class="col-12">
+                    <form>
+                        <h2>Search</h2>
+                        <div class="row">
+                            <div class="mb-3 col-2">
+                                Order By Column
+                                <select class="form-select form-select" name="orderbycolumn" id="orderbycolumn"
+                                    v-model="form.orderbycolumn">
+                                    <option value="title">Title</option>
+                                    <option value="content">Content</option>
+                                    <option value="created_at">Created</option>
+                                    <option value="updated_at">Updated</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-2">
+                                Order By Versus
+                                <select class="form-select form-select" name="orderbysort" id="orderbysort"
+                                    v-model="form.orderbysort">
+                                    <option value="asc">Asc</option>
+                                    <option value="desc">Desc</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                Categories
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div :key="'categories-' + index" v-for="(category, index) in categories">
+                                        <input type="checkbox" name="categories[]" :value="category.name" v-model="form.categories">
+                                        <label :for="category.name">{{ category.name }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <input class="btn btn-info" type="button" value="filtra" @click.prevent="searchRestaurants">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <Main :cards="cards" @changePage="changePage($event)"></Main>
     </div>
@@ -44,25 +65,22 @@ export default {
         Main,
     },
     data() {
-        return {
-            cards: {
-                restaurants: null,
-                next_page_url: null,
-                prev_page_url: null,
-                current_page: null,
-                count: null,
-            },
-            form: {
-                searchedElement: "",
-                orderbycolumn: null,
-                orderbysort: null,
-            },
-            orderOption: null,
-            searching: false,
-        };
+      return {
+        form: {
+          orderbycolumn: 'name',
+          orderbysort: 'desc',
+          categories: [],
+        },
+        cards: {
+          restaurants: null,
+          next_page_url: null,
+          prev_page_url: null
+        }
+      }
     },
     created() {
         this.getRestaurants("http://127.0.0.1:8000/api/search");
+        this.getCategories();
     },
     methods: {
         changePage(vs) {
@@ -73,12 +91,11 @@ export default {
         },
         getRestaurants(url) {
             Axios.get(url).then((result) => {
-                this.cards.restaurants = result.data.results.data.data;
+                this.cards.restaurants = result.data.results.data;
                 this.cards.next_page_url =
                     result.data.results.data.next_page_url;
                 this.cards.prev_page_url =
                     result.data.results.data.prev_page_url;
-                this.cards.current_page = result.data.results.data.current_page;
             });
         },
         searchRestaurants() {
@@ -86,40 +103,24 @@ export default {
             Axios.get(url, {
                 params: this.form,
             }).then((result) => {
-                if (result.data.results != null) {
-                    this.cards.restaurants = result.data.results.data.data;
-                    this.cards.count = result.data.results.count;
+                    this.cards.restaurants = result.data.results.data;
                     this.cards.next_page_url =
                         result.data.results.data.next_page_url;
                     this.cards.prev_page_url =
                         result.data.results.data.prev_page_url;
-                } else {
-                    this.cards == null;
-                }
             });
         },
-        OrderBy() {
-            let ArrayOfOption = this.orderOption.split(",");
-            this.form.orderbysort = ArrayOfOption[0];
-            this.form.orderbycolumn = ArrayOfOption[1];
-        },
+        getCategories(){
+            const url = 'http://127.0.0.1:8000/api/v1/categories';
+            Axios.get(url).then(
+                    (result) => {
+                        this.categories = result.data.results.data;
+                        console.log(this.categories);
+                    });
+        }
     },
-    watch: {
-        form: {
-            handler(event) {
-                if (this.searching == false) {
-                    setTimeout(() => {
-                        this.searchRestaurants();
-                        this.searching = false;
-                    }, 2000);
-                    this.searching = true;
-                    // event.preventDefault();
-                }
-            },
-            deep: true,
-        },
-    },
-};
+    
+}
 </script>
 
 <style lang="scss" scoped>

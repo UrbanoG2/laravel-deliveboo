@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\User;
 class RestaurantController extends Controller
 {
@@ -31,41 +32,29 @@ class RestaurantController extends Controller
 
         $users = User::where('id', '>', 0);
 
-        if (array_key_exists('searchedElement', $data))
-        {
-            $users = $users->where('name', 'like', '%'.$data['searchedElement'].'%');
+        if (
+            array_key_exists('orderbycolumn', $data) &&
+            array_key_exists('orderbysort', $data)
+        ) {
+            $users->orderBy($data['orderbycolumn'], $data['orderbysort']);
         }
 
-        if (array_key_exists('orderbysort', $data) && $data['orderbysort'] != null 
-            && array_key_exists('orderbycolumn', $data) && $data['orderbycolumn'] != null)
-        {
-            $users = $users->orderBy($data['orderbycolumn'], $data['orderbysort']);
+        if (array_key_exists('categories', $data)) {
+            foreach ($data['categories'] as $category) {
+                //fa una join per controllare i tag che sono associati al product
+                $users->whereHas('categories', function (Builder $query) use ($category) {
+                    $query->where('name', '=', $category);
+                });
+            }
         }
 
-        $users = $users->paginate(4);
-
+        $users = $users->with(['categories'])->get();
         return response()->json([
             'response' => true,
             'count' =>  $users->count(),
-            'results' =>  [
-                'data' => $users
-            ],
-        ]);
-    }
-
-    public function show($id)
-    {
-        $user = User::find($id);
-        $user['artists'] = $user->artist()->get();
-        $user['writers'] = $user->writer()->get();
-
-
-        return response()->json([
-            'response' => true,
-            'count' => $user ? 1 : 0,
-            'results' =>  [
-                'data' => $user,
-            ],
+            'results' => [
+               'data'=>$users
+            ]
         ]);
     }
 
