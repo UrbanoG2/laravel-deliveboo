@@ -22526,5 +22526,6 @@ readers do not read off random characters that represent icons */
 
 .auto {
   overflow: auto;
+  padding-bottom: 100px;
 }
 

@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div id="app" class="my-overflow">
+    <div id="app">
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -138,11 +138,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-10 p-0">
+            <div class="col-10 p-0 my-overflow">
                 <header class="p-3 bg-dark text-white">
                     <div class="container">
                         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <!-- Bottone per entrare nella vue  -->
+                        <!-- Bottone per entrare nella vue  -->
                             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                                     Decremento 
                             </a>
