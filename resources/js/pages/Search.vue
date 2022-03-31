@@ -17,8 +17,6 @@
                                 Order By Column
                                 <select class="form-select form-select" name="orderbycolumn" id="orderbycolumn"
                                     v-model="form.orderbycolumn">
-                                    <option value="title">Title</option>
-                                    <option value="content">Content</option>
                                     <option value="created_at">Created</option>
                                     <option value="updated_at">Updated</option>
                                 </select>
@@ -40,6 +38,8 @@
                                         <input type="checkbox" name="categories[]" :value="category.name" v-model="form.categories">
                                         <label :for="category.name">{{ category.name }}</label>
                                     </div>
+
+                                   
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,9 @@ export default {
           restaurants: null,
           next_page_url: null,
           prev_page_url: null
-        }
+        },
+
+        categories: null,
       }
     },
     created() {
