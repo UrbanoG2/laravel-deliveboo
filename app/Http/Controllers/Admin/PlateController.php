@@ -133,7 +133,7 @@ class PlateController extends Controller
             Storage::delete($plate->preview);
 
             $img_path = Storage::put('uploads', $data['preview']);
-            $plate->preview = $img_path;
+            $data['preview'] = $img_path;
         }
 
         // Inserire controlli vari

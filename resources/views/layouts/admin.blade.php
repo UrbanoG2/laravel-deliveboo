@@ -141,18 +141,25 @@
             <div class="col-10 p-0 my-overflow">
                 <header class="p-3 bg-dark text-white">
                     <div class="container">
-                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between">
                         <!-- Bottone per entrare nella vue  -->
-                            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                                    Decremento 
-                            </a>
+                            
+                            
                             @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                             @endif
+                            <div>
+                                <strong>&nbsp; {{ Auth::user()->name }} &nbsp;</strong> 
+                                <span>{{ __(' welcome to control panel') }}</span> 
+                            </div>
 
-                            <strong>{{ Auth::user()->name }}</strong> {{ __(' welcome to control panel') }}
+                            <div>
+                                <a href="/" class="d-flex text-left align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                                    Visualizza come ospite
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </header>

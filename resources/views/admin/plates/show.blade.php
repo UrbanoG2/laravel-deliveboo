@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @if (session('status'))
+            <!-- @if (session('status'))
                 <div class="alert alert-danger">
                     {{ session('status') }}
                 </div>
-            @endif
+            @endif -->
         </div>
         <div class="row">
             <div class="col">
