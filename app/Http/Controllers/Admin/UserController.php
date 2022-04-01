@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-     public function show(User $user)
+     public function show($id)
     {
+        $user = User::find($id);
         return view('admin.users.show', ["user" => $user]);
     }
 

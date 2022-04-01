@@ -9,7 +9,7 @@
               <h6>{{ plate.price }} &euro;</h6>
               <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
               <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
-              <a href="#" class="btn btn-primary" @addPlates="addPlates($event)>Add To Cart</a>
+              <a href="#" class="btn btn-primary" @addPlates="addPlates($event)">Add To Cart</a>
             </div>
           </div>
       </div>
@@ -21,9 +21,7 @@
 import Axios from "axios";
 export default {
 name: 'Restaurant',
-props:{
-  id: String,
-} ,
+props: ['id'],
     data() {
       return {
         restaurant: null,
@@ -47,7 +45,7 @@ props:{
       },
       filterPlates(){
         this.plates = this.plates.filter(plate => plate.visible == 1);
-      }
+      },
       addPlates(){
         console.log('cliccato');
       }
