@@ -2,9 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col" v-for="(plate, index) in plates" :key="index">
-        <span v-if="plate.visible == 1">
+        <!-- <span v-if="plate.visible == 1">
           {{plate.name}}
-        </span>
+        </span> -->
+          <div class="card">
+            <img :src="'/storage/'+ plate.preview" class="card-img-top" :alt="plate.name">
+            <div class="card-body">
+              <h3 class="card-title">{{ plate.name }}</h3>
+              <h6>{{ plate.price }} &euro;</h6>
+              <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
+              <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -21,7 +30,7 @@ props: ['id'],
         plates: []
       }
     },
-created() {
+    created() {
         const url = 'http://127.0.0.1:8000/api/restaurant/' + this.id;
         this.getProduct(url);
     },
@@ -32,7 +41,11 @@ created() {
             (result) => {
               this.restaurant = result.data.results.data;
               this.plates = result.data.results.plates;
+              this.filterPlates();
             }).catch(error => console.log(error));
+      },
+      filterPlates(){
+        this.plates = this.plates.filter(plate => plate.visible == 1);
       }
     },
 }
