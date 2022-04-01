@@ -19,6 +19,7 @@
 
 <script>
 import Axios from "axios";
+import EventBus from '../bus.js'
 export default {
 name: 'Restaurant',
 props: ['id'],
@@ -83,8 +84,10 @@ props: ['id'],
           this.cartItem.push(newItem);
           this.findItem = false;
         }
-
+        
         localStorage.setItem('cart', JSON.stringify(this.cartItem));
+        EventBus.$emit('refresh_cart_total');
+
         console.log(this.getCartItem());
       }
     },

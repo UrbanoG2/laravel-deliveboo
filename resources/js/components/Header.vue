@@ -24,7 +24,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li :cards="cards"></li>
+                    <li v-for="(item, index) in list" :key="index">Item: {{item.id}}, quantity: {{item.quantity}}</li>
                   </ul>
                 </div>
                </li>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import EventBus from '../bus.js'
 export default {
     name: 'Header',
     props: ['cards'],
@@ -55,9 +56,12 @@ export default {
 
       }
     },
+    created() {
+        EventBus.$on('refresh_cart_total', this.getCartTotal)
+    },
     methods: {
-      addPlates() {
-        this.$emit('addPlates', list);
+      getCartTotal() {
+        this.list =  JSON.parse(localStorage.getItem('cart'));
       }
     },
 }
