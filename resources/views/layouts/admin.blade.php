@@ -133,6 +133,7 @@
                         <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="{{route('admin.users.edit', Auth::user()->id)}}">Edit profile</a></li>
                         <li><a class="dropdown-item" href="{{route('logout')}}">Log out</a></li>
                     </ul>
                     </div>

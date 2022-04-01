@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
         if (Auth::user()->id != $user->id) {
             abort('403');
         }
-        return view('admin.users.show', ["user" => $user]);
+        return view('admin.users.edit', ["user" => $user]);
     }
 
     public function update(Request $request, User $user)
@@ -40,7 +41,6 @@ class UserController extends Controller
             $data['banner_img'] = $img_path;
         }
         $user->update($data);
-
         return redirect()->route('admin.users.show', $user)
             ->with('status', "User $user->name Edited!");
     }
