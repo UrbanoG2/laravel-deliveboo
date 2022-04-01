@@ -23,6 +23,7 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('orders', 'OrderController');
         Route::resource('plates', 'PlateController');
+        Route::resource('users', 'UserController');
     });
 
 Route::get('{any?}', function ($name = null) {

@@ -114,7 +114,7 @@
                     <!-- Rotte future  -->
                     
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="{{route('admin.users.show', Auth::user()->id)}}" class="nav-link text-white">
                         <i class="fa-solid fa-id-card"></i>
                         Preview Profile
                         </a>
