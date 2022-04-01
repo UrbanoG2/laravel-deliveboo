@@ -28,13 +28,12 @@ props: ['id'],
         restaurant: null,
         plates: [],
         cartItem: [],
-        orderId:null,
         cart: null,
       }
     },
     created() {
         const url = 'http://127.0.0.1:8000/api/restaurant/' + this.id;
-        if(this.getCartItem != null)
+        if(this.getCartItem() != null)
         {
           let localData = JSON.parse(this.getCartItem());
           localData.forEach(element => {

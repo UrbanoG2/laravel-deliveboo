@@ -84,6 +84,7 @@ export default {
     created() {
         this.getRestaurants("http://127.0.0.1:8000/api/search");
         this.getCategories();
+        localStorage.clear('cart');
         // let value = {
         //     restaurant: 1,
         //     plates: [{
