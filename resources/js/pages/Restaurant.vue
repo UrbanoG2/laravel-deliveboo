@@ -9,7 +9,7 @@
               <h6>{{ plate.price }} &euro;</h6>
               <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
               <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
-              <a href="#" class="btn btn-primary" @click="addPlates($event)">Add To Cart</a>
+              <a class="btn btn-primary" @click="addItemToCart(plate.id)">Add To Cart</a>
             </div>
           </div>
       </div>
@@ -26,13 +26,20 @@ props: ['id'],
       return {
         restaurant: null,
         plates: [],
-        cards: null,
+        cartItem: [],
         orderId:null,
         cart: null,
       }
     },
     created() {
         const url = 'http://127.0.0.1:8000/api/restaurant/' + this.id;
+        if(this.getCartItem != null)
+        {
+          let localData = JSON.parse(this.getCartItem());
+          localData.forEach(element => {
+            this.cartItem.push(element)
+          });
+        }
         this.getProduct(url);
     },
     methods: {
@@ -49,27 +56,37 @@ props: ['id'],
         this.plates = this.plates.filter(plate => plate.visible == 1);
       },
 
-      addItemToLocalStore(){
-        let cartBox = localStorage.getItem('cart');
-        if (cartBox) {
-          cartBox.forEach(element => {
-            if (element.restaurant == this.id) {
-              this.cart.plates = plates
-            }
-          });
-        } else {
-          this.cart.restaurant == this.id;
-          this.cart.plates = plates;
-        }
-
-        localStorage.setItem('cart', JSON.stringify(this.cart));
+      getCartItem() {
+          return localStorage.getItem('cart');
       },
 
-      // addItemToCart(){
-      //   if() {
+      addItemToCart(int){
+        this.cartItem.forEach(element => {
+          if(element.id == int)
+          {
+            this.findItem = true;
+            element.quantity++;
+          }
+        });
 
-      //   }
-      // }
+        if(this.findItem) 
+        {
+          this.findItem = false;
+        }
+        else
+        {
+          let newItem = {
+            id: int,
+            restaurant: parseInt(this.id),
+            quantity: 1
+          }
+          this.cartItem.push(newItem);
+          this.findItem = false;
+        }
+
+        localStorage.setItem('cart', JSON.stringify(this.cartItem));
+        console.log(this.getCartItem());
+      }
     },
 }
 </script>
