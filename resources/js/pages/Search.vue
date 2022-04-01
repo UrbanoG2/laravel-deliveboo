@@ -74,7 +74,8 @@ export default {
         cards: {
           restaurants: null,
           next_page_url: null,
-          prev_page_url: null
+          prev_page_url: null,
+          current_page: null
         },
 
         categories: null,
@@ -95,9 +96,11 @@ export default {
             Axios.get(url).then((result) => {
                 this.cards.restaurants = result.data.results.data;
                 this.cards.next_page_url =
-                    result.data.results.data.next_page_url;
+                    result.data.results.next_page_url;
                 this.cards.prev_page_url =
-                    result.data.results.data.prev_page_url;
+                    result.data.results.prev_page_url;
+                    this.cards.current_page =
+                    result.data.results.current_page;
             });
         },
         searchRestaurants() {
@@ -107,9 +110,11 @@ export default {
             }).then((result) => {
                     this.cards.restaurants = result.data.results.data;
                     this.cards.next_page_url =
-                        result.data.results.data.next_page_url;
+                        result.data.results.next_page_url;
                     this.cards.prev_page_url =
-                        result.data.results.data.prev_page_url;
+                        result.data.results.prev_page_url;
+                        this.cards.current_page =
+                    result.data.results.current_page;
             });
         },
         getCategories(){
@@ -117,7 +122,6 @@ export default {
             Axios.get(url).then(
                     (result) => {
                         this.categories = result.data.results.data;
-                        console.log(this.categories);
                     });
         }
     },

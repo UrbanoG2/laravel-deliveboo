@@ -48,13 +48,11 @@ class RestaurantController extends Controller
             }
         }
 
-        $users = $users->with(['categories'])->get();
+        $users = $users->with(['categories'])->paginate(3);
         return response()->json([
             'response' => true,
             'count' =>  $users->count(),
-            'results' => [
-               'data'=>$users
-            ]
+            'results' => $users
         ]);
     }
 
