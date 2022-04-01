@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\User;
+use App\Plate;
+
 class RestaurantController extends Controller
 {
     /**
@@ -53,6 +55,20 @@ class RestaurantController extends Controller
             'response' => true,
             'count' =>  $users->count(),
             'results' => $users
+        ]);
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        $plates = $user->plates()->get();
+        return response()->json([
+            'response' => true,
+            'count' => $user ? 1 : 0,
+            'results' =>  [
+                'restaurant' => $user,
+                'plates'=> $plates
+            ],
         ]);
     }
 

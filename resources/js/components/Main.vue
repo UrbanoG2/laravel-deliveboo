@@ -9,7 +9,7 @@
             <h5 class="card-title" v-for="(category, id) in restaurant.categories" :key="id">{{ category.name }}</h5>
             <p class="card-text">{{ restaurant.description }}</p>
           </div>
-          <router-link class="btn btn-secondary" :to="{ name: 'search', params: { id: restaurant.id } }">View</router-link>
+          <router-link class="btn btn-secondary" :to="{ name: 'restaurant', params: { id: restaurant.id } }">View</router-link>
         </div>
       </div>
     </div>
