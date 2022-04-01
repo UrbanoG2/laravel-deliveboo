@@ -79,28 +79,34 @@ export default {
         },
 
         categories: null,
-        test: null
       }
     },
     created() {
         this.getRestaurants("http://127.0.0.1:8000/api/search");
         this.getCategories();
-        let value = {
-            cacca: 'puzzolente',
-            pipi: [
-                1,
-                2,
-                3,
-                'solillo',
-                'explode',
-                'burn'
-            ],
-            gatto: 'cinese',
-            pc: 'explode'
-        }
-        localStorage.setItem('string', JSON.stringify(value));
-        this.test = localStorage.getItem('string');
-        console.log(this.test);
+        // let value = {
+        //     restaurant: 1,
+        //     plates: [{
+        //         id: 2,
+        //         quantity: 1 
+        //     },
+
+        //     {
+        //         id: 3,
+        //         quantity: 2 
+        //     },
+
+        //     {
+        //         id: 4,
+        //         quantity: 3
+        //     },
+            
+        //     ],
+
+        // }
+        // localStorage.setItem('string', JSON.stringify(value));
+        // this.test = localStorage.getItem('string');
+        // console.log(this.test);
     },
     methods: {
         changePage(vs) {
@@ -141,6 +147,8 @@ export default {
                         this.categories = result.data.results.data;
                     });
         }
+
+
     },
     
 }

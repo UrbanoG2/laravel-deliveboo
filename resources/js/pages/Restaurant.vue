@@ -9,7 +9,7 @@
               <h6>{{ plate.price }} &euro;</h6>
               <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
               <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
-              <a href="#" class="btn btn-primary" @addPlates="addPlates($event)">Add To Cart</a>
+              <a href="#" class="btn btn-primary" @click="addPlates($event)">Add To Cart</a>
             </div>
           </div>
       </div>
@@ -27,6 +27,8 @@ props: ['id'],
         restaurant: null,
         plates: [],
         cards: null,
+        orderId:null,
+        cart: null,
       }
     },
     created() {
@@ -46,9 +48,28 @@ props: ['id'],
       filterPlates(){
         this.plates = this.plates.filter(plate => plate.visible == 1);
       },
-      addPlates(){
-        console.log('cliccato');
-      }
+
+      addItemToLocalStore(){
+        let cartBox = localStorage.getItem('cart');
+        if (cartBox) {
+          cartBox.forEach(element => {
+            if (element.restaurant == this.id) {
+              this.cart.plates = plates
+            }
+          });
+        } else {
+          this.cart.restaurant == this.id;
+          this.cart.plates = plates;
+        }
+
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+      },
+
+      // addItemToCart(){
+      //   if() {
+
+      //   }
+      // }
     },
 }
 </script>
