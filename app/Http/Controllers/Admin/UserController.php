@@ -32,15 +32,15 @@ class UserController extends Controller
             Storage::delete($user->logo_img);
 
             $img_path = Storage::put('uploads', $data['logo_img']);
-            $data['logo_img'] = $img_path;
+            $user->logo_img = $img_path;
         }
         if (!empty($data['banner_img'])) {
             Storage::delete($user->banner_img);
 
             $img_path = Storage::put('uploads', $data['banner_img']);
-            $data['banner_img'] = $img_path;
+            $user->banner_img = $img_path;
         }
-        $user->update($data);
+        $user->update();
         return redirect()->route('admin.users.show', $user)
             ->with('status', "User $user->name Edited!");
     }
