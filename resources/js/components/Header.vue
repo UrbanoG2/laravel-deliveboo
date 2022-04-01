@@ -18,6 +18,16 @@
                   <router-link class="nav-link" :to="{ name: item.routeName}">{{ item.label }}</router-link>
 
                </li>
+               <li>
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li :cards="cards"></li>
+                  </ul>
+                </div>
+               </li>
              </ul>
           </div>
       </div>
@@ -27,8 +37,10 @@
 <script>
 export default {
     name: 'Header',
+    props: ['cards'],
     data(){
       return{
+        list: null,
         logo: require('../../img/logo.png'),
         menuItems: [
           {
@@ -39,9 +51,15 @@ export default {
             label: 'Search',
             routeName: 'search'
           }
-        ]
+        ],
+
       }
-    }
+    },
+    methods: {
+      addPlates() {
+        this.$emit('addPlates', list);
+      }
+    },
 }
 </script>
 

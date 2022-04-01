@@ -2,9 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col" v-for="(plate, index) in plates" :key="index">
-        <!-- <span v-if="plate.visible == 1">
-          {{plate.name}}
-        </span> -->
           <div class="card">
             <img :src="'/storage/'+ plate.preview" class="card-img-top" :alt="plate.name">
             <div class="card-body">
@@ -12,6 +9,7 @@
               <h6>{{ plate.price }} &euro;</h6>
               <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
               <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
+              <a href="#" class="btn btn-primary" @addPlates="addPlates($event)>Add To Cart</a>
             </div>
           </div>
       </div>
@@ -23,11 +21,14 @@
 import Axios from "axios";
 export default {
 name: 'Restaurant',
-props: ['id'],
+props:{
+  id: String,
+} ,
     data() {
       return {
         restaurant: null,
-        plates: []
+        plates: [],
+        cards: null,
       }
     },
     created() {
@@ -46,6 +47,9 @@ props: ['id'],
       },
       filterPlates(){
         this.plates = this.plates.filter(plate => plate.visible == 1);
+      }
+      addPlates(){
+        console.log('cliccato');
       }
     },
 }
