@@ -24,7 +24,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li v-for="(item, index) in list" :key="index">Item: {{item.id}}, quantity: {{item.quantity}}</li>
+                    <li v-for="(item, index) in list" :key="index">{{item.name}}, quantity: {{item.quantity}}, price: {{item.price}}</li>
                   </ul>
                 </div>
                </li>

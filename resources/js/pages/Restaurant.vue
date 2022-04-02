@@ -9,7 +9,7 @@
               <h6>{{ plate.price }} &euro;</h6>
               <p class="card-text"><strong>Descrizione:</strong>  {{ plate.description }}</p>
               <p class="card-text"><strong>Ingredienti:</strong> {{ plate.ingredients }}</p>
-              <a class="btn btn-primary" @click="addItemToCart(plate.id)">Add To Cart</a>
+              <a class="btn btn-primary" @click="addItemToCart(plate.id, plate.price, plate.name)">Add To Cart</a>
             </div>
           </div>
       </div>
@@ -60,12 +60,13 @@ props: ['id'],
           return localStorage.getItem('cart');
       },
 
-      addItemToCart(int){
+      addItemToCart(id, price, name){
         this.cartItem.forEach(element => {
-          if(element.id == int)
+          if(element.id == id)
           {
             this.findItem = true;
             element.quantity++;
+            element.price = parseFloat(element.quantity * price)
           }
         });
 
@@ -76,10 +77,12 @@ props: ['id'],
         else
         {
           let newItem = {
-            id: int,
+            id: id,
+            name: name,
             restaurant: parseInt(this.id),
-            quantity: 1
+            quantity: 1,
           }
+          newItem.price = parseFloat(newItem.quantity * price)
           this.cartItem.push(newItem);
           this.findItem = false;
         }
