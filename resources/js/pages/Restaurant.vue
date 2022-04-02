@@ -41,13 +41,14 @@ props: ['id'],
           });
         }
         this.getProduct(url);
+        EventBus.$emit('refresh_cart', this.id);
     },
     methods: {
       getProduct(url){
           Axios.get(url)
           .then(
             (result) => {
-              this.restaurant = result.data.results.data;
+              this.restaurant = result.data.results.restaurant;
               this.plates = result.data.results.plates;
               this.filterPlates();
             }).catch(error => console.log(error));
@@ -88,7 +89,7 @@ props: ['id'],
         }
         
         localStorage.setItem('cart', JSON.stringify(this.cartItem));
-        EventBus.$emit('refresh_cart_total');
+        EventBus.$emit('refresh_cart', this.id);
 
         console.log(this.getCartItem());
       }

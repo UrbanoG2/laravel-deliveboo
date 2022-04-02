@@ -24,7 +24,7 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li v-for="(item, index) in list" :key="index">{{item.name}}, quantity: {{item.quantity}}, price: {{item.price}}</li>
+                    <li v-for="(item, index) in list" :key="index">Item: {{item.id}}, quantity: {{item.quantity}}</li>
                   </ul>
                 </div>
                </li>
@@ -42,6 +42,7 @@ export default {
     data(){
       return{
         list: null,
+        restaurantID: null,
         logo: require('../../img/logo.png'),
         menuItems: [
           {
@@ -57,12 +58,22 @@ export default {
       }
     },
     created() {
-        EventBus.$on('refresh_cart_total', this.getCartTotal)
+        EventBus.$on('refresh_cart', (data) => {     
+          this.list =  JSON.parse(localStorage.getItem('cart'));
+          this.list = this.list.filter(item => item.restaurant == data);
+        })
+        EventBus.$on('clear_cart', this.clearCart)
     },
     methods: {
-      getCartTotal() {
+      getCart(vs) {
         this.list =  JSON.parse(localStorage.getItem('cart'));
-      }
+        this.restaurantID = vs;
+      },
+      clearCart() {
+        this.list =  null;
+        this.restaurantID = null;
+      },
+
     },
 }
 </script>

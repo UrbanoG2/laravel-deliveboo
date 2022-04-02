@@ -58,6 +58,7 @@
 
 <script>
 import Axios from "axios";
+import EventBus from '../bus.js';
 import Main from "../components/Main.vue";
 export default {
     name: "Search",
@@ -84,6 +85,7 @@ export default {
     created() {
         this.getRestaurants("http://127.0.0.1:8000/api/search");
         this.getCategories();
+        EventBus.$emit('clear_cart');
     },
     methods: {
         changePage(vs) {
