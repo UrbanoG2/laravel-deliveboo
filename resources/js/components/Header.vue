@@ -30,10 +30,10 @@
                         >
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="../../views/auth/login.blade.php">Accedi</a>
+                            <a class="nav-link" href="login">Accedi</a>
                     </li>
                     <li class="nav-item">
-                                <a class="nav-link" href="../../views/auth/register.blade.php"> Registrati </a>
+                                <a class="nav-link" href="register"> Registrati </a>
                     </li>
                     <li>
                         <transition

@@ -9,10 +9,11 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid bg-section">
-        <div class="container mt-4">
+      <div class="container w-75 p-5 bg-section mt-4">
           <div class="row p-4">
-            <h3>Ultimi Ristoranti in tendenza <i class="fa-solid fa-arrow-trend-up"></i></h3>
+            <div class="section-title mb-5 p-4">
+                <h3>Ultimi Ristoranti in tendenza <i class="fa-solid fa-arrow-trend-up"></i></h3>
+            </div>
             <div class="col" v-for="(restaurant, index) in cards.restaurants" :key="index">
               <!-- <div class="card">
                 <img src="\storage\app\uploads\default.png" :alt="restaurant.banner_img">
@@ -29,15 +30,24 @@
                 </div>
               </div> -->
 
+              <!-- Qui inseriremo il banner-img del ristorante con eventuale ternario per gestire la mancanza di quest'ultimo  -->
+              <div class="profile-card-2"><img src="../../../public/images/immagini database/a-due-passi-dal-mare.jpg" class="img img-responsive">
 
-              <div class="profile-card-2"><img src="http://envato.jayasankarkr.in/code/profile/assets/img/profile-2.jpg" class="img img-responsive">
-                    <div class="profile-name">JOHN DOE</div>
-                    <div class="profile-username">@johndoesurname</div>
-                    <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                    <div class="profile-name">{{ restaurant.name }}</div>
+                    <div class="profile-address">{{ restaurant.address }}</div>
+                    <div class="profile-link">
+                      <router-link
+                        class="btn my-btn"
+                        :to="{
+                            name: 'restaurant',
+                            params: { id: restaurant.id },
+                        }"
+                      >View</router-link>
+                    </div>
               </div>
             </div>
           </div>    
-        </div>
+        
       </div>
     </div>
   </div>
@@ -100,6 +110,7 @@ export default {
     background-color: white;
     h3{
       font-weight: 800!important;
+      font-size: 2.5em;
     }
   }
 
@@ -113,57 +124,66 @@ export default {
     margin: 10px auto;
     cursor: pointer;
     border-radius: 10px;
-}
+    height: 300px;
+    img {
+      transition: all linear 0.25s;
+    }
+    .profile-name {
+      position: absolute;
+      left: 30px;
+      bottom: 100px;
+      font-size: 30px;
+      color: #FFF;
+      text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      font-weight: bold;
+      transition: all linear 0.25s;
+    }
 
-.profile-card-2 img {
-    transition: all linear 0.25s;
-}
+    .profile-link {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      color: #FFF;
+      transition: all linear 0.25s;
+    }
 
-.profile-card-2 .profile-name {
-    position: absolute;
-    left: 30px;
-    bottom: 70px;
-    font-size: 30px;
-    color: #FFF;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    transition: all linear 0.25s;
-}
+    .profile-address{
+      position: absolute;
+      bottom: 50px;
+      left: 30px;
+      color: #FFF;
+      font-size: 13px;
+      transition: all linear 0.25s;
+    }
 
-.profile-card-2 .profile-icons {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    color: #FFF;
-    transition: all linear 0.25s;
-}
+    .profile-icons .fa {
+      margin: 5px;
+    }
 
-.profile-card-2 .profile-username {
-    position: absolute;
-    bottom: 50px;
-    left: 30px;
-    color: #FFF;
-    font-size: 13px;
-    transition: all linear 0.25s;
 }
+    .profile-card-2:hover img {
+      filter: grayscale(100%);
+    }
 
-.profile-card-2 .profile-icons .fa {
-    margin: 5px;
-}
+    .profile-card-2:hover .profile-name {
+      bottom: 80px;
+    }
 
-.profile-card-2:hover img {
-    filter: grayscale(100%);
-}
+    .profile-card-2:hover .profile-username {
+      bottom: 60px;
+    }
 
-.profile-card-2:hover .profile-name {
-    bottom: 80px;
-}
+    .profile-card-2:hover .profile-link {
+      right: 40px;
+    }
 
-.profile-card-2:hover .profile-username {
-    bottom: 60px;
-}
+    .my-btn{
+      color: black;
+      background-color: #F2C53D;
+      border-color: #F2C53D;
+    }
+    .section-title{
+      text-align: center;
+    }
 
-.profile-card-2:hover .profile-icons {
-    right: 40px;
-}
 </style>
