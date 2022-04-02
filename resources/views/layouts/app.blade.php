@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <!--
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -32,14 +33,14 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <!-- Left Side Of Navbar -->
+                 Left Side Of Navbar 
                 <ul class="navbar-nav mr-auto">
 
                 </ul>
 
-                <!-- Right Side Of Navbar -->
+               Right Side Of Navbar
                 <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
+                     Authentication Links 
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -61,7 +62,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>-->
     <div id="app">
         <main>
             @yield('content')

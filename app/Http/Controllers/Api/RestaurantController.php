@@ -28,6 +28,16 @@ class RestaurantController extends Controller
         ]);
     }
 
+    public function RandomRestaurant(){
+        $users = User::inRandomOrder()->limit(4)->get();
+        return response()->json([
+            'response' => true,
+            'results' => [
+               'data'=>$users
+            ]
+        ]);
+    }
+
     public function search(Request $request)
     {
         $data = $request->all();

@@ -29,6 +29,12 @@
                             >{{ item.label }}</router-link
                         >
                     </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="../../views/auth/login.blade.php">Accedi</a>
+                    </li>
+                    <li class="nav-item">
+                                <a class="nav-link" href="../../views/auth/register.blade.php"> Registrati </a>
+                    </li>
                     <li>
                         <transition
                             v-on:before-enter="SCbeforeEnter"

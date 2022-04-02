@@ -80,10 +80,12 @@
 import Axios from "axios";
 import EventBus from "../bus.js";
 import Main from "../components/Main.vue";
+import Home from "../pages/Home.vue";
 export default {
     name: "Search",
     components: {
         Main,
+        Home,
     },
     data() {
         return {

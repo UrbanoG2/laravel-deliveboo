@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('search', 'Api\RestaurantController@search');
 Route::get('restaurant/{id}', 'Api\RestaurantController@show');
 Route::get('v1/categories', 'Api\CategoryController@index');
+Route::get('v1/users/random', 'Api\RestaurantController@RandomRestaurant');

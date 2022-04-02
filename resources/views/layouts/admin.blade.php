@@ -114,7 +114,7 @@
                     <!-- Rotte future  -->
                     
                     <li>
-                        <a href="{{route('admin.users.show', Auth::user()->id)}}" class="nav-link text-white">
+                        <a href="{{route('admin.users.show', Auth::user()->slug)}}" class="nav-link text-white">
                         <i class="fa-solid fa-id-card"></i>
                         Preview Profile
                         </a>
@@ -133,7 +133,7 @@
                         <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="{{route('admin.users.edit', Auth::user()->id)}}">Edit profile</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.users.edit', Auth::user()->slug)}}">Edit profile</a></li>
                         <li><a class="dropdown-item" href="{{route('logout')}}">Log out</a></li>
                     </ul>
                     </div>
