@@ -54,7 +54,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Pomodoro S.Marzano DOP, Fior di Latte, Olive di Gaeta, Acciughe di Sciacca",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-pachino.jpg',
+                'preview' => '/images/restaurant/pizza-napoli.jpg',
             ],
             [
                 'user_id' => 1,
@@ -64,7 +64,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Pomodoro S.Marzano DOP, Bufala Campana DOP, basilico, olio Evo",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-Bufalina.jpg',
+                'preview' => '/images/restaurant/pizza-Bufala.jpg',
             ],
             [
                 'user_id' => 1,
@@ -94,7 +94,7 @@ class PlateSeeder extends Seeder
                 'price' => '10',
                 'ingredients' =>"Spaghetti,Pecorino romano DOP, Pepe",
                 'visible' => true,
-                'preview' => '/images/restaurant/caciopepe.jpg',
+                'preview' => '/images/restaurant/cacio-e-pepe.jpg',
             ],
             [
                 'user_id' => 2,
@@ -104,7 +104,7 @@ class PlateSeeder extends Seeder
                 'price' => '12',
                 'ingredients' =>"Trancio di salmone di Alaska, prezzemolo, olio Extra Vergine, Pepe Rosa",
                 'visible' => true,
-                'preview' => '/images/restaurant/salmone.jpg',
+                'preview' => '/images/restaurant/salmone-al-pepe-rosa.jpg',
             ],
             [
                 'user_id' => 2,
@@ -114,7 +114,7 @@ class PlateSeeder extends Seeder
                 'price' => '13',
                 'ingredients' =>"Tartare di Tonno abbattuto, olio Evo, semi di papavero",
                 'visible' => true,
-                'preview' => '/images/restaurant/tartare.jpg',
+                'preview' => '/images/restaurant/tartare-di-tonno.jpg',
             ],
             [
                 'user_id' => 2,
@@ -124,7 +124,7 @@ class PlateSeeder extends Seeder
                 'price' => '13',
                 'ingredients' =>"Fettine di pollo marinate al limone, olio, prezzemolo",
                 'visible' => true,
-                'preview' => '/images/restaurant/scaloppine.webp',
+                'preview' => '/images/restaurant/scaloppine-di-pollo-al-limone.jpg',
             ],
             [
                 'user_id' => 2,
@@ -134,7 +134,7 @@ class PlateSeeder extends Seeder
                 'price' => '14',
                 'ingredients' =>"Tacchino, Prosciutto crudo, Parmigiano Reggiano DOP, Marsala, Tartufo Nero",
                 'visible' => true,
-                'preview' => '/images/restaurant/tacchino.webp',
+                'preview' => '/images/restaurant/petti-di-tacchino-alla-bolognese.jpg',
             ],
             [
                 'user_id' => 2,
@@ -144,7 +144,7 @@ class PlateSeeder extends Seeder
                 'price' => '4',
                 'ingredients' =>"Patatine, Sale",
                 'visible' => true,
-                'preview' => '/images/restaurant/patate-fritte.jpg',
+                'preview' => '/images/restaurant/patatine-fritte.jpg',
             ],
             [
                 'user_id' => 2,
@@ -154,7 +154,7 @@ class PlateSeeder extends Seeder
                 'price' => '5',
                 'ingredients' =>"Zucchine, Melanzane, Zucca, Peperoni, Olio, Sale, Prezzemolo",
                 'visible' => true,
-                'preview' => '/images/restaurant/verdure.jpg',
+                'preview' => '/images/restaurant/verdure-grigliate.jpg',
             ],
             [
                 'user_id' => 2,
@@ -164,7 +164,7 @@ class PlateSeeder extends Seeder
                 'price' => '5',
                 'ingredients' =>"Patate, Rosmarino, Olio, Sale",
                 'visible' => true,
-                'preview' => '/images/restaurant/forno.webp',
+                'preview' => '/images/restaurant/patate-al-forno.webp',
             ],
             [
                 'user_id' => 3,
@@ -174,7 +174,7 @@ class PlateSeeder extends Seeder
                 'price' => '14',
                 'ingredients' =>"Tacchino, Prosciutto crudo, Parmigiano Reggiano DOP, Marsala, Tartufo Nero",
                 'visible' => true,
-                'preview' => '/images/restaurant/tacchino.webp',
+                'preview' => '/images/restaurant/petti-di-tacchino-alla-bolognese2.jpg',
             ],
             [
                 'user_id' => 3,
@@ -184,7 +184,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/burger.jpg',
+                'preview' => '/images/restaurant/humburger-di-fassona.jpg',
             ],
             [
                 'user_id' => 3,
@@ -194,7 +194,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Petto di Pollo impanato, Insalata, Pomodoro, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/burger1.jpg',
+                'preview' => '/images/restaurant/chickenburger.jpg',
             ],
             [
                 'user_id' => 3,
@@ -214,7 +214,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Spaghetti sugo di mare, aglio, origano, basilico, olio Evo",
                 'visible' => true,
-                'preview' => '/images/restaurant/spaghetti-mare.jpg',
+                'preview' => '/images/restaurant/spaghetti-marinara.jpg',
             ],
             [
                 'user_id' => 4,
@@ -244,7 +244,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Coscie marinare nello yogurt e altre spezie ",
                 'visible' => true,
-                'preview' => '/images/restaurant/pollo-tandori.jpg',
+                'preview' => '/images/restaurant/pollo-tandoori.jpg',
             ],
             [
                 'user_id' => 4,
@@ -254,7 +254,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Ceci, Formaggio, Bacon, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/hamburger-ceci.jpg',
+                'preview' => '/images/restaurant/hamburger-di-ceci.jpg',
             ],
             [
                 'user_id' => 4,
@@ -264,7 +264,7 @@ class PlateSeeder extends Seeder
                 'price' => '5',
                 'ingredients' =>"Focaccia, Sale, Olio, ingredienti a scelta",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-focaccia.jpg',
+                'preview' => '/images/restaurant/focaccia.png',
             ],
             [
                 'user_id' => 5,
@@ -274,7 +274,7 @@ class PlateSeeder extends Seeder
                 'price' => '5',
                 'ingredients' =>"Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
                 'visible' => true,
-                'preview' => '/images/restaurant/temaki.jpg',
+                'preview' => '/images/restaurant/temaki-roll.jpg',
             ],
             [
                 'user_id' => 5,
@@ -294,7 +294,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
                 'visible' => true,
-                'preview' => '/images/restaurant/uramaki.jpg',
+                'preview' => '/images/restaurant/uramaki-roll.jpg',
             ],
             [
                 'user_id' => 6,
@@ -314,7 +314,7 @@ class PlateSeeder extends Seeder
                 'price' => '10',
                 'ingredients' =>"Grigliata di carne mista",
                 'visible' => true,
-                'preview' => '/images/restaurant/grigliata-mista.jpg',
+                'preview' => '/images/restaurant/barbecue.jpg',
             ],
             [
                 'user_id' => 7,
@@ -324,7 +324,7 @@ class PlateSeeder extends Seeder
                 'price' => '16',
                 'ingredients' =>"Torta Sacher farcita con marmellata alle pesche, ricoperta di cioccolato fondente",
                 'visible' => true,
-                'preview' => '/images/restaurant/sacher.jpg',
+                'preview' => '/images/restaurant/sacher-torte.jpg',
             ],
             [
                 'user_id' => 8,
@@ -334,7 +334,7 @@ class PlateSeeder extends Seeder
                 'price' => '7',
                 'ingredients' =>"Spaghetti integrali, pesto di rucola, olio, mandorle",
                 'visible' => true,
-                'preview' => '/images/restaurant/spaghetti-pesto.jpg',
+                'preview' => '/images/restaurant/spaghetti-al-pesto-di-rucola.jpg',
             ],
             [
                 'user_id' => 8,
@@ -344,7 +344,7 @@ class PlateSeeder extends Seeder
                 'price' => '8',
                 'ingredients' =>"Involtini di Melanzane con Pomodoro e Zucca",
                 'visible' => true,
-                'preview' => '/images/restaurant/involtini-melanzane.jpg',
+                'preview' => '/images/restaurant/involtini-di-melanzane-al-forno.jpg',
             ],
             [
                 'user_id' => 9,
@@ -354,7 +354,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Fritto misto di mare",
                 'visible' => true,
-                'preview' => '/images/restaurant/fritto-misto.jpg',
+                'preview' => '/images/restaurant/frittura-di-mare.jpg',
             ],
             [
                 'user_id' => 10,
@@ -364,7 +364,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/burger.jpg',
+                'preview' => '/images/restaurant/humburger.jpeg',
             ],
             [
                 'user_id' => 10,
@@ -374,7 +374,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pancakes americani con frutta e cioccolato",
                 'visible' => true,
-                'preview' => '/images/restaurant/pancake.jpg',
+                'preview' => '/images/restaurant/pancakes.jpg',
             ],
             [
                 'user_id' => 10,
@@ -394,7 +394,7 @@ class PlateSeeder extends Seeder
                 'price' => '10',
                 'ingredients' =>"Torta a tre diversi tipi di cioccolato",
                 'visible' => true,
-                'preview' => '/images/restaurant/torta-cioccolato.jpg',
+                'preview' => '/images/restaurant/torta-al-cioccolato.jpg',
             ],
             [
                 'user_id' => 11,
@@ -404,7 +404,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-marinara.jpg',    /*    /images/restaurant/pizza-marinara.jpg    */
+                'preview' => '/images/restaurant/pizza-marinara.jpg',    
             ],
             [
                 'user_id' => 11,

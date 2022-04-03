@@ -8,7 +8,7 @@
             >
                 <div class="card h-100">
                     <img
-                        src="\storage\app\uploads\default.png"
+                        :src="restaurant.banner_img"
                         class="card-img-top"
                         :alt="restaurant.name"
                     />
