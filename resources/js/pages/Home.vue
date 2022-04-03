@@ -56,6 +56,7 @@
 
 <script>
 import Axios from "axios";
+import EventBus from "../bus.js";
 export default {
     name: 'Home',
     data(){
@@ -70,6 +71,7 @@ export default {
     },
     created(){
       this.getRestaurants("http://127.0.0.1:8000/api/v1/users/random");
+      EventBus.$emit("clear_cart");
     },
     methods: {
         changePage(vs) {

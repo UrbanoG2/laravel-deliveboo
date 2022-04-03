@@ -4,7 +4,7 @@
             <div class="col" v-for="(plate, index) in plates" :key="index">
                 <div class="card h-100">
                     <img
-                        :src="'/storage/' + plate.preview"
+                        :src="plate.preview"
                         class="card-img-top"
                         :alt="plate.name"
                     />

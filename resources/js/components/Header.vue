@@ -36,37 +36,19 @@
                                 <a class="nav-link" href="register"> Registrati </a>
                     </li>
                     <li>
-                        <transition
-                            v-on:before-enter="SCbeforeEnter"
-                            v-on:enter="SCenter"
-                            v-on:leave="SCleave"
-                            v-bind:css="false"
-                        >
-                            <div class="dropdown">
-                                <a
-                                    class="btn btn-secondary dropdown-toggle"
-                                    href="#"
-                                    role="button"
-                                    id="dropdownMenuLink"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                >
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a>
-                                <ul
-                                    class="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLink"
-                                >
-                                    <li
-                                        v-for="(item, index) in list"
-                                        :key="index"
-                                    >
-                                        Item: {{ item.id }}, quantity:
-                                        {{ item.quantity }}
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" @click="clicked = !clicked">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                            
+                            <transition @before-enter="SCbeforeEnter" @enter="SCenter" @leave="SCleave" v-bind:css="false">
+                                <ul v-if="clicked != false && list != null" class="cart-box">
+                                    <li v-for="(item, index) in list" :key="index" class="cart-item">  
+                                         {{ item.name }} X {{ item.quantity }}, price: {{ item.price }}
                                     </li>
                                 </ul>
-                            </div>
-                        </transition>
+                            </transition>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -82,6 +64,7 @@ export default {
     props: ["cards"],
     data() {
         return {
+            clicked: false,
             list: null,
             restaurantID: null,
             logo: require("../../img/logo.png"),
@@ -115,19 +98,18 @@ export default {
         },
         SCbeforeEnter: function (el) {
             el.style.opacity = 0;
-            el.style.top = "60%";
+            el.style.top = "25%";
         },
         SCenter: function (el, done) {
             Velocity(
                 el,
-                { opacity: 1, top: "10%" },
+                { opacity: 1, top: "7%" },
                 { duration: 300 },
                 { complete: done }
             );
         },
         SCleave: function (el, done) {
-            Velocity(el, { top: "5%", opacity: 1 }, { duration: 200 });
-            Velocity(el, { top: "70%", opacity: 0 }, { duration: 200 });
+            Velocity(el, { top: "25%", opacity: 0 }, { duration: 200 });
             Velocity(el, { display: "none" }, { complete: done });
         },
     },
@@ -137,5 +119,19 @@ export default {
 <style lang="scss" scoped>
 .w-5 {
     width: 5%;
+}
+.cart-box {
+    position: fixed;
+    top: 10%;
+    right: 15.85%;
+    z-index: 1000000000000;
+    padding: 30px;
+    background-color: rgb(232, 232, 232);
+    list-style-type: none;
+    .cart-item {
+        margin: 1em 0;
+        padding: 5px 16px;
+        background-color: rgb(191, 191, 191);
+    }
 }
 </style>

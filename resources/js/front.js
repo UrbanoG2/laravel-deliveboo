@@ -1,12 +1,20 @@
 require('./bootstrap');
 window.Vue = require('vue');
 import App from './views/App';
+import Vue from 'vue';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import Restaurant from './pages/Restaurant.vue';
 import VueRouter from 'vue-router';
-import Vue from 'vue';
 Vue.use(VueRouter);
+
+require('velocity-animate');
+
+
+
+
+
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
