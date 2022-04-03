@@ -1,12 +1,7 @@
 <template>
     <div>
         <div class="my-container">
-            <div class="row">
-                <div class="col">
-                    <h1 class="mt-5 mb-3">Ricerca Avanzata</h1>
-                </div>
-            </div>
-            <div class="row search mb-3 p-3 bg-light">
+            <div class="row search  p-3 bg-light">
                 <div class="col-12">
                     <form>
                         <h2>Search</h2>
@@ -31,7 +26,7 @@
                                     id="orderbysort"
                                     v-model="form.orderbysort"
                                 >
-                                    <option value="asc">Asc</option>
+                                    <option value="asc" selected>Asc</option>
                                     <option value="desc">Desc</option>
                                 </select>
                             </div>
@@ -72,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <Main :cards="cards" @changePage="changePage($event)"></Main>
+        <Main class="mt-3" :cards="cards" @changePage="changePage($event)"></Main>
     </div>
 </template>
 
@@ -149,7 +144,7 @@ export default {
         form: {
             handler() 
             {
-                console.log(this.form.categories);
+
             },
             deep: true,
         }
@@ -159,7 +154,7 @@ export default {
 
 <style lang="scss" scoped>
 .row {
-    margin: 2em 0;
+    padding: 2em 0;
     h1 {
         text-transform: uppercase;
     }

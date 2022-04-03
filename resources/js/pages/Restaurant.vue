@@ -57,6 +57,9 @@ export default {
         }
         this.getProduct(url);
         EventBus.$emit("refresh_cart", this.id);
+        EventBus.$on("updated_cart", (data) => {
+            this.cartItem = data;
+        });
     },
     methods: {
         getProduct(url) {
@@ -101,8 +104,6 @@ export default {
 
             localStorage.setItem("cart", JSON.stringify(this.cartItem));
             EventBus.$emit("refresh_cart", this.id);
-
-            console.log(this.getCartItem());
         },
     },
 };

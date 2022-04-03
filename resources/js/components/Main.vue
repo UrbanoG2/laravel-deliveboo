@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row g-4" v-if="cards.restaurants">
+        <div class="row g-4" v-if="cards != null">
             <div
                 class="col-12 col-md-4"
                 v-for="(restaurant, index) in cards.restaurants"
@@ -34,18 +34,16 @@
                 </div>
             </div>
         </div>
-        <div v-if="!cards.restaurants == null" class="row text-center">
+        <div v-show="cards.restaurants == ''" class="row text-center">
             <div class="col">
                 <h1>Nessun risultato</h1>
             </div>
         </div>
         <div
             class="row bottom"
-            v-if="cards.prev_page_url || cards.next_page_url"
+            v-if="cards != null"
         >
-            <ul
-                class="list-inline d-flex justify-content-center align-items-center"
-            >
+            <ul v-if="cards.prev_page_url || cards.next_page_url" class="list-inline d-flex justify-content-center align-items-center">
                 <li
                     v-if="!cards.next_page_url && cards.prev_page_url"
                     class="list-inline-item"
@@ -105,5 +103,9 @@ export default {
 <style lang="scss" scoped>
 .bottom {
     margin-top: 3em;
+}
+
+.card {
+    z-index: 500;
 }
 </style>

@@ -37,15 +37,21 @@
                     </li>
                     <li>
                         <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" @click="clicked = !clicked">
+                            <button class="btn btn-secondary dropdown-toggle" @click="clicked = !clicked">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                            </a>
+                            </button>
                             
-                            <transition @before-enter="SCbeforeEnter" @enter="SCenter" @leave="SCleave" v-bind:css="false">
-                                <ul v-if="clicked != false && list != null" class="cart-box">
-                                    <li v-for="(item, index) in list" :key="index" class="cart-item">  
-                                         {{ item.name }} X {{ item.quantity }}, price: {{ item.price }}
+                            <transition @before-enter="SCbeforeEnter" @enter="SCenter" @leave="SCleave" :css="false">
+                                <ul v-if="clicked != false && listShow != '' && list != null" class="cart-box">
+                                    <li v-for="(item, index) in listShow" :key="index" class="cart-item">  
+                                         {{ item.name }} 
+                                         <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
+                                         {{ item.quantity }}
+                                         <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
+                                         price: {{ item.price }}
+                                         <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
                                     </li>
+                                    <li><a @click="removeAllCartItem">clear</a></li>
                                 </ul>
                             </transition>
                         </div>
@@ -65,6 +71,7 @@ export default {
     data() {
         return {
             clicked: false,
+            listShow: null,
             list: null,
             restaurantID: null,
             logo: require("../../img/logo.png"),
@@ -78,23 +85,66 @@ export default {
                     routeName: "search",
                 },
             ],
+            bodyScrollHeight: null,
         };
     },
     created() {
         EventBus.$on("refresh_cart", (data) => {
             this.list = JSON.parse(localStorage.getItem("cart"));
-            this.list = this.list.filter((item) => item.restaurant == data);
+            this.restaurantID = data;
+            this.getItemList(data);
         });
         EventBus.$on("clear_cart", this.clearCart);
+        window.addEventListener('scroll', this.handleScroll);
     },
     methods: {
-        getCart(vs) {
-            this.list = JSON.parse(localStorage.getItem("cart"));
-            this.restaurantID = vs;
+        removeAllCartItem() {
+            this.list = this.list.filter((element) => element.restaurant != this.restaurantID);
+            this.listShow = '';
+            EventBus.$emit("updated_cart", this.list);
+            localStorage.setItem("cart", JSON.stringify(this.list));
         },
-        clearCart() {
-            this.list = null;
-            this.restaurantID = null;
+        removeCartItem(item) {
+            this.list = this.list.filter((element) => element.id != item.id);
+            this.listShow = this.listShow.filter((element) => element != item);
+            EventBus.$emit("updated_cart", this.list);
+            localStorage.setItem("cart", JSON.stringify(this.list));
+        },
+        minusCartItem(item) {
+            this.list.forEach((element, index, array) => {
+                if(item == element)
+                {
+                    let price = item.price/item.quantity;
+                    item.quantity--;
+                    item.price = item.price - price;
+                    if(item.quantity == 0)
+                    {
+                        this.removeCartItem(element);
+                    }
+                }
+            });
+            localStorage.setItem("cart", JSON.stringify(this.list));
+            EventBus.$emit("updated_cart", this.list);
+            this.getItemList(this.restaurantID);
+        },
+        addCartItem(item) {
+            this.list.forEach(element => {
+                if(item == element)
+                {
+                    let price = item.price/item.quantity;
+                    item.quantity++;
+                    item.price = item.price + price;
+                }
+            });
+            localStorage.setItem("cart", JSON.stringify(this.list)); 
+            EventBus.$emit("updated_cart", this.list);
+            this.getItemList(this.restaurantID);
+        },
+        handleScroll() {
+            this.clicked = false;
+        },
+        getItemList(data) {
+            this.listShow = this.list.filter((item) => item.restaurant == data);
         },
         SCbeforeEnter: function (el) {
             el.style.opacity = 0;
@@ -113,10 +163,24 @@ export default {
             Velocity(el, { display: "none" }, { complete: done });
         },
     },
+    watch: {
+        listShow:
+            function() 
+            {
+                
+            }
+    }
 };
 </script>
 
 <style lang="scss" scoped>
+nav{
+    position: sticky;
+    top: 0%;
+    width: 100%;
+    z-index: 1000000000000;
+}
+
 .w-5 {
     width: 5%;
 }
@@ -124,7 +188,6 @@ export default {
     position: fixed;
     top: 10%;
     right: 15.85%;
-    z-index: 1000000000000;
     padding: 30px;
     background-color: rgb(232, 232, 232);
     list-style-type: none;
@@ -132,6 +195,9 @@ export default {
         margin: 1em 0;
         padding: 5px 16px;
         background-color: rgb(191, 191, 191);
+        a {
+            margin-left: 1em;
+        }
     }
 }
 </style>
