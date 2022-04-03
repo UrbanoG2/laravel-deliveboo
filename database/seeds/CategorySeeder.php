@@ -28,43 +28,43 @@ class CategorySeeder extends Seeder
                 
             ],
             [
-                'id' => 4,
+                'id' => 3,
                 'name' => 'Fish',
                 
                 
             ],
             [
-                'id' => 5,
+                'id' => 4,
                 'name' => 'Vegetarian',
                 
                 
             ],
             [
-                'id' => 6,
+                'id' => 5,
                 'name' => 'Indian',
                 
                 
             ],
             [
-                'id' => 7,
+                'id' => 6,
                 'name' => 'Chicken',
                 
                 
             ],
             [
-                'id' => 8,
+                'id' => 7,
                 'name' => 'Pizza',
                 
                 
             ],
             [
-                'id' => 9,
+                'id' => 8,
                 'name' => 'Dessert',
                 
                 
             ],
             [
-                'id' => 10,
+                'id' => 9,
                 'name' => 'Burgers',
                 
             

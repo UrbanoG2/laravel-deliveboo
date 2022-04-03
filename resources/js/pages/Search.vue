@@ -48,7 +48,7 @@
                                         <input
                                             type="checkbox"
                                             name="categories[]"
-                                            :value="category.name"
+                                            :value="category.id"
                                             v-model="form.categories"
                                         />
                                         <label :for="category.name">{{
@@ -118,7 +118,9 @@ export default {
             }
         },
         getRestaurants(url) {
-            Axios.get(url).then((result) => {
+            Axios.get(url, {
+                params: this.form,
+            }).then((result) => {
                 this.cards.restaurants = result.data.results.data;
                 this.cards.next_page_url = result.data.results.next_page_url;
                 this.cards.prev_page_url = result.data.results.prev_page_url;
@@ -143,6 +145,15 @@ export default {
             });
         },
     },
+    watch: {
+        form: {
+            handler() 
+            {
+                console.log(this.form.categories);
+            },
+            deep: true,
+        }
+    }
 };
 </script>
 

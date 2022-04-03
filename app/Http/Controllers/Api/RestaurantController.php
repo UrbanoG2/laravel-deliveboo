@@ -53,14 +53,16 @@ class RestaurantController extends Controller
 
         if (array_key_exists('categories', $data)) {
             foreach ($data['categories'] as $category) {
-                //fa una join per controllare i tag che sono associati al product
                 $users->whereHas('categories', function (Builder $query) use ($category) {
-                    $query->where('name', '=', $category);
-                });
+                    $query->where('id', $category);
+                })->get();
             }
         }
 
-        $users = $users->with(['categories'])->paginate(3);
+
+        $users = $users->with(['categories']);
+        $users = $users->paginate(3);
+
         return response()->json([
             'response' => true,
             'count' =>  $users->count(),

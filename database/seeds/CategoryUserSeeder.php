@@ -27,16 +27,9 @@ class CategoryUserSeeder extends Seeder
             $users = User::all();
             $categories = Category::all();
             foreach ($users as $user) {
-                $randomCategory = Category::inRandomOrder()->first();
+                $rand_int = random_int(1, 4);
+                $randomCategory = $categories->random( $rand_int);
                 $user->categories()->attach($randomCategory);
-                foreach ($categories as $category) {
-                    $rand = random_int(0, 3);
-                    if ($rand == 0){
-                        if ($randomCategory->id != (int)$category->id) {
-                            $user->categories()->attach((int)$category->id);
-                        }
-                    }
-                }
             }
         }
 }
