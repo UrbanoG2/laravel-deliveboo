@@ -45,8 +45,8 @@
                             </button>
                             
                             <transition @before-enter="SCbeforeEnter" @enter="SCenter" @leave="SCleave" :css="false">
-                                <ul v-if="clicked != false && listShow != '' && list != null" class="cart-box">
-                                    <li v-for="(item, index) in listShow" :key="index" class="cart-item">  
+                                <ul v-if="clicked != false && list != '' && list != null" class="cart-box">
+                                    <li v-for="(item, index) in list" :key="index" class="cart-item">  
                                          {{ item.name }} 
                                          <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
                                          {{ item.quantity }}
@@ -54,13 +54,15 @@
                                          price: {{ item.price }}&euro;
                                          <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
                                     </li>
-                                    <li><a @click="removeAllCartItem">clear</a></li>
+                                    <li><a @click="clearCart">clear</a></li>
                                 </ul>
                             </transition>
                         </div>
                     </li>
                 </ul>
             </div>
+
+            
         </div>
     </nav>
 </template>
@@ -74,8 +76,7 @@ export default {
     data() {
         return {
             clicked: false,
-            log: false,
-            listShow: null,
+            countQuantity: false,
             list: null,
             restaurantID: null,
             logo: require("../../img/logo.png"),
@@ -94,9 +95,15 @@ export default {
     },
     created() {
         EventBus.$on("refresh_cart", (data) => {
-            this.list = JSON.parse(localStorage.getItem("cart"));
-            this.restaurantID = data;
-            this.getItemList(data);
+            if(localStorage.getItem("cart") != null)
+            {
+                this.list = JSON.parse(localStorage.getItem("cart"));
+                this.restaurantID = data;
+            }
+            else
+            {
+                this.list = null;
+            }
         });
         EventBus.$on("clear_cart", this.clearCart);
         EventBus.$on("check_log", (data) => {
@@ -114,24 +121,24 @@ export default {
     },
     methods: {
         clearCart() {
+            localStorage.clear();
             this.list = null;
-            this.listShow = null;
-            this.restaurantID = null;
-        },
-        removeAllCartItem() {
-            this.list = this.list.filter((element) => element.restaurant != this.restaurantID);
-            this.listShow = '';
-            EventBus.$emit("updated_cart", this.list);
-            localStorage.setItem("cart", JSON.stringify(this.list));
+            EventBus.$emit("updated_cart", []);
         },
         removeCartItem(item) {
             this.list = this.list.filter((element) => element.id != item.id);
-            this.listShow = this.listShow.filter((element) => element != item);
-            EventBus.$emit("updated_cart", this.list);
-            localStorage.setItem("cart", JSON.stringify(this.list));
+            if(this.list.length == 0)
+            {
+                this.clearCart();
+            }
+            else
+            {
+                EventBus.$emit("updated_cart", this.list);
+                localStorage.setItem("cart", JSON.stringify(this.list));
+            }
         },
         minusCartItem(item) {
-            this.list.forEach((element, index, array) => {
+            this.list.forEach(element => {
                 if(item == element)
                 {
                     let price = item.price/item.quantity;
@@ -140,12 +147,19 @@ export default {
                     if(item.quantity == 0)
                     {
                         this.removeCartItem(element);
+                        this.countQuantity = true
                     }
                 }
             });
-            localStorage.setItem("cart", JSON.stringify(this.list));
-            EventBus.$emit("updated_cart", this.list);
-            this.getItemList(this.restaurantID);
+            if(this.countQuantity)
+            {
+                this.countQuantity = false
+            }
+            else
+            {
+                localStorage.setItem("cart", JSON.stringify(this.list));
+                EventBus.$emit("updated_cart", this.list); 
+            }
         },
         addCartItem(item) {
             this.list.forEach(element => {
@@ -158,13 +172,9 @@ export default {
             });
             localStorage.setItem("cart", JSON.stringify(this.list)); 
             EventBus.$emit("updated_cart", this.list);
-            this.getItemList(this.restaurantID);
         },
         handleScroll() {
             this.clicked = false;
-        },
-        getItemList(data) {
-            this.listShow = this.list.filter((item) => item.restaurant == data);
         },
         SCbeforeEnter: function (el) {
             el.style.opacity = 0;
@@ -188,7 +198,13 @@ export default {
             function() 
             {
                 this.clicked = true;
+            },
+        restaurantID:
+            function()
+            {
+                console.log(this.restaurantID);
             }
+        
     }
 };
 </script>
@@ -220,4 +236,6 @@ nav{
         }
     }
 }
+
+
 </style>

@@ -80,13 +80,16 @@ export default {
         },
 
         addItemToCart(id, price, name) {
-            this.cartItem.forEach((element) => {
-                if (element.id == id) {
-                    this.findItem = true;
-                    element.quantity++;
-                    element.price = parseFloat(element.quantity * price);
-                }
-            });
+            if(this.cartItem.length != 0)
+            {
+                this.cartItem.forEach((element) => {
+                    if (element.id == id) {
+                        this.findItem = true;
+                        element.quantity++;
+                        element.price = parseFloat(element.quantity * price);
+                    }
+                });
+            }
 
             if (this.findItem) {
                 this.findItem = false;
@@ -101,7 +104,8 @@ export default {
                 this.cartItem.push(newItem);
                 this.findItem = false;
             }
-
+            
+            localStorage.setItem("id", this.id);
             localStorage.setItem("cart", JSON.stringify(this.cartItem));
             EventBus.$emit("refresh_cart", this.id);
         },

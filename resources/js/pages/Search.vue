@@ -103,7 +103,6 @@ export default {
         this.getRestaurants("http://127.0.0.1:8000/api/search");
         this.getCategories();
         // localStorage.clear('cart');
-        EventBus.$emit("clear_cart");
     },
     methods: {
         changePage(vs) {

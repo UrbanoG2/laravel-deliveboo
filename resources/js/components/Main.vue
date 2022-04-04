@@ -23,14 +23,10 @@
                         </h5>
                         <p class="card-text">{{ restaurant.description }}</p>
                     </div>
-                    <router-link
+                    <div 
                         class="btn btn-secondary"
-                        :to="{
-                            name: 'restaurant',
-                            params: { id: restaurant.id },
-                        }"
-                        >View</router-link
-                    >
+                        @click="checkLastID(restaurant.id)"
+                    >View</div>
                 </div>
             </div>
         </div>
@@ -79,17 +75,64 @@
                 </li>
             </ul>
         </div>
+
+        <div class="delete-mes text-center" v-if="alertMessage">
+            <div class="container">
+                <div class="row">
+                    <h1>Conferma cancellazione</h1>
+                </div>
+                <div class="row justify-content-around">
+                    <button class="btn-primary" @click="alertMessage = false">Chiudi</button>
+                    <button class="btn-primary" @click="removeCart()">Conferma</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+import EventBus from "../bus.js";
 export default {
     name: "Main",
     props: ["cards"],
+    data() {
+        return {
+            lastIDRestaurant: null,
+            alertMessage: false,
+        }
+    },
+    created() {
+        this.lastIDRestaurant = localStorage.getItem('id');
+    },
     methods: {
         changePage(vs) {
             this.$emit("changePage", vs);
         },
+        checkLastID(id) {
+            if(this.lastIDRestaurant == id || localStorage.getItem('cart') == null)
+            {
+                let params = {
+                            name: 'restaurant',
+                            params: { id: id },
+                        }
+                this.newIDRestaurant = null;
+                this.$router.push(params);
+            }
+            else
+            {
+                this.alertMessage = true;
+                this.newIDRestaurant = id
+            }
+        },
+        removeCart(){
+            let params = {
+                            name: 'restaurant',
+                            params: { id: this.newIDRestaurant },
+                        }
+            this.alertMessage = false;
+            EventBus.$emit("clear_cart");
+            this.$router.push(params);
+        }
     },
     watch: {
         cards: {
@@ -107,5 +150,13 @@ export default {
 
 .card {
     z-index: 500;
+}
+.delete-mes{
+    position: fixed;
+    width: 450px;
+    height: 300px;
+    top: 10%;
+    right: 30%;
+    background-color: green;
 }
 </style>
