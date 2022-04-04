@@ -29,11 +29,14 @@
                             >{{ item.label }}</router-link
                         >
                     </li>
-                    <li class="nav-item">
+                    <li v-if="!log" class="nav-item">
                             <a class="nav-link" href="login">Accedi</a>
                     </li>
-                    <li class="nav-item">
-                                <a class="nav-link" href="register"> Registrati </a>
+                    <li v-if="!log" class="nav-item">
+                            <a class="nav-link" href="register"> Registrati </a>
+                    </li>
+                    <li v-if="log" class="nav-item">
+                            <a class="nav-link" href="logout"> logout </a>
                     </li>
                     <li>
                         <div class="dropdown">
@@ -48,7 +51,7 @@
                                          <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
                                          {{ item.quantity }}
                                          <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
-                                         price: {{ item.price }}
+                                         price: {{ item.price }}&euro;
                                          <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
                                     </li>
                                     <li><a @click="removeAllCartItem">clear</a></li>
@@ -71,6 +74,7 @@ export default {
     data() {
         return {
             clicked: false,
+            log: false,
             listShow: null,
             list: null,
             restaurantID: null,
@@ -95,9 +99,25 @@ export default {
             this.getItemList(data);
         });
         EventBus.$on("clear_cart", this.clearCart);
+        EventBus.$on("check_log", (data) => {
+            if(!data)
+            {
+                this.log = false;
+            }
+            else
+            {
+                this.log = true;
+            }
+        });
         window.addEventListener('scroll', this.handleScroll);
+        
     },
     methods: {
+        clearCart() {
+            this.list = null;
+            this.listShow = null;
+            this.restaurantID = null;
+        },
         removeAllCartItem() {
             this.list = this.list.filter((element) => element.restaurant != this.restaurantID);
             this.listShow = '';
@@ -164,10 +184,10 @@ export default {
         },
     },
     watch: {
-        listShow:
+        list:
             function() 
             {
-                
+                this.clicked = true;
             }
     }
 };
@@ -196,7 +216,7 @@ nav{
         padding: 5px 16px;
         background-color: rgb(191, 191, 191);
         a {
-            margin-left: 1em;
+            margin: 0 0.5em;
         }
     }
 }

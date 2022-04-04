@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="my-container">
-            <div class="row search  p-3 bg-light">
+        <div class="container">
+            <div class="row search  p-3">
                 <div class="col-12">
                     <form>
                         <h2>Search</h2>
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="mb-3 col">
                                 <div
-                                    class="d-flex align-items-center justify-content-center"
+                                    class="d-flex align-items-center justify-content-around"
                                 >
                                     <div
                                         :key="'categories-' + index"

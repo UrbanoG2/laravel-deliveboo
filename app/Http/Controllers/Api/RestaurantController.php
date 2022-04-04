@@ -7,23 +7,27 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\User;
 use App\Plate;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $users = User::paginate(9);
 
         return response()->json([
+            // 'auth_user' => Auth::check(),
             'response' => true,
             'count' => $users->count(),
             'results' =>  [
-                'data' => $users
+                'data' => $users,
             ],
         ]);
     }
@@ -31,6 +35,7 @@ class RestaurantController extends Controller
     public function RandomRestaurant(){
         $users = User::inRandomOrder()->limit(4)->get();
         return response()->json([
+            // 'auth_user' => Auth::check(),
             'response' => true,
             'results' => [
                'data'=>$users
