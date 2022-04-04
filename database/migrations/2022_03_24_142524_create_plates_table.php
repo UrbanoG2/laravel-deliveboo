@@ -34,6 +34,7 @@ class CreatePlatesTable extends Migration
             $table->text("ingredients");
             $table->boolean("visible");
             $table->string("preview")->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

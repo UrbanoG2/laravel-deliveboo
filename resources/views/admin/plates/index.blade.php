@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                     @foreach ($plates as $plate)
-                        <tr>
+                        <tr id="{{ $plate->id }}">
                             <td>{{ $plate->id }}</td>
                             <td>{{ $plate->name }}</td>
                             <td>{{ $plate->price }} &euro;</td>
@@ -48,17 +48,17 @@
 
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#exampleModal{{ $plate->slug }}">
                                     Delete
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal{{ $plate->slug }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel{{ $plate->slug }}" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Conferma cancellazione
+                                                <h5 class="modal-title" id="exampleModalLabel{{ $plate->slug }}">Conferma cancellazione
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -70,10 +70,10 @@
                                                 <button type="button" class="btn btn-primary"
                                                     data-bs-dismiss="modal">Close</button>
                                                 <form action="{{ route('admin.plates.destroy', $plate->slug) }}"
-                                                    method="post">
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input {{-- onclick="return confirm('Vuoi eliminare questo piatto?')" --}} class="btn btn-danger" type="submit"
+                                                    <input class="btn btn-danger" type="submit"
                                                         value="Delete">
                                                 </form>
 

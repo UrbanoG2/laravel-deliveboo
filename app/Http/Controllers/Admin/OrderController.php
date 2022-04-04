@@ -106,9 +106,10 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        if (Auth::user()->id != $order->user_id) {
-            abort('403');
-        }
+        // if (Auth::user()->id != $order->user_id) {
+        //     abort('403');
+        // }
+        
         $order->delete();
 
         return redirect()->route('admin.orders.index')->with('status', "Order id $order->id deleted");

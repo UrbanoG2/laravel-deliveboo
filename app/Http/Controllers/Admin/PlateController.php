@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Plate;
 use App\Tag;
 
@@ -191,10 +192,4 @@ class PlateController extends Controller
 
         return redirect()->route('admin.plates.index')->with('status', "Plate id $plate->id deleted");
     }
-
-    // public function myFunction()
-    // {
-    //     if (!confirm("Are You Sure to delete this"))
-    //         event . preventDefault();
-    // }
 }
