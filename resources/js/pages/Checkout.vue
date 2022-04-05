@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import EventBus from "../bus.js";
 export default {
     name: 'Checkout',
     data(){
@@ -74,10 +75,7 @@ export default {
             phoneNumber: null,
             success: false,
             sending: false,
-            infocart: {
-                totPrice: null,
-                cart: this.list
-            },
+            totPrice: null,
             list: null
         }
     },
@@ -99,35 +97,41 @@ export default {
             this.sending = true;
             this.success = false;
             this.getTotPrice();
-
-            // const url = "http://127.0.0.1:8000/api/guest";
             axios.post('/api/guest', {
-                'guest': {
-                    'firstname': this.firstname,
-                    'lastname': this.lastname,
-                    'email': this.email,
-                    'phoneNumber': this.phoneNumber,
-                    'address': this.address,
-                },
-                'infocart': this.infocart,
+                'data': {
+                    'guest': {
+                        'firstname': this.firstname,
+                        'lastname': this.lastname,
+                        'email': this.email,
+                        'phoneNumber': this.phoneNumber,
+                        'address': this.address,
+                    },
+                    'infocart': {
+                        'cart': this.list
+                    },
+                    'price': {
+                        'totalPrice': this.totPrice,
+                    }
+                }
             })
             .then(response=>{
-                 console.log(response.data);
-                 if(!response.data.success){
-                     this.success = false;
-                     this.errors = response.data.errors;
-                 }
-                 else{
-                     this.success = true;
-                     this.errors = {};
-                     this.firstname="";
-                     this.email="";
-                     this.lastname="";
-                     this.phoneNumber="";
-                     this.address="";
-                 }
-                 this.sending = false;
-                 this.$router.push({ name: 'success' });
+                console.log(response.data);
+                if(!response.data.success){
+                    this.success = false;
+                    this.errors = response.data.errors;
+                }
+                else{
+                    this.success = true;
+                    this.errors = {};
+                    this.firstname="";
+                    this.email="";
+                    this.lastname="";
+                    this.phoneNumber="";
+                    this.address="";
+                }
+                this.sending = false;
+                EventBus.$emit("clear_cart");
+                this.$router.push({ name: 'success' });
              })
              .catch(error=>{
                  console.log(error.response.data);
@@ -136,7 +140,7 @@ export default {
         },
         getTotPrice() {
             this.list.forEach(element => {
-                this.infocart.totPrice += element.price;
+                this.totPrice += element.price;
             });
         }
 
@@ -144,7 +148,7 @@ export default {
     watch: {
         list:
             function() {
-                console.log(this.list);
+                
             }
     }
 

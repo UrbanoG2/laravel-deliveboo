@@ -117,6 +117,7 @@ export default {
                 this.log = true;
             }
         });
+        EventBus.$on("close_cart", this.handleScroll);
         window.addEventListener('scroll', this.handleScroll);
         
     },
@@ -198,11 +199,6 @@ export default {
         },
     },
     watch: {
-        list:
-            function() 
-            {
-                this.clicked = true;
-            },
         restaurantID:
             function()
             {
@@ -225,6 +221,7 @@ nav{
     width: 5%;
 }
 .cart-box {
+    opacity: 0;
     position: fixed;
     top: 10%;
     right: 15.85%;

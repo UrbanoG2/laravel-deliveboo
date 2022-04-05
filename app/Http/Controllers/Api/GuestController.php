@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Guest;
 use App\Order;
+use App\Plate;
 
 class GuestController extends Controller
 {
@@ -49,18 +50,24 @@ class GuestController extends Controller
 
         $data = $request->all();
 
-        $dataOrder = $data['infoCart'];
-        $newOrder = new Order();
-        $newOrder->fill($dataOrder);
-        $newOrder->state_id = 1; //da sistemare 
-        $newOrder->save();
+        $data = $data['data'];
 
-        $newOrder->plates()->sync($dataOrder['categories'], ['child' => $childid]);
+        $dataOrder = $data['infocart'];
+        $order = $data['price'];
+        $plates = $dataOrder['cart'];
+        $newOrder = new Order();
+        $newOrder->fill($order);
+        $newOrder->state_id = 1;  
+        $newOrder->save();
+        
+        foreach ($plates as $plate) {
+            $newOrder->plates()->attach(Plate::find($plate['id']), ['quantity'=> $plate['quantity']]);
+        }
 
         $dataGuest = $data['guest'];
         $newGuest = new Guest();
         $newGuest->fill($dataGuest);
-        $newGuest->order_id = 3; //da sistemare 
+        $newGuest->order_id = $newOrder->id; 
         $newGuest->save();
     }
 
