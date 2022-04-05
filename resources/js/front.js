@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import Checkout from './pages/Checkout';
 import Restaurant from './pages/Restaurant.vue';
+import Success from './pages/Success.vue';
 import VueRouter from 'vue-router';
 import VueBraintree from 'vue-braintree';
 
@@ -39,6 +40,11 @@ const router = new VueRouter({
             name: 'checkout',
             props: true,
             component: Checkout
+        },
+        {
+            path: '/success',
+            name: 'success',
+            component: Success
         },
     ]
 });
