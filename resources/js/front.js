@@ -8,6 +8,9 @@ import Search from './pages/Search';
 import Checkout from './pages/Checkout';
 import Restaurant from './pages/Restaurant.vue';
 import VueRouter from 'vue-router';
+import VueBraintree from 'vue-braintree';
+
+Vue.use(VueBraintree)
 Vue.use(VueRouter);
 
 require('velocity-animate');
