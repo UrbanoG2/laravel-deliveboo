@@ -1,4 +1,5 @@
 require('./bootstrap');
+// require('braintree');
 window.Vue = require('vue');
 import App from './views/App';
 import Vue from 'vue';
