@@ -40,7 +40,22 @@
                 </v-braintree>
             </div>
             <div class="col-4">
-                <h1>Qui ci sarà il carrello</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(item, index) in list" :key="index">
+                            <td>{{item.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price}}&euro;</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -59,11 +74,15 @@ export default {
             phoneNumber: null,
             success: false,
             sending: false,
-            infocart: null
+            infocart: {
+                totPrice: null,
+                cart: this.list
+            },
+            list: null
         }
     },
     created(){
-
+        this.list = JSON.parse(localStorage.getItem("cart"));
     },
     methods: {
         onSuccess (payload) {
@@ -79,16 +98,18 @@ export default {
         sendGuest(){
             this.sending = true;
             this.success = false;
+            this.getTotPrice();
+
             // const url = "http://127.0.0.1:8000/api/guest";
             axios.post('/api/guest', {
-                // 'guest': {
-                //     },
+                'guest': {
                     'firstname': this.firstname,
                     'lastname': this.lastname,
                     'email': this.email,
                     'phoneNumber': this.phoneNumber,
                     'address': this.address,
-                // 'infocart': this.infocart,
+                },
+                'infocart': this.infocart,
             })
             .then(response=>{
                  console.log(response.data);
@@ -112,8 +133,19 @@ export default {
                  console.log(error.response.data);
                  this.sending = false;
              })
+        },
+        getTotPrice() {
+            this.list.forEach(element => {
+                this.infocart.totPrice += element.price;
+            });
         }
 
+    },
+    watch: {
+        list:
+            function() {
+                console.log(this.list);
+            }
     }
 
 }

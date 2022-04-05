@@ -55,6 +55,7 @@
                                          <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
                                     </li>
                                     <li><a @click="clearCart">clear</a></li>
+                                    <li><a @click="checkout">checkout</a></li>
                                 </ul>
                             </transition>
                         </div>
@@ -175,6 +176,9 @@ export default {
         },
         handleScroll() {
             this.clicked = false;
+        },
+        checkout() {
+            this.$router.push({ name: 'checkout' });
         },
         SCbeforeEnter: function (el) {
             el.style.opacity = 0;

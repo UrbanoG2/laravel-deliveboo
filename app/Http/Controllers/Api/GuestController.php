@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Guest;
+use App\Order;
 
 class GuestController extends Controller
 {
@@ -44,8 +45,19 @@ class GuestController extends Controller
         //     'email'=> 'required|email',
         //     'phoneNumber'=> 'required',
         // ]);
-        // @dd($request);
-        $dataGuest = $request->all();
+
+
+        $data = $request->all();
+
+        $dataOrder = $data['infoCart'];
+        $newOrder = new Order();
+        $newOrder->fill($dataOrder);
+        $newOrder->state_id = 1; //da sistemare 
+        $newOrder->save();
+
+        $newOrder->plates()->sync($dataOrder['categories'], ['child' => $childid]);
+
+        $dataGuest = $data['guest'];
         $newGuest = new Guest();
         $newGuest->fill($dataGuest);
         $newGuest->order_id = 3; //da sistemare 

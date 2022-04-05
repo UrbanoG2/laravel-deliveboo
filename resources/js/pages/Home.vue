@@ -100,7 +100,6 @@ export default {
         },
         getRestaurants(url) {
             Axios.get(url).then((result) => {
-                console.log(result);
                 this.cards.restaurants = result.data.results.data;
                 this.cards.next_page_url = result.data.results.next_page_url;
                 this.cards.prev_page_url = result.data.results.prev_page_url;
