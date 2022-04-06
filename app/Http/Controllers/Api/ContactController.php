@@ -58,7 +58,7 @@ class ContactController extends Controller
         {
             $new_lead = new Lead();
             $new_lead->fill($data);
-            $new_lead->save();
+            // $new_lead->save();
 
             Mail::to('admin@me.com')->send(new sendNewMail($new_lead));
             Mail::to($new_lead->email)->send(new sendNewMail($new_lead));
