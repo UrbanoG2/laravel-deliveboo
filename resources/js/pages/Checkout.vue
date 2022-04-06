@@ -81,6 +81,7 @@ export default {
     },
     created(){
         this.list = JSON.parse(localStorage.getItem("cart"));
+        EventBus.$emit("close_cart");
     },
     methods: {
         onSuccess (payload) {

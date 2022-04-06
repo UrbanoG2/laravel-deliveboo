@@ -39,18 +39,21 @@ class GuestController extends Controller
      */
     public function store(Request $request)
     {
-        // $validateData = $request->validate([
-        //     'fisrtname'=> 'required',
-        //     'lastname'=> 'required',
-        //     'address'=> 'required',
-        //     'email'=> 'required|email',
-        //     'phoneNumber'=> 'required',
-        // ]);
-
 
         $data = $request->all();
 
         $data = $data['data'];
+
+        
+        $validate = $request->validate([
+            'data.guest.firstname'=> 'required',
+            'data.guest.lastname'=> 'required',
+            'data.guest.address'=> 'required',
+            'data.guest.email'=> 'required|email',
+            'data.guest.phoneNumber'=> 'required',
+            'data.infocart.cart'=> 'required',
+            'data.price.totalPrice'=> 'required',
+        ]);
 
         $dataOrder = $data['infocart'];
         $order = $data['price'];
