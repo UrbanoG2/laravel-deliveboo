@@ -44,6 +44,7 @@ const router = new VueRouter({
         {
             path: '/success',
             name: 'success',
+            props: true,
             component: Success
         },
     ]

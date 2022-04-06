@@ -43,7 +43,6 @@ class GuestController extends Controller
         $data = $request->all();
 
         $data = $data['data'];
-
         
         $validate = $request->validate([
             'data.guest.firstname'=> 'required',

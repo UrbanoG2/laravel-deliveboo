@@ -22,3 +22,7 @@ Route::get('restaurant/{id}', 'Api\RestaurantController@show');
 Route::get('v1/categories', 'Api\CategoryController@index');
 Route::get('v1/users/random', 'Api\RestaurantController@RandomRestaurant');
 Route::post('/guest', 'Api\GuestController@store');
+Route::namespace("Api")
+    ->group(function () {
+        Route::post('/success', 'ContactController@store');
+    });

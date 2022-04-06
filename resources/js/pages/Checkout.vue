@@ -124,15 +124,19 @@ export default {
                 else{
                     this.success = true;
                     this.errors = {};
-                    this.firstname="";
-                    this.email="";
                     this.lastname="";
                     this.phoneNumber="";
                     this.address="";
                 }
-                this.sending = false;
+                let params = {
+                    name: this.firstname,
+                    email: this.email,
+                };
+                this.firstname="";
+                this.email="";
                 EventBus.$emit("clear_cart");
-                this.$router.push({ name: 'success' });
+                this.$router.push({ name: 'success', params: {data: params} });
+                this.sending = false;
              })
              .catch(error=>{
                  console.log(error.response.data);
@@ -143,7 +147,7 @@ export default {
             this.list.forEach(element => {
                 this.totPrice += element.price;
             });
-        }
+        },
 
     },
     watch: {
