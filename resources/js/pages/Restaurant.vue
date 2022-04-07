@@ -26,15 +26,15 @@
                             <h3 class="bold">{{ plate.name }}</h3>
                             
                             <div class="food-info ingredienti ">
-                                <p class="">
-                                {{ plate.ingredients }}
-                            </p>
-                            <h6>{{ plate.price }} &euro;</h6>
-                            <a
-                                class="btn-add-cart"
-                                @click="addItemToCart(plate.id, plate.price, plate.name)"
-                                ><i class="fa-solid fa-plus"></i>
-                            </a>
+                                <p class="ms-2">
+                                    {{ plate.ingredients }}
+                                </p>
+                                <h6 class="ms-1">{{ plate.price }} &euro;</h6>
+                                <a
+                                    class="btn-add-cart"
+                                    @click="addItemToCart(plate.id, plate.price, plate.name)"
+                                    ><i class="fa-solid fa-plus"></i>
+                                </a>
                             </div>
                             
                         </div>
