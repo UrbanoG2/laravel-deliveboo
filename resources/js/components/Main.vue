@@ -6,27 +6,37 @@
                 v-for="(restaurant, index) in cards.restaurants"
                 :key="index"
             >
-                <div class="card h-100">
+                <div class="color-cart h-100">
                     <img
                         :src="restaurant.banner_img"
                         class="card-img-top"
                         :alt="restaurant.name"
                     />
                     <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.name }}</h5>
-                        <h5
-                            class="card-title"
+                        <h5 class="card-title display-6">
+                            {{ restaurant.name }}
+                        </h5>
+                        <p class="card-text">
+                            <i class="fa-solid fa-location-dot"></i>&nbsp;
+                            {{ restaurant.address }}
+                        </p>
+                        <h5>Specialità del Ristorante</h5>
+                        <ul
+                            
+                            class="card-text flex"
                             v-for="(category, id) in restaurant.categories"
                             :key="id"
                         >
-                            {{ category.name }}
-                        </h5>
-                        <p class="card-text">{{ restaurant.description }}</p>
+                            
+                            <li>{{ category.name }}</li>
+                        </ul>
                     </div>
-                    <div 
-                        class="btn btn-secondary"
+                    <div
+                        class=" btn btn-color"
                         @click="checkLastID(restaurant.id)"
-                    >View</div>
+                    >
+                        View
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,11 +45,11 @@
                 <h1>Nessun risultato</h1>
             </div>
         </div>
-        <div
-            class="row bottom"
-            v-if="cards != null"
-        >
-            <ul v-if="cards.prev_page_url || cards.next_page_url" class="list-inline d-flex justify-content-center align-items-center">
+        <div class="row bottom" v-if="cards != null">
+            <ul
+                v-if="cards.prev_page_url || cards.next_page_url"
+                class="list-inline d-flex justify-content-center align-items-center"
+            >
                 <li
                     v-if="!cards.next_page_url && cards.prev_page_url"
                     class="list-inline-item"
@@ -49,7 +59,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.prev_page_url"
-                        class="btn btn-primary"
+                        class="  btn-color"
                         @click="changePage('prev_page_url')"
                     >
                         Prev
@@ -64,7 +74,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.next_page_url"
-                        class="btn btn-primary"
+                        class="  btn-color"
                         @click="changePage('next_page_url')"
                     >
                         Next
@@ -82,8 +92,12 @@
                     <h1>Conferma cancellazione</h1>
                 </div>
                 <div class="row justify-content-around">
-                    <button class="btn-primary" @click="alertMessage = false">Chiudi</button>
-                    <button class="btn-primary" @click="removeCart()">Conferma</button>
+                    <button class="btn-primary" @click="alertMessage = false">
+                        Chiudi
+                    </button>
+                    <button class="btn-primary" @click="removeCart()">
+                        Conferma
+                    </button>
                 </div>
             </div>
         </div>
@@ -99,40 +113,40 @@ export default {
         return {
             lastIDRestaurant: null,
             alertMessage: false,
-        }
+        };
     },
     created() {
-        this.lastIDRestaurant = localStorage.getItem('id');
+        this.lastIDRestaurant = localStorage.getItem("id");
     },
     methods: {
         changePage(vs) {
             this.$emit("changePage", vs);
         },
         checkLastID(id) {
-            if(this.lastIDRestaurant == id || localStorage.getItem('cart') == null)
-            {
+            if (
+                this.lastIDRestaurant == id ||
+                localStorage.getItem("cart") == null
+            ) {
                 let params = {
-                            name: 'restaurant',
-                            params: { id: id },
-                        }
+                    name: "restaurant",
+                    params: { id: id },
+                };
                 this.newIDRestaurant = null;
                 this.$router.push(params);
-            }
-            else
-            {
+            } else {
                 this.alertMessage = true;
-                this.newIDRestaurant = id
+                this.newIDRestaurant = id;
             }
         },
-        removeCart(){
+        removeCart() {
             let params = {
-                            name: 'restaurant',
-                            params: { id: this.newIDRestaurant },
-                        }
+                name: "restaurant",
+                params: { id: this.newIDRestaurant },
+            };
             this.alertMessage = false;
             EventBus.$emit("clear_cart");
             this.$router.push(params);
-        }
+        },
     },
     watch: {
         cards: {
@@ -146,17 +160,66 @@ export default {
 <style lang="scss" scoped>
 .bottom {
     margin-top: 3em;
+    
 }
 
-.card {
-    z-index: 500;
+// .card {
+//     z-index: 500;
+
+// }
+ul {
+    display: inline;
+    padding: 1%;
+    li {
+        display: inline;
+    }
 }
-.delete-mes{
+.delete-mes {
     position: fixed;
     width: 450px;
     height: 300px;
     top: 10%;
     right: 30%;
     background-color: green;
+}
+
+img {
+    height: 50%;
+}
+.card-text {
+    font-size: 1.2em;
+    color: grey;
+}
+
+.col-12 {
+    .color-cart {
+        background-color: #f8d574  ;
+        .button {
+        width: 20%;
+        }
+        .btn-color{
+        
+            background-color: orange !important;
+        } 
+    }
+    .container{
+        .row{
+            ul{
+                li{
+                    .btn-color{
+        
+                background-color: orange !important;
+            } 
+
+                }
+            }
+            
+            
+
+        }
+
+    }
+    
+    
 }
 </style>
