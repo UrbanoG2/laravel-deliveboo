@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
-        <div class="row p-4">
+    <div class="total d-flex justify-content-center">
+        <div class="row p-4 big_container mt-4 mb-4">
             <div class="col-8">
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 form-outline">
                                 <input type="text" v-model="firstname" class="form-control" placeholder="First Name" aria-label="firstname" aria-describedby="basic-addon1" id="firstname" >
                         </div>
 
@@ -36,6 +36,10 @@
                     @success="onSuccess"
                     @error="onError"
                     
+                >
+                    <template v-slot:button="slotProps">
+                        <v-btn class="brain_btn" @click="slotProps.submit" color="success">Pay</v-btn>
+                    </template>
                 >
                 </v-braintree>
             </div>
