@@ -14,10 +14,11 @@
 
         <div class="container container-main">
             <div class="row">
-                <div class="col mt-4">
-                    <h1 class="fw-bold">{{restaurant.name}}</h1>
+                <div class="col mt-4 text-center">
+                    <h1 class="fw-bold ">{{restaurant.name}}</h1>
                     <h4 class="mt-3"><i class="fa-solid fa-location-dot"></i>&nbsp;{{restaurant.address}}</h4>
-
+                    
+                    <h4>{{restaurant.descrizione}}</h4>
                 </div>
 
             </div>
@@ -51,13 +52,14 @@
                     </div>
                 </div>
             </div>
-             <div class="maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            </div>
+            
 
 
         </div>
+        <div class="maps text-center mb-4 mt-4">
+                <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 250px; width: 50%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
     </div>
 </template>
 
@@ -187,15 +189,13 @@ export default {
     }
 .container-main{
     margin-top: 100px;
-    border: 2px solid red;
+    border: 2px solid #ffc626;
     border-radius: 5%;
 }
 
 .food {
-    padding: 120px 0;
-    .row{
-        margin-top: 10%;
-    }
+    padding: 90px 0;
+    
 }
 
 .food>div {
