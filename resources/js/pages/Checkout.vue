@@ -161,6 +161,53 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+ .total {
 
+    background-image: url("../../../public/images/background_y&o.jpg");
+    // background-size: 300px 100px;
+    background-position: center;
+    .big_container {
+
+        background-color: white;
+        width: 60%;
+        margin: 0 auto;
+        
+        .form-control {
+            border: 1px solid grey
+        }
+
+        .form-control:focus {
+        border-color: #ff4c31d6;   
+        // box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 8px #ff4d31;
+        box-shadow:5px 10px 10px #ffc526c0;
+        }
+        
+        .form-control::placeholder {
+            color: grey;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #ffc526c0 inset !important;
+            -webkit-text-fill-color: white !important;
+        }
+
+
+
+        .brain_btn {
+            background-color: #ff4d31;
+            margin-top: 1em;
+            padding: 0.6em 1em;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .brain_btn:hover {
+            cursor: pointer;
+        }
+    }
+ }
 </style>
