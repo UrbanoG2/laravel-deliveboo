@@ -70,7 +70,7 @@
                                                 }}</span>
                                             </div>
                                         </div>
-                                        <input class="btn align-middle mt-3" style="background-color: orange"
+                                        <input class="btn align-middle mt-3 " 
                                             type="button"
                                             value="filtra"
                                             @click.prevent="searchRestaurants"
@@ -237,6 +237,10 @@ export default {
     .carousel-text {
         font-size: 1.12em;
         font-weight: bold;
+    }
+    .btn{
+        padding: 0.5em 2em;
+        background-color: orange;
     }
 }
 </style>

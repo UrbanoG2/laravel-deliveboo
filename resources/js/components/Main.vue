@@ -13,7 +13,7 @@
                         :alt="restaurant.name"
                     />
                     <div class="card-body">
-                        <h5 class="card-title display-6">
+                        <h5 class="card-title display-6 fw-bold ">
                             {{ restaurant.name }}
                         </h5>
                         <p class="card-text">
@@ -31,12 +31,16 @@
                             <li>{{ category.name }}</li>
                         </ul>
                     </div>
-                    <div
-                        class=" btn btn-color"
+                    <div class="d-flex justify-content-center">
+                        <div
+                        class=" btn btn-color "
                         @click="checkLastID(restaurant.id)"
                     >
                         View
                     </div>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -59,7 +63,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.prev_page_url"
-                        class="  btn-color"
+                        class="btn btn-page"
                         @click="changePage('prev_page_url')"
                     >
                         Prev
@@ -74,7 +78,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.next_page_url"
-                        class="  btn-color"
+                        class="btn btn-page"
                         @click="changePage('next_page_url')"
                     >
                         Next
@@ -194,32 +198,23 @@ img {
 .col-12 {
     .color-cart {
         background-color: #f8d574  ;
+        border-radius: 10px;
         .button {
         width: 20%;
         }
         .btn-color{
-        
+            
             background-color: orange !important;
         } 
     }
-    .container{
-        .row{
-            ul{
-                li{
-                    .btn-color{
-        
-                background-color: orange !important;
-            } 
-
-                }
-            }
-            
-            
-
-        }
-
-    }
+    
+    
     
     
 }
+
+    .btn-page{
+        
+                background-color: orange ;
+            } 
 </style>

@@ -1,34 +1,48 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col" v-for="(plate, index) in plates" :key="index">
-                <div class="card h-100">
-                    <img
-                        :src="plate.preview"
-                        class="card-img-top"
-                        :alt="plate.name"
-                    />
-                    <div class="card-body">
-                        <h3 class="card-title">{{ plate.name }}</h3>
-                        <h6>{{ plate.price }} &euro;</h6>
-                        <p class="card-text">
-                            <strong>Descrizione:</strong>
-                            {{ plate.description }}
-                        </p>
-                        <p class="card-text">
-                            <strong>Ingredienti:</strong>
-                            {{ plate.ingredients }}
-                        </p>
-                        <a
-                            class="btn btn-primary"
-                            @click="
-                                addItemToCart(plate.id, plate.price, plate.name)
-                            "
-                            >Add To Cart</a
-                        >
+    <div>
+
+        <div class="container-fluid position-relative overflow-hidden p-0 m-0 banner">
+            <img class="w-100" :src="restaurant.banner_img" alt="">
+        </div>
+
+        <div class="container">
+
+
+            <div class="row info">
+
+            </div>
+
+
+            <div class="food">
+                <div v-for="(section, index) in plates" :key="index" class="row">
+                    <h1> {{ getNameSection(index) }}</h1>
+                    <div class="food-card col-12 col-md-4 col-lg-3 container" v-for="(plate, index) in section" :key="index">
+                        <img
+                            :src="plate.preview"
+                            class="img-fluid image overlay "
+                            :alt="plate.name"
+                        />
+                        <div class="food-info  ">
+                            <h3 class="bold">{{ plate.name }}</h3>
+                            
+                            <div class="food-info ingredienti ">
+                                <p class="">
+                                {{ plate.ingredients }}
+                            </p>
+                            <h6>{{ plate.price }} &euro;</h6>
+                            <a
+                                class="btn-add-cart"
+                                @click="addItemToCart(plate.id, plate.price, plate.name)"
+                                ><i class="fa-solid fa-plus"></i>
+                            </a>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -43,6 +57,7 @@ export default {
         return {
             restaurant: null,
             plates: [],
+            tags: [],
             cartItem: [],
             cart: null,
         };
@@ -67,12 +82,14 @@ export default {
                 .then((result) => {
                     this.restaurant = result.data.results.restaurant;
                     this.plates = result.data.results.plates;
+                    this.tags = result.data.results.tags;
+                    console.log(this.tags);
                     this.filterPlates();
                 })
                 .catch((error) => console.log(error));
         },
         filterPlates() {
-            this.plates = this.plates.filter((plate) => plate.visible == 1);
+            this.plates = this.plates;
         },
 
         getCartItem() {
@@ -109,8 +126,133 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.cartItem));
             EventBus.$emit("refresh_cart", this.id);
         },
+        getNameSection(index) {
+            let tagName
+            this.tags.forEach(element => {
+                if(element.id == index)
+                {
+                    tagName = element.name;
+                }
+            });
+
+            return tagName
+        }
     },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+
+.banner {
+    height: 280px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.food {
+    padding: 120px 0;
+}
+
+.food>div {
+    column-gap: 20px;
+    row-gap: 20px;
+    z-index: 300;
+    padding: 20px 0;
+    .food-card{
+        position: relative;
+        
+        border-radius: 25px;
+        overflow: hidden;
+        padding: 0;
+        height: 250px;
+        img {
+            // object-fit: contain;
+            display: block;
+            margin: auto ;
+            height: 20%;
+            // width: 100%;
+        }
+        .food-info {
+            position: absolute;
+            z-index: 500;
+            height: 100%;
+            width: 100%;
+            top: 0%;
+            border-radius: 25px;
+            padding: 10px;
+            .ingredienti{
+                color: black;
+                font-size: 1.2em;
+                
+                margin-top: 25%;
+                
+            }
+            .btn-add-cart{
+                background-color: #ffc626;
+                color: black;
+                padding: 10px 15px;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+            .bold{
+                width: 100%;
+                text-align: center;
+                margin: 0 auto;
+                font-weight: bold;
+                background-color: rgba(233, 243, 252, 0.411);
+                
+            }
+        }
+       
+    }
+
+
+
+
+    .container {
+        position: relative;
+        width: 30%;
+        .image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: .5s ease;
+  background-color: grey;
+}
+
+.container:hover .overlay {
+  opacity: 0.3;
+  border: 3px solid red;
+  border-radius: 25px;
+
+}
+
+.ingredienti{
+    display: none;
+}
+
+.container:hover .ingredienti{
+    display: block;
+}
+ 
+
+
+ 
+}
+
+</style>
