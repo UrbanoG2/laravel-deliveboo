@@ -7,11 +7,15 @@
                 :key="index"
             >
                 <div class="color-cart h-100">
-                    <img
+                    <div class="container-image">
+                        <img
                         :src="restaurant.banner_img"
                         class="card-img-top"
                         :alt="restaurant.name"
                     />
+
+                    </div>
+                    
                     <div class="card-body">
                         <h5 class="card-title display-6 fw-bold ">
                             {{ restaurant.name }}
@@ -31,12 +35,12 @@
                             <li>{{ category.name }}</li>
                         </ul>
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center visita">
                         <div
                         class=" btn btn-color "
                         @click="checkLastID(restaurant.id)"
                     >
-                        View
+                        Visita
                     </div>
 
                     </div>
@@ -188,7 +192,7 @@ ul {
 }
 
 img {
-    height: 50%;
+    height: 100%;
 }
 .card-text {
     font-size: 1.2em;
@@ -199,6 +203,7 @@ img {
     .color-cart {
         background-color: #f8d574  ;
         border-radius: 10px;
+        position: relative;
         .button {
         width: 20%;
         }
@@ -206,6 +211,15 @@ img {
             
             background-color: orange !important;
         } 
+        .container-image{
+            
+            height: 250px;
+        }
+        .visita{
+            position: absolute;
+            top: 52%;
+            left: 70%;
+        }
     }
     
     
