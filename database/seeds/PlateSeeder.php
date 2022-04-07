@@ -18,7 +18,7 @@ class PlateSeeder extends Seeder
         $plates = [
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Marinara',
                 'description' => "Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
                 'price' => '6',
@@ -28,7 +28,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 2,
+                'tag_id' => 6,
                 'name' => 'Margherita',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, basilico, olio Evo",
                 'price' => '6',
@@ -38,7 +38,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Americana',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, Patatine, basilico, olio Evo",
                 'price' => '8',
@@ -48,7 +48,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Napoli',
                 'description' => "Pomodoro S.Marzano DOP, Fior di Latte, Olive di Gaeta, Acciughe di Sciacca",
                 'price' => '8',
@@ -58,7 +58,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Bufalina',
                 'description' => "Pomodoro S.Marzano DOP, Bufala Campana DOP, basilico, olio Evo",
                 'price' => '8',
@@ -68,7 +68,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 2,
                 'name' => 'Carbonara',
                 'description' => "Spaghetti,Guanciale, Tuorlo d'Uovo, Pecorino romano DOP",
                 'price' => '10',
@@ -78,7 +78,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 2,
                 'name' => 'Amatriciana',
                 'description' => "Spaghetti,Guanciale, Pomodoro, Pecorino romano DOP",
                 'price' => '10',
@@ -88,7 +88,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 1,
-                'tag_id' => 1,
+                'tag_id' => 2,
                 'name' => 'Cacio e Pepe',
                 'description' => "Spaghetti,Pecorino romano DOP, Pepe",
                 'price' => '10',
@@ -98,7 +98,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Salmone al pepe Rosa',
                 'description' => "Trancio di salmone di Alaska, prezzemolo, olio Extra Vergine, Pepe Rosa",
                 'price' => '12',
@@ -108,7 +108,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Tartare di Tonno',
                 'description' => "Tartare di Tonno abbattuto, olio Evo, semi di papavero",
                 'price' => '13',
@@ -118,7 +118,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Scaloppine di Pollo al Limone',
                 'description' => "Fettine di pollo marinate al limone, olio, prezzemolo",
                 'price' => '13',
@@ -128,7 +128,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Petti di Tacchino alla Bolognese',
                 'description' => "Tacchino, Prosciutto crudo, Parmigiano Reggiano DOP, Marsala, Tartufo Nero",
                 'price' => '14',
@@ -138,7 +138,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Patatine Fritte',
                 'description' => "Patatine, Sale",
                 'price' => '4',
@@ -148,7 +148,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Verdure Grigliate',
                 'description' => "Zucchine, Melanzane, Zucca, Peperoni, Olio, Sale, Prezzemolo",
                 'price' => '5',
@@ -158,7 +158,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Patate al Forno',
                 'description' => "Patate, Rosmarino, Olio, Sale",
                 'price' => '5',
@@ -168,7 +168,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Petti di Tacchino alla Bolognese',
                 'description' => "Tacchino, Prosciutto crudo, Parmigiano Reggiano DOP, Marsala, Tartufo Nero",
                 'price' => '14',
@@ -178,17 +178,17 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 1,
+                'tag_id' => 7,
                 'name' => 'Classico',
                 'description' => "Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/humburger-di-fassona.jpg',
+                'preview' => '/images/restaurant/hamburger-di-fassona.jpg',
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 1,
+                'tag_id' => 7,
                 'name' => 'ChickenBurger',
                 'description' => "Pane al Sesamo, Petto di Pollo impanato, Insalata, Pomodoro, *salse",
                 'price' => '6',
@@ -198,17 +198,17 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 1,
+                'tag_id' => 7,
                 'name' => 'BaconBurger',
                 'description' => "Pane al Sesamo, Hamburger di Maiale, Formaggio, Bacon, *salse",
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Maiale, Formaggio, Bacon, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/burger2.jpg',
+                'preview' => '/images/restaurant/baconburger.jpg',
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Marinara',
                 'description' => "Spaghetti sugo di mare, aglio, origano, basilico, olio Evo",
                 'price' => '6',
@@ -218,7 +218,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Samosa',
                 'description' => "Triangolo fritto, ripieno di verdure ",
                 'price' => '6',
@@ -228,7 +228,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Naan',
                 'description' => "Pane cotto nel Tandoor (il tipico forno d’argilla)",
                 'price' => '8',
@@ -238,7 +238,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Pollo Tandoori',
                 'description' => "Coscie marinare nello yogurt e altre spezie ",
                 'price' => '8',
@@ -248,7 +248,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 7,
                 'name' => 'Hamburger di ceci',
                 'description' => "Pane al Sesamo, Hamburger di Ceci, Formaggio, Bacon, *salse",
                 'price' => '8',
@@ -258,7 +258,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 1,
+                'tag_id' => 2,
                 'name' => 'Focaccia',
                 'description' => "Focaccia, Sale, Olio, ingredienti a scelta",
                 'price' => '5',
@@ -298,7 +298,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 6,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Churrasco',
                 'description' => "Carne di Vitello e Maiale alla brace con verdure",
                 'price' => '10',
@@ -308,7 +308,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 6,
-                'tag_id' => 1,
+                'tag_id' => 3,
                 'name' => 'Barbecue',
                 'description' => "Grigliata di carne mista",
                 'price' => '10',
@@ -318,7 +318,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 7,
-                'tag_id' => 1,
+                'tag_id' => 5,
                 'name' => 'Sacher Torte',
                 'description' => "Torta Sacher farcita con marmellata alle pesche, ricoperta di cioccolato fondente",
                 'price' => '16',
@@ -328,7 +328,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 8,
-                'tag_id' => 1,
+                'tag_id' => 2,
                 'name' => 'Spaghetti al pesto di Rucola',
                 'description' => "Spaghetti integrali, pesto di rucola, olio, mandorle",
                 'price' => '7',
@@ -338,7 +338,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 8,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Involtini di Melanzane al forno',
                 'description' => "Involtini di Melanzane con Pomodoro e Zucca",
                 'price' => '8',
@@ -348,7 +348,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 9,
-                'tag_id' => 1,
+                'tag_id' => 4,
                 'name' => 'Fritto Misto',
                 'description' => "Fritto misto di mare",
                 'price' => '6',
@@ -358,7 +358,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 1,
+                'tag_id' => 7,
                 'name' => 'Classico',
                 'description' => "Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'price' => '6',
@@ -368,7 +368,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 1,
+                'tag_id' => 5,
                 'name' => 'Pancakes',
                 'description' => "Pancakes americani con frutta e cioccolato",
                 'price' => '6',
@@ -378,7 +378,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 1,
+                'tag_id' => 5,
                 'name' => 'Torta Mimosa',
                 'description' => "Soffice pan di spagna aromatizzato al limone",
                 'price' => '10',
@@ -388,7 +388,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 1,
+                'tag_id' => 5,
                 'name' => 'Torta al cioccolato',
                 'description' => "Torta a tre diversi tipi di cioccolato",
                 'price' => '10',
@@ -398,7 +398,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 11,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Marinara',
                 'description' => "Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
                 'price' => '6',
@@ -408,7 +408,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 11,
-                'tag_id' => 2,
+                'tag_id' => 6,
                 'name' => 'Margherita',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, basilico, olio Evo",
                 'price' => '6',
@@ -418,7 +418,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 11,
-                'tag_id' => 1,
+                'tag_id' => 6,
                 'name' => 'Americana',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, Patatine, basilico, olio Evo",
                 'price' => '8',

@@ -45,8 +45,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via della Posta , 89',
                 'iva' => '60028970626',
-                'logo_img' => 'images/restaurant/margherita-ristorante-logo.jpeg',
-                'banner_img' => 'images/restaurant/margherita-ristorante.jpeg',
+                'logo_img' => '/images/restaurant/margherita-ristorante-logo.jpeg',
+                'banner_img' => '/images/restaurant/margherita-ristorante.jpeg',
             ],
             [
                 'name' => 'Il Chiostro',
@@ -54,8 +54,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via del Municipio antico , 6',
                 'iva' => '27178340389',
-                'logo_img' => 'images/restaurant/il-chiostro-ristorante-logo.png',
-                'banner_img' => 'images/restaurant/il-chiostro-ristorante.png',
+                'logo_img' => '/images/restaurant/il-chiostro-ristorante-logo.png',
+                'banner_img' => '/images/restaurant/il-chiostro-ristorante.png',
             ],
             [
                 'name' => 'Due Passi',
@@ -63,8 +63,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via della Speranza , 66',
                 'iva' => '68207150167',
-                'logo_img' => 'images/restaurant/a-due-passi-logo.jpg',
-                'banner_img' => 'images/restaurant/a-due-passi-dal-mare.jpg',
+                'logo_img' => '/images/restaurant/a-due-passi-logo.jpg',
+                'banner_img' => '/images/restaurant/a-due-passi-dal-mare.jpg',
             ],
             [
                 'name' => 'Itsu',
@@ -72,8 +72,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via Alfredo Renzi , 3',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/itsu-logo.png',
-                'banner_img' => 'images/restaurant/itsu-ristorante.jpg',
+                'logo_img' => '/images/restaurant/itsu-logo.png',
+                'banner_img' => '/images/restaurant/itsu-ristorante.jpg',
             ],
             [
                 'name' => 'The Burger',
@@ -81,8 +81,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => '	Via della Luna , 4',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/the-burger-king.jpg',
-                'banner_img' => 'images/restaurant/the-burger(king).jpg',
+                'logo_img' => '/images/restaurant/the-burger-king.jpg',
+                'banner_img' => '/images/restaurant/the-burger(king).jpg',
             ],
             [
                 'name' => 'Alla Griglia',
@@ -90,8 +90,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via del Domicilio , 3',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/alla-griglia-logo.jpg',
-                'banner_img' => 'images/restaurant/alla-griglia.jpg',
+                'logo_img' => '/images/restaurant/alla-griglia-logo.jpg',
+                'banner_img' => '/images/restaurant/alla-griglia.jpg',
             ],
             [
                 'name' => 'Mi Scusi',
@@ -99,8 +99,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456' ,
                 'address' => 'Via XVII ottobre , 23',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/mi-scusi-logo.jpg',
-                'banner_img' => 'images/restaurant/mi-scusi.jpg',
+                'logo_img' => '/images/restaurant/mi-scusi-logo.jpg',
+                'banner_img' => '/images/restaurant/mi-scusi.jpg',
             ],
             [
                 'name' => 'Be Green',
@@ -108,8 +108,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456', 
                 'address' => 'Via Agostino , 23',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/be-green-logo.jpg',
-                'banner_img' => 'images/restaurant/be-green.jpg',
+                'logo_img' => '/images/restaurant/be-green-logo.jpg',
+                'banner_img' => '/images/restaurant/be-green.jpg',
             ],
             [
                 'name' => 'Zero',
@@ -117,8 +117,8 @@ class UserSeeder extends Seeder
                 'password' =>'123456', 
                 'address' => 'Via Passatempo , 11',
                 'iva' => '47769490088',
-                'logo_img' => 'images/restaurant/zero-ristorante-logo.png',
-                'banner_img' => 'images/restaurant/zero-ristorante.jpg',
+                'logo_img' => '/images/restaurant/zero-ristorante-logo.png',
+                'banner_img' => '/images/restaurant/zero-ristorante.jpg',
             ],
         ];
         foreach($restaurantList as $key=>$user) 

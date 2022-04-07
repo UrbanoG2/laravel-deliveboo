@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\User;
 use App\Plate;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
@@ -79,12 +80,15 @@ class RestaurantController extends Controller
     {
         $user = User::find($id);
         $plates = $user->plates()->get();
+        $plates = $plates->groupBy('tag_id');
+        $tags = Tag::all();
         return response()->json([
             'response' => true,
             'count' => $user ? 1 : 0,
             'results' =>  [
                 'restaurant' => $user,
-                'plates'=> $plates
+                'plates'=> $plates,
+                'tags'=> $tags
             ],
         ]);
     }

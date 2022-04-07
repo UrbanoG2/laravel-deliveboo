@@ -1,34 +1,44 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col" v-for="(plate, index) in plates" :key="index">
-                <div class="card h-100">
-                    <img
-                        :src="plate.preview"
-                        class="card-img-top"
-                        :alt="plate.name"
-                    />
-                    <div class="card-body">
-                        <h3 class="card-title">{{ plate.name }}</h3>
-                        <h6>{{ plate.price }} &euro;</h6>
-                        <p class="card-text">
-                            <strong>Descrizione:</strong>
-                            {{ plate.description }}
-                        </p>
-                        <p class="card-text">
-                            <strong>Ingredienti:</strong>
-                            {{ plate.ingredients }}
-                        </p>
-                        <a
-                            class="btn btn-primary"
-                            @click="
-                                addItemToCart(plate.id, plate.price, plate.name)
-                            "
-                            >Add To Cart</a
-                        >
+    <div>
+
+        <div class="container-fluid position-relative overflow-hidden p-0 m-0 banner">
+            <img class="w-100" :src="restaurant.banner_img" alt="">
+        </div>
+
+        <div class="container">
+
+
+            <div class="row info">
+
+            </div>
+
+
+            <div class="food">
+                <div v-for="(section, index) in plates" :key="index" class="row">
+                    <h1> {{ getNameSection(index) }}</h1>
+                    <div class="food-card col-12 col-md-4 col-lg-3" v-for="(plate, index) in section" :key="index">
+                        <img
+                            :src="plate.preview"
+                            class="img-fluid"
+                            :alt="plate.name"
+                        />
+                        <div class="food-info">
+                            <h3 class="">{{ plate.name }}</h3>
+                            <p class="">
+                                {{ plate.ingredients }}
+                            </p>
+                            <h6>{{ plate.price }} &euro;</h6>
+                            <a
+                                class="btn-add-cart"
+                                @click="addItemToCart(plate.id, plate.price, plate.name)"
+                                ><i class="fa-solid fa-plus"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -43,6 +53,7 @@ export default {
         return {
             restaurant: null,
             plates: [],
+            tags: [],
             cartItem: [],
             cart: null,
         };
@@ -67,12 +78,14 @@ export default {
                 .then((result) => {
                     this.restaurant = result.data.results.restaurant;
                     this.plates = result.data.results.plates;
+                    this.tags = result.data.results.tags;
+                    console.log(this.tags);
                     this.filterPlates();
                 })
                 .catch((error) => console.log(error));
         },
         filterPlates() {
-            this.plates = this.plates.filter((plate) => plate.visible == 1);
+            this.plates = this.plates;
         },
 
         getCartItem() {
@@ -109,8 +122,66 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.cartItem));
             EventBus.$emit("refresh_cart", this.id);
         },
+        getNameSection(index) {
+            let tagName
+            this.tags.forEach(element => {
+                if(element.id == index)
+                {
+                    tagName = element.name;
+                }
+            });
+
+            return tagName
+        }
     },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+
+.banner {
+    height: 280px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.food {
+    padding: 120px 0;
+}
+
+.food>div {
+    column-gap: 20px;
+    row-gap: 20px;
+    z-index: 300;
+    padding: 20px 0;
+    .food-card{
+        position: relative;
+        border: 1px solid red;
+        border-radius: 25px;
+        overflow: hidden;
+        padding: 0;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        .food-info {
+            position: absolute;
+            z-index: 500;
+            height: 100%;
+            width: 100%;
+            top: 0%;
+            border-radius: 25px;
+            padding: 15px;
+            .btn-add-cart{
+                background-color: #ffc626;
+                color: black;
+                padding: 10px 15px;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+</style>
