@@ -46,28 +46,33 @@
                                                 "
                                             > -->
                                             
-                                            <div
-                                                :key="'categories-' + index"
-                                                v-for="(
-                                                    category, index
-                                                ) in categories"
-                                                class= "category-card"
+                                                <div
+                                                    v-for="(category, index) in categories"
+                                                    :key="index"
+                                                    class= "category-card"
+                                                    :id="index"
+                                                    @click="setActive(index)"
+                                                >
+                                                <div class="shadow-card" v-show="active.includes(index)" :id="index">
+                                                    
+                                                </div>
                                                 
-                                            >
-                                                <input
+                                                <!-- <input
                                                     type="checkbox"
                                                     name="categories[]"
                                                     :value="category.id"
                                                     v-model="form.categories"
-                                                />
+                                                /> -->
+
+
                                                 <img
                                                     class="carousel-img"
                                                     :src="category.img_category"
                                                     alt="category.name"
                                                 />
-                                                <span class="carousel-text">{{
-                                                    category.name
-                                                }}</span>
+                                                <span class="carousel-text">
+                                                    {{ category.name }}
+                                                </span>
                                             </div>
                                         </div>
                                         <input class="btn align-middle mt-3" style="background-color: orange"
@@ -119,7 +124,7 @@ export default {
                 prev_page_url: null,
                 current_page: null,
             },
-
+            active: [],
             categories: null,
         };
     },
@@ -167,12 +172,30 @@ export default {
             });
         },
         setActive(index) {
-            this.categories[index].active = !this.categories[index].active;
+            if(this.active.includes(index))
+            {
+                this.active = this.active.filter(element => element != index)
+                let transictionArray = [];
+                this.active.forEach(element => {
+                    transictionArray.push(element + 1)
+                });
+                this.form.categories = transictionArray
+                console.log(index);
+            }
+            else
+            {
+                console.log(index);
+                this.active.push(index);
+                this.form.categories.push(index + 1)
+            }
         },
     },
     watch: {
         form: {
-            handler() {},
+            handler() 
+            {
+                console.log(this.form.categories);
+            },
             deep: true,
         },
     },
@@ -214,6 +237,7 @@ export default {
         transition: all 0.4s;
         width: 190px;
         flex: 1 0 auto;
+        position: relative;
 
         &:hover {
             cursor: pointer;
@@ -221,13 +245,13 @@ export default {
         }
     }
 
-    .cardActive {
+    .shadow-card {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        border-radius: 4px;
         border: 2px solid rgba(255, 168, 3, 0.7);
         box-shadow: 0 0 10px orange;
-
-        &:hover {
-            box-shadow: 0 0 10px orange;
-        }
     }
 
     .carousel-img {
@@ -238,5 +262,12 @@ export default {
         font-size: 1.12em;
         font-weight: bold;
     }
+
+
+
+
 }
+    
+
+
 </style>
