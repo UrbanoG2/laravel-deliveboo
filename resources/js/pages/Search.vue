@@ -1,39 +1,13 @@
 <template>
     <div>
         <div class="container">
-            <div class="row search  p-3">
+            <div class="row search p-3">
                 <div class="col-12">
                     <form>
-                        <h2>Search</h2>
-                        <div class="row justify-content-center">
-                            <div class="mb-3 col-2">
-                                Order By Column
-                                <select
-                                    class="form-select form-select"
-                                    name="orderbycolumn"
-                                    id="orderbycolumn"
-                                    v-model="form.orderbycolumn"
-                                >
-                                    <option value="created_at">Created</option>
-                                    <option value="updated_at">Updated</option>
-                                </select>
-                            </div>
-                            <div class="mb-3 col-2">
-                                Order By Versus
-                                <select
-                                    class="form-select form-select"
-                                    name="orderbysort"
-                                    id="orderbysort"
-                                    v-model="form.orderbysort"
-                                >
-                                    <option value="asc" selected>Asc</option>
-                                    <option value="desc">Desc</option>
-                                </select>
-                            </div>
-                        </div>
+                       
                         <div class="row">
                             <div class="mb-3 col">
-                                <div
+                                <!-- <div
                                     class="d-flex align-items-center justify-content-around"
                                 >
                                     <div
@@ -46,28 +20,78 @@
                                             :value="category.id"
                                             v-model="form.categories"
                                         />
-                                        <label :for="category.name">{{
-                                            category.name
-                                        }}</label>
+                                        <label :for="category.name">
+                                            <img
+                                                :src="category.img_category"
+                                                alt="category.name"
+                                            />
+                                            {{ category.name }}
+                                        </label>
+                                    </div>
+                                </div> -->
+                                <div class="home-categories-carousel">
+                                    <div class="mycontainer">
+                                        <h2>
+                                            Scegli la tua categoria preferita
+                                        </h2>
+                                        <div class="carousel-container">
+                                            <!-- <div
+                                                :key="'categories-' + index"
+                                                v-for="(
+                                                    category, index
+                                                ) in categories"
+                                                :class="category.active ? 'category-card cardActive' : 'category-card'"
+                                                @click.prevent="
+                                                    setActive(index)
+                                                "
+                                            > -->
+                                            
+                                            <div
+                                                :key="'categories-' + index"
+                                                v-for="(
+                                                    category, index
+                                                ) in categories"
+                                                class= "category-card"
+                                                
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    name="categories[]"
+                                                    :value="category.id"
+                                                    v-model="form.categories"
+                                                />
+                                                <img
+                                                    class="carousel-img"
+                                                    :src="category.img_category"
+                                                    alt="category.name"
+                                                />
+                                                <span class="carousel-text">{{
+                                                    category.name
+                                                }}</span>
+                                            </div>
+                                        </div>
+                                        <input class="btn align-middle mt-3" style="background-color: orange"
+                                            type="button"
+                                            value="filtra"
+                                            @click.prevent="searchRestaurants"
+                                        />
                                     </div>
                                 </div>
+                                
                             </div>
+                            
                         </div>
-                        <div class="row">
-                            <div class="col-2">
-                                <input
-                                    class="btn btn-info"
-                                    type="button"
-                                    value="filtra"
-                                    @click.prevent="searchRestaurants"
-                                />
-                            </div>
-                        </div>
+                        
+                        
                     </form>
                 </div>
             </div>
         </div>
-        <Main class="mt-3" :cards="cards" @changePage="changePage($event)"></Main>
+        <Main
+            class="mt-3"
+            :cards="cards"
+            @changePage="changePage($event)"
+        ></Main>
     </div>
 </template>
 
@@ -137,18 +161,21 @@ export default {
             const url = "http://127.0.0.1:8000/api/v1/categories";
             Axios.get(url).then((result) => {
                 this.categories = result.data.results.data;
+                this.categories.forEach((element) => {
+                    element.active = false;
+                });
             });
+        },
+        setActive(index) {
+            this.categories[index].active = !this.categories[index].active;
         },
     },
     watch: {
         form: {
-            handler() 
-            {
-
-            },
+            handler() {},
             deep: true,
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -157,6 +184,59 @@ export default {
     padding: 2em 0;
     h1 {
         text-transform: uppercase;
+    }
+}
+
+.home-categories-carousel {
+    text-align: center;
+
+    .mycontainer {
+        padding-top: 30px;
+        padding-bottom: 40px;
+        width: 100%;
+    }
+
+    .carousel-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+
+        border: 2px solid grey;
+    }
+
+    .category-card {
+        display: inline-block;
+        margin: 10px;
+        background-color: rgba(239, 242, 244, 0.8);
+        border: 2px solid grey;
+        border-radius: 4px;
+        transition: all 0.4s;
+        width: 190px;
+        flex: 1 0 auto;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 6px darkgrey;
+        }
+    }
+
+    .cardActive {
+        border: 2px solid rgba(255, 168, 3, 0.7);
+        box-shadow: 0 0 10px orange;
+
+        &:hover {
+            box-shadow: 0 0 10px orange;
+        }
+    }
+
+    .carousel-img {
+        width: 60px;
+    }
+
+    .carousel-text {
+        font-size: 1.12em;
+        font-weight: bold;
     }
 }
 </style>
