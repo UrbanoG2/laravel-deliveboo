@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'password' =>'123456',
                 'address' => 'Via Garibaldi, 13',
                 'iva' => '60028970626',
-                'logo_img' => '/images/restaurant/la-taverna-ristorante-logo.jpg',
+                'logo_img' => '/images/restaurant/la-taverna-ristorante-logo.jpeg',
                 'banner_img' => '/images/restaurant/la-taverna-ristorante.jpg',
             ],
             [
