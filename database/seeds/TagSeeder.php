@@ -12,7 +12,7 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        $array = ['starter', 'first dish', 'second dish', 'side dish', 'dessert', 'pizza', 'sandwich'];
+        $array = ['Antipasti', 'Primi Piatti', 'Secondi Piatti', 'Contorni', 'Dessert', 'Pizza', 'Sandwich'];
         foreach ($array as $key => $value) {
             $newTag = new Tag();
             $newTag->name = $value;

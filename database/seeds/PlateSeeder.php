@@ -438,7 +438,7 @@ class PlateSeeder extends Seeder
             $newPlate->description = $plate['description'];
             $newPlate->price = $plate['price'];
             $newPlate->ingredients = $plate['ingredients'];
-            $newPlate->visible = $faker->boolean();
+            $newPlate->visible = 1;
             $newPlate->preview = $plate['preview'];
             $newPlate->save();
         }

@@ -13,6 +13,48 @@
                     </div>
                 </div>
             </div>
+                <div class="container-tel">
+                    <div class="row pt-5">
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="apple d-flex ">
+                                <img src="../../../public/images/apple.png" alt="">
+                                <div class="d-flex flex-column  justify-content-center">
+                                    <span>Scarica da qui</span>
+                                    <span>Apple Store</span>
+                                </div>
+                            </div>
+                            <div class="play-store d-flex ">
+                                <img src="../../../public/images/play-store.png" alt="">
+                                <div class="d-flex flex-column  justify-content-center">
+                                    <span>Scarica da qui</span>
+                                    <span>Play Store</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6 d-flex justify-content-center">
+                            <div class="tel  position-relative">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        9:27
+                                    </div>
+                                    <div>
+                                        <i class="fa-solid fa-signal"></i>
+                                        <i class="fa-solid fa-phone-flip"></i>
+                                        <i class="fa-solid fa-headphones"></i>
+                                    </div>
+                                </div> 
+                                <div class="food">
+                                    <img src="../../../public/images/restaurant/hamburger.jpeg" alt="">
+
+                                </div>
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+                </div>
             <div class="container w-75 p-5 bg-section mt-4">
                 <div class="row p-4">
                     <div class="section-title mb-5 p-4">
@@ -133,6 +175,61 @@ export default {
         font-weight: 800 !important;
         font-size: 2.5em;
     }
+}
+.container-fluid{
+    .tel{
+        height: 450px;
+        width: 300px;
+        border: 4px solid black;
+        border-radius: 10px;
+        .profile{
+            display: block;
+            // width: 30%;
+            height: 100px;
+            .logo-profile{
+                top: 5%;
+                right: -10%;
+                img{
+                width: 100%;
+                height: 60px;
+                border-radius: 50%;
+                }
+            }
+            
+        }
+        .food{
+            padding-top: 50px;
+            width: 100%;
+            
+            img{
+                width: 100%;
+                height: 100%; 
+            }
+        }
+        
+    }
+    .container-tel{
+        background-color: #f2c53d33;
+        padding-bottom: 2em;
+        .apple{
+            width: 30%;
+            height: 70px;
+            background-color: white;
+            img{
+                width: 30%;
+            }
+        }
+        .play-store{
+            width: 30%;
+            height: 70px;
+            margin-left: 30px;
+            background-color: white;
+            img{
+                width: 30%;
+            }
+        }
+    }
+    
 }
 
 .profile-card-2 {
