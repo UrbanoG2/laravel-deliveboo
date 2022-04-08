@@ -30,7 +30,7 @@ const router = new VueRouter({
             component: Search
         },
         {
-            path: '/restaurant/:id',
+            path: '/restaurant/:slug',
             name: 'restaurant',
             props: true,
             component: Restaurant

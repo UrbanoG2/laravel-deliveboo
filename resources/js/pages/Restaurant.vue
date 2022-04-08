@@ -68,7 +68,7 @@ import Axios from "axios";
 import EventBus from "../bus.js";
 export default {
     name: "Restaurant",
-    props: ["id"],
+    props: ["id", "slug"],
     data() {
         return {
             restaurant: null,
@@ -79,7 +79,7 @@ export default {
         };
     },
     created() {
-        const url = "http://127.0.0.1:8000/api/restaurant/" + this.id;
+        const url = "http://127.0.0.1:8000/api/restaurant/" + this.slug;
         if (this.getCartItem() != null) {
             let localData = JSON.parse(this.getCartItem());
             localData.forEach((element) => {
@@ -99,7 +99,6 @@ export default {
                     this.restaurant = result.data.results.restaurant;
                     this.plates = result.data.results.plates;
                     this.tags = result.data.results.tags;
-                    console.log(this.tags);
                     this.filterPlates();
                 })
                 .catch((error) => console.log(error));
