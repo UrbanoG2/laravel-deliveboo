@@ -17,22 +17,24 @@
                 <p>
                     Ordine creato il: {{ $order->created_at }}
                 </p>
-<<<<<<< HEAD
-                <ul>
-                    @foreach($plates as $plate)
-                    <li>{{$plate->id}}</li>
-                    @endforeach
-=======
-
-                <ul>
-                    @foreach ($plates as $plate)
-                        <li>
-                            {{ $plate->name }} {{ $plate->price }} &euro; {{ $order->quantity }}
-                        </li>
-                    @endforeach
-                    {{-- {{ $order->plate()->first()->name }} --}}
->>>>>>> Dev
-                </ul>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Quantità</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($plates as $plate)
+                        <tr>
+                            <td>{{$plate->name}}</td>
+                            <td>{{$plate->price}}</td>
+                            <td>{{$plate->quantity}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    </table>
             </div>
         </div>
     </div>

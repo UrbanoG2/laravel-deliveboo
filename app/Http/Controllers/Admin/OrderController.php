@@ -71,7 +71,11 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $request = $order->id;
-        $plates = Plate::where('user_id', $request)->get();
+        $reqData = Order::find($request);
+        $plates = $reqData->plates()->get();
+        foreach($plates as $plate){
+            $plate['quantity'] = $plate->pivot->quantity;
+        }
         $data = [
             'order' => $order,
             'plates' => $plates,
