@@ -289,12 +289,11 @@ export default {
         CartTailBE: function (el) {
             el.style.opacity = 0;
             el.style.top = "25%";
-            el.style.transform = "rotate(32.5deg)";
         },
         CartTailEN: function (el, done) {
             Velocity(
                 el,
-                { opacity: 1, top: "120%" },
+                { opacity: 1, top: "110.5%"},
                 { duration: 300 },
                 { complete: done }
             );
@@ -416,6 +415,7 @@ export default {
     width: 500px;
     opacity: 0;
     background-color:  #ffc626;
+    border-radius: 20px 0px 20px 20px;
     .cart-item {
         margin: 1em 0;
         padding: 5px 16px;
@@ -433,6 +433,7 @@ export default {
 
 .cart-tail {
     position: absolute;
+    font-size: 23px;
     right: 0;
     color: #ffc626;
 }
