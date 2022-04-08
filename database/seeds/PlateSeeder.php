@@ -396,36 +396,381 @@ class PlateSeeder extends Seeder
                 'visible' => true,
                 'preview' => '/images/restaurant/torta-al-cioccolato.jpg',
             ],
+
+
+
+
+
+
+
+
+
+
+
+            //aggiunta starter
+
             [
-                'user_id' => 11,
-                'tag_id' => 6,
-                'name' => 'Marinara',
-                'description' => "Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
+                'user_id' => 5,
+                'tag_id' => 1,
+                'name' => 'Panzerotti',
+                'description' => "Mozzarella, pomodoro, olio, origano, sale",
                 'price' => '6',
-                'ingredients' =>"Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
+                'ingredients' => "Mozzarella, pomodoro, olio, origano, sale",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-marinara.jpg',    
+                'preview' => '/images/restaurant/panzerotti.jpg',
             ],
+
+            [
+                'user_id' => 7,
+                'tag_id' => 1,
+                'name' => 'Mozzarella in carrozza',
+                'description' => "Pane bianco, mozzarealla di bufala, uova, pan grattato",
+                'price' => '4',
+                'ingredients' => "Pane bianco, mozzarealla di bufala, uova, pan grattato",
+                'visible' => true,
+                'preview' => '/images/restaurant/mozzarella-in-carrozza.jpg',
+            ],
+
+            [
+                'user_id' => 10,
+                'tag_id' => 1,
+                'name' => 'Crocchette di patate',
+                'description' => "Patate rosse, noce moscata, pepe nero, parmigiano, pangrattato, uova",
+                'price' => '4',
+                'ingredients' => "Patate rosse, noce moscata, pepe nero, parmigiano, pangrattato, uova",
+                'visible' => true,
+                'preview' => '/images/restaurant/crocchette-di-patate.jpg',
+            ],
+
+            [
+                'user_id' => 10,
+                'tag_id' => 1,
+                'name' => 'Arancini di riso',
+                'description' => "Riso, caciocavallo, burro, zafferano, sale, cipolla, pisellini, carne macinata, olio, pepe nero, passata di pomodoro",
+                'price' => '5',
+                'ingredients' => "Riso, caciocavallo, burro, zafferano, sale, cipolla, pisellini, carne macinata, olio, pepe nero, passata di pomodoro",
+                'visible' => true,
+                'preview' => '/images/restaurant/arancini-di-riso.jpg',
+            ],
+
+            [
+                'user_id' => 9,
+                'tag_id' => 1,
+                'name' => 'Insalata di polpo',
+                'description' => "Polpo, sedano, alloro, sale, pepe nero in grani, aglio, carote",
+                'price' => '7',
+                'ingredients' => "Polpo, sedano, alloro, sale, pepe nero in grani, aglio, carote",
+                'visible' => true,
+                'preview' => '/images/restaurant/insalata-di-polpo.jpg',
+            ],
+
+            [
+                'user_id' => 4,
+                'tag_id' => 1,
+                'name' => 'Caponata di verdure',
+                'description' => "Melanzane, cipolle bianche, olive verdi, pinoli, sedano, pomodori, capperi sotto sale, zucchero, basilico",
+                'price' => '4',
+                'ingredients' => "Melanzane, cipolle bianche, olive verdi, pinoli, sedano, pomodori, capperi sotto sale, zucchero, basilico",
+                'visible' => true,
+                'preview' => '/images/restaurant/caponata-di-verdure.jpg',
+            ],
+
+            [
+                'user_id' => 3,
+                'tag_id' => 1,
+                'name' => 'Uova in camicia',
+                'description' => "Uova, sale grosso, aceto di vino bianco",
+                'price' => '4',
+                'ingredients' => "Uova, sale grosso, aceto di vino bianco",
+                'visible' => true,
+                'preview' => '/images/restaurant/uova-in-camicia.jpg',
+            ],
+
+
+
+            //aggiunta first dishes
+
+            [
+                'user_id' => 4,
+                'tag_id' => 2,
+                'name' => 'Lasagne alla bolognese',
+                'description' => "Lasagne, carne macinata, carota, cipolla, passata di pomodoro, burro, olio, farina",
+                'price' => '15',
+                'ingredients' => "Lasagne, carne macinata, carota, cipolla, passata di pomodoro, burro, olio, farina",
+                'visible' => true,
+                'preview' => '/images/restaurant/lasagne-alla-bolognese.jpg',
+            ],
+
+            [
+                'user_id' => 3,
+                'tag_id' => 2,
+                'name' => 'Pasta alla boscaiola',
+                'description' => "Pasta a piacere, aglio, salsiccia, funghi, mezzo bicchiere di vino bianco, sale, pepe, prezzemolo",
+                'price' => '15',
+                'ingredients' => "Pasta a piacere, aglio, salsiccia, funghi, mezzo bicchiere di vino bianco, sale, pepe, prezzemolo",
+                'visible' => true,
+                'preview' => '/images/restaurant/pasta-alla-boscaiola.jpg',
+            ],
+
+            [
+                'user_id' => 5,
+                'tag_id' => 2,
+                'name' => 'Tagliolini al tartufo bianco',
+                'description' => "Tagliolini freschi, tartufo bianco, burro, parmigiano reggiano, sale",
+                'price' => '20',
+                'ingredients' => "Tagliolini freschi, tartufo bianco, burro, parmigiano reggiano, sale",
+                'visible' => true,
+                'preview' => '/images/restaurant/tagliolini-al-tartufo-bianco.jpg',
+            ],
+
+            [
+                'user_id' => 6,
+                'tag_id' => 2,
+                'name' => 'Tortellini in brodo',
+                'description' => "Tortellini, cipolle, carote, biancostato di manzo, chiodi di garofano",
+                'price' => '12',
+                'ingredients' => "Tortellini, cipolle, carote, biancostato di manzo, chiodi di garofano",
+                'visible' => true,
+                'preview' => '/images/restaurant/tortellini-in-brodo.jpg',
+            ],
+
             [
                 'user_id' => 11,
-                'tag_id' => 6,
-                'name' => 'Margherita',
-                'description' => "Pomodoro S.Marzano, Fior di Latte, basilico, olio Evo",
+                'tag_id' => 2,
+                'name' => 'Pasta al forno',
+                'description' => "Rigatoni (pasta corta in generale), passata di pomodoro, mozzarella, besciamella, grana o parmigiano, basilico fresco, olio",
+                'price' => '15',
+                'ingredients' => "Rigatoni (pasta corta in generale), passata di pomodoro, mozzarella, besciamella, grana o parmigiano, basilico fresco, olio",
+                'visible' => true,
+                'preview' => '/images/restaurant/pasta-al-forno.jpg',
+            ],
+
+            [
+                'user_id' => 5,
+                'tag_id' => 2,
+                'name' => 'Pasta alla gricia',
+                'description' => "Rigatoni, pecorino romano, guanciale, sale fino, pepe nero",
+                'price' => '15',
+                'ingredients' => "Rigatoni, pecorino romano, guanciale, sale fino, pepe nero",
+                'visible' => true,
+                'preview' => '/images/restaurant/pasta-alla-gricia.jpg',
+            ],
+
+            [
+                'user_id' => 2,
+                'tag_id' => 2,
+                'name' => 'Pasta alla norma',
+                'description' => "Sedani rigati, ricotta di pecora, melanzane, aglio, basilico, pomodori",
+                'price' => '17',
+                'ingredients' => "Sedani rigati, ricotta di pecora, melanzane, aglio, basilico, pomodori",
+                'visible' => true,
+                'preview' => '/images/restaurant/pasta-alla-norma.jpg',
+            ],
+
+
+            //aggiunta secondi 
+
+
+            [
+                'user_id' => 6,
+                'tag_id' => 3,
+                'name' => 'Gateau di patate',
+                'description' => "Patate, salame napoletano, parmigiano reggiano, olio, sale, mozzarella, prosciutto cotto, pepe nero",
+                'price' => '7',
+                'ingredients' => "Patate, salame napoletano, parmigiano reggiano, olio, sale, mozzarella, prosciutto cotto, pepe nero",
+                'visible' => true,
+                'preview' => '/images/restaurant/gateau-di-patate.jpg',
+            ],
+
+            [
+                'user_id' => 6,
+                'tag_id' => 3,
+                'name' => 'Omelette',
+                'description' => "Uova, sale, latte, olio",
                 'price' => '6',
-                'ingredients' => "Pomodoro S.Marzano, Fior di Latte, basilico, olio Evo",
+                'ingredients' => "Uova, sale, latte, olio",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-margherita.jpg',
+                'preview' => '/images/restaurant/omelette.jpg',
             ],
+
+
+            //aggiunta side dishes
+
             [
-                'user_id' => 11,
-                'tag_id' => 6,
-                'name' => 'Americana',
-                'description' => "Pomodoro S.Marzano, Fior di Latte, Patatine, basilico, olio Evo",
+                'user_id' => 6,
+                'tag_id' => 4,
+                'name' => 'Polpettine al vuna',
+                'description' => "Vuna, uova, philadeplhia, parmigiano, pangrattato, prezzemolo",
                 'price' => '8',
-                'ingredients' =>"Pomodoro S.Marzano, Fior di Latte, Patatine, basilico, olio Evo",
+                'ingredients' => "Vuna, uova, philadeplhia, parmigiano, pangrattato, prezzemolo",
                 'visible' => true,
-                'preview' => '/images/restaurant/pizza-americana.jpg',
+                'preview' => '/images/restaurant/polpettina-al-vuna.jpg',
             ],
+
+            [
+                'user_id' => 8,
+                'tag_id' => 4,
+                'name' => 'Zuppa di lime messicana',
+                'description' => "Brodo vegetale, pomodori, avocado, cipolla rossa, lime, peperoncino, coriandolo, pollo",
+                'price' => '8',
+                'ingredients' => "Brodo vegetale, pomodori, avocado, cipolla rossa, lime, peperoncino, coriandolo, pollo",
+                'visible' => true,
+                'preview' => '/images/restaurant/zuppa-di-lime-messicana.jpg',
+            ],
+
+            [
+                'user_id' => 8,
+                'tag_id' => 4,
+                'name' => 'Poke veg',
+                'description' => "Riso sushi, edamame, avocado, cetriolo, spinaci, cavolo rosso",
+                'price' => '8',
+                'ingredients' => "Riso sushi, edamame, avocado, cetriolo, spinaci, cavolo rosso",
+                'visible' => true,
+                'preview' => '/images/restaurant/poke-veg.jpg',
+            ],
+
+
+
+            // aggiunta dessert
+
+            [
+                'user_id' => 3,
+                'tag_id' => 5,
+                'name' => 'Cannolo siciliano',
+                'description' => "Ricotta, cioccolato, zucchero, pistacchio",
+                'price' => '13',
+                'ingredients' => "Ricotta, cioccolato, zucchero, pistacchio",
+                'visible' => true,
+                'preview' => '/images/restaurant/cannolo-siciliano.jpg',
+            ],
+
+            [
+                'user_id' => 6,
+                'tag_id' => 5,
+                'name' => 'Cheesecake alla fragola',
+                'description' => "Fragole, formaggio spalmabile, panna, uova, burro",
+                'price' => '7',
+                'ingredients' => "Fragole, formaggio spalmabile, panna, uova, burro",
+                'visible' => true,
+                'preview' => '/images/restaurant/cheesecake-alla-fragola.jpg',
+            ],
+
+            [
+                'user_id' => 8,
+                'tag_id' => 5,
+                'name' => 'Devil cake',
+                'description' => "Cioccolato fondente, panna, fecola di patate, cacao",
+                'price' => '6',
+                'ingredients' => "Cioccolato fondente, panna, fecola di patate, cacao",
+                'visible' => true,
+                'preview' => '/images/restaurant/devil-cake.jpg',
+            ],
+
+            [
+                'user_id' => 7,
+                'tag_id' => 5,
+                'name' => 'Tiramisù',
+                'description' => "Caffè, savoiardi, mascarpone, uova, cacao",
+                'price' => '6',
+                'ingredients' => "Caffè, savoiardi, mascarpone, uova, cacao",
+                'visible' => true,
+                'preview' => '/images/restaurant/tiramisu.jpg',
+            ],
+
+            [
+                'user_id' => 2,
+                'tag_id' => 5,
+                'name' => 'Crostata di ciliegie',
+                'description' => "Ciliegie, zucchero, limone, vaniglia, burro, farina",
+                'price' => '5',
+                'ingredients' => "Ciliegie, zucchero, limone, vaniglia, burro, farina",
+                'visible' => true,
+                'preview' => '/images/restaurant/crostata-di-ciliegie.jpg',
+            ],
+
+            [
+                'user_id' => 1,
+                'tag_id' => 5,
+                'name' => 'Bavarese al mandarino',
+                'description' => "Panna, gelatina, latte, tuorli d'uovo, zucchero, baccello di vaniglia, mandarino",
+                'price' => '5',
+                'ingredients' => "Panna, gelatina, latte, tuorli d'uovo, zucchero, baccello di vaniglia, mandarino",
+                'visible' => true,
+                'preview' => '/images/restaurant/bavarese-al-mandarino.jpg',
+            ],
+
+
+            // aggiunta pizze
+
+
+            [
+                'user_id' => 11,
+                'tag_id' => 6,
+                'name' => 'Capricciosa',
+                'description' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive",
+                'price' => '7',
+                'ingredients' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive",
+                'visible' => true,
+                'preview' => '/images/restaurant/capricciosa.jpg',
+            ],
+            [
+                'user_id' => 11,
+                'tag_id' => 6,
+                'name' => 'Quattro formaggi',
+                'description' => "Mozzarella, parmigiano, gorgonzola e provola (quarto formaggio variabile)",
+                'price' => '6',
+                'ingredients' => "Mozzarella, parmigiano, gorgonzola e provola (quarto formaggio variabile)",
+                'visible' => true,
+                'preview' => '/images/restaurant/quattro-formaggi.jpg',
+            ],
+            [
+                'user_id' => 11,
+                'tag_id' => 6,
+                'name' => 'Quattro stagioni',
+                'description' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive. Condimento diviso in quattro spicchi.",
+                'price' => '8',
+                'ingredients' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive. Condimento diviso in quattro spicchi.",
+                'visible' => true,
+                'preview' => '/images/restaurant/quattro-stagioni.jpg',
+            ],
+            [
+                'user_id' => 11,
+                'tag_id' => 6,
+                'name' => 'Diavola',
+                'description' => "Pomodoro, mozzarella e salame piccante",
+                'price' => '8',
+                'ingredients' => "Pomodoro, mozzarella e salame piccante",
+                'visible' => true,
+                'preview' => '/images/restaurant/diavola.jpg',
+            ],
+
+
+            //aggiunta panini
+
+            [
+                'user_id' => 10,
+                'tag_id' => 7,
+                'name' => 'Veggie Burger',
+                'description' => "Lenticchie secche, sale fino, paprika dolce, uova, erba cipollina, pepe nero",
+                'price' => '8',
+                'ingredients' => "Lenticchie secche, sale fino, paprika dolce, uova, erba cipollina, pepe nero",
+                'visible' => true,
+                'preview' => '/images/restaurant/veggie-burger.jpg',
+            ],
+
+            [
+                'user_id' => 8,
+                'tag_id' => 7,
+                'name' => 'MC chicken',
+                'description' => "Petto di pollo, lattuga, pepe bianco, timo",
+                'price' => '6',
+                'ingredients' => "Petto di pollo, lattuga, pepe bianco, timo",
+                'visible' => true,
+                'preview' => '/images/restaurant/mc-chicken.jpg',
+            ],
+
+
+
         ];
 
         foreach($plates as $key=>$plate) 
@@ -438,7 +783,7 @@ class PlateSeeder extends Seeder
             $newPlate->description = $plate['description'];
             $newPlate->price = $plate['price'];
             $newPlate->ingredients = $plate['ingredients'];
-            $newPlate->visible = $faker->boolean();
+            $newPlate->visible = 1;
             $newPlate->preview = $plate['preview'];
             $newPlate->save();
         }
