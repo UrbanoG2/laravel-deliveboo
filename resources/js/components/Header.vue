@@ -1,6 +1,105 @@
 <template>
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="delive-nav">
         <div class="container">
+            <div class="logo-box">
+                <router-link class="nav-link" :to="{ name: 'home' }">
+                    <img id="logo" class="w-5" :src="logo" alt="logo"/>
+                </router-link>
+            </div>
+            
+            <div class="navigation-option">
+                <div  class="nav-menu d-none d-md-block">
+                    <ul class="menu container"> 
+                        <li
+                            class="nav-item"
+                            v-for="item in menuItems"
+                            :key="item.id"
+                        >
+                        <router-link
+                            class="nav-link"
+                            :to="{ name: item.routeName }"
+                            >{{ item.label }}</router-link
+                        >
+                        </li>
+                        <li v-if="!log" class="nav-item">
+                                <a class="nav-link" href="login">Accedi</a>
+                        </li>
+                        <li v-if="!log" class="nav-item">
+                                <a class="nav-link" href="register"> Registrati </a>
+                        </li>
+                        <li v-if="log" class="nav-item">
+                                <a class="nav-link" href="logout"> logout </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="cart-container">
+                    <i  @click="clicked = !clicked" class="fa-solid fa-cart-shopping cart"></i>
+                    <transition @before-enter="CartTailBE" @enter="CartTailEN" @leave="CartTailLE" :css="false">
+                        <i v-if="clicked != false && list != '' && list != null" class="fa-solid fa-caret-up cart-tail"></i>
+                    </transition>
+                    <transition @before-enter="CartBE" @enter="CartEN" @leave="CartLE" :css="false">
+                        <div v-if="clicked != false && list != '' && list != null" class="cart-box">
+                            <div v-for="(item, index) in list" :key="index" class="cart-item">  
+                                    <div class="cart-item-section">
+                                        {{ item.name }} 
+                                    </div>
+                                    <div class="cart-item-section">
+                                        <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
+                                        {{ item.quantity }}
+                                        <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
+                                    </div>
+                                    <div class="cart-item-section">
+                                        price: {{ item.price }}&euro;
+                                    </div>
+                                    <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                            <div class="row justify-content-between">
+                                <a @click="clearCart">clear</a>
+                                <a @click="checkout">checkout</a>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                
+
+
+                <i @click="showNavbar = !showNavbar" class="fa-solid fa-bars d-md-none d-block bar"></i>
+                <transition @before-enter="HamBE" @enter="HamEN" @leave="HamLE" :css="false">
+                <div v-show="showNavbar" class="hamburger-nav-menu d-md-none">
+                    <ul class="hamburger container pt-3"> 
+                        <li
+                            class="nav-item"
+                            v-for="item in menuItems"
+                            :key="item.id"
+                        >
+                        <router-link
+                            class="nav-link"
+                            :to="{ name: item.routeName }"
+                            >{{ item.label }}</router-link
+                        >
+                        </li>
+                        <li v-if="!log" class="nav-item">
+                                <a class="nav-link" href="login">Accedi</a>
+                        </li>
+                        <li v-if="!log" class="nav-item">
+                                <a class="nav-link" href="register"> Registrati </a>
+                        </li>
+                        <li v-if="log" class="nav-item">
+                                <a class="nav-link" href="logout"> logout </a>
+                        </li>
+                    </ul>
+                </div>
+                </transition>
+
+
+                
+
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="container">
             <router-link class="nav-link" :to="{ name: 'home' }">
                 <img id="logo" class="w-5" :src="logo" alt="logo"
             /></router-link>
@@ -44,28 +143,14 @@
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                             
-                            <transition @before-enter="SCbeforeEnter" @enter="SCenter" @leave="SCleave" :css="false">
-                                <ul v-if="clicked != false && list != '' && list != null" class="cart-box">
-                                    <li v-for="(item, index) in list" :key="index" class="cart-item">  
-                                         {{ item.name }} 
-                                         <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
-                                         {{ item.quantity }}
-                                         <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
-                                         price: {{ item.price }}&euro;
-                                         <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
-                                    </li>
-                                    <li><a @click="clearCart">clear</a></li>
-                                    <li><a @click="checkout">checkout</a></li>
-                                </ul>
-                            </transition>
+                            
                         </div>
                     </li>
                 </ul>
             </div>
 
             
-        </div>
-    </nav>
+        </div> -->
 </template>
 
 <script>
@@ -76,6 +161,7 @@ export default {
     props: ["cards"],
     data() {
         return {
+            showNavbar: false,
             clicked: false,
             countQuantity: false,
             list: null,
@@ -177,24 +263,60 @@ export default {
         },
         handleScroll() {
             this.clicked = false;
+            this.showNavbar = false;
         },
         checkout() {
             this.$router.push({ name: 'checkout' });
         },
-        SCbeforeEnter: function (el) {
+
+        CartBE: function (el) {
             el.style.opacity = 0;
             el.style.top = "25%";
         },
-        SCenter: function (el, done) {
+        CartEN: function (el, done) {
             Velocity(
                 el,
-                { opacity: 1, top: "7%" },
+                { opacity: 1, top: "150%" },
                 { duration: 300 },
                 { complete: done }
             );
         },
-        SCleave: function (el, done) {
+        CartLE: function (el, done) {
             Velocity(el, { top: "25%", opacity: 0 }, { duration: 200 });
+            Velocity(el, { display: "none" }, { complete: done });
+        },
+
+        CartTailBE: function (el) {
+            el.style.opacity = 0;
+            el.style.top = "25%";
+        },
+        CartTailEN: function (el, done) {
+            Velocity(
+                el,
+                { opacity: 1, top: "110.5%"},
+                { duration: 300 },
+                { complete: done }
+            );
+        },
+        CartTailLE: function (el, done) {
+            Velocity(el, { top: "25%", opacity: 0 }, { duration: 200 });
+            Velocity(el, { display: "none" }, { complete: done });
+        },
+
+        HamBE: function (el) {
+            el.style.opacity = 0;
+            el.style.right = "-20%";
+        },
+        HamEN: function (el, done) {
+            Velocity(
+                el,
+                { opacity: 1, right: "0%" },
+                { duration: 200 },
+                { complete: done }
+            );
+        },
+        HamLE: function (el, done) {
+            Velocity(el, { right: "-20%", opacity: 0 }, { duration: 100 });
             Velocity(el, { display: "none" }, { complete: done });
         },
     },
@@ -210,32 +332,110 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-nav{
-    position: sticky;
+.delive-nav {
+    position: fixed;
     top: 0%;
     width: 100%;
-    z-index: 1000000000000;
+    z-index: 1000;
+    height: 80px;
+    background-color: white;
+    &>.container{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .logo-box {
+            display: flex;
+            align-items: center;
+            img {
+                width: 50px;
+            }
+        }
+        .navigation-option {
+            display: flex;
+            align-items: center;
+            column-gap: 15px;
+            .cart, .bar {
+                position: relative;
+                font-size: 25px;
+                cursor: pointer;
+            }
+            .nav-menu {
+                display: flex;
+                align-items: center;
+                .menu {
+                    margin: 0;
+                    list-style: none;
+                    .nav-item {
+                        display: inline-block;
+                        .nav-link {
+                            &:link, &:visited, &:hover, &:active {
+                                color: black;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                }
+            }
+            .hamburger-nav-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 40%;
+                height: 400%;
+                z-index: -100;
+                background-color: #ff4d31;
+                .hamburger{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    list-style: none;
+                    .nav-link {
+                        &:link, &:visited, &:hover, &:active {
+                            color: white;
+                            text-transform: uppercase;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }
 
-.w-5 {
-    width: 5%;
+.cart-container {
+    position: relative;
 }
+
 .cart-box {
-    opacity: 0;
-    position: fixed;
-    top: 10%;
-    right: 15.85%;
+    font-size: 1em;
+    position: absolute;
+    top: 20%;
+    right: 0;
     padding: 30px;
-    background-color: rgb(232, 232, 232);
-    list-style-type: none;
+    width: 500px;
+    opacity: 0;
+    background-color:  #ffc626;
+    border-radius: 20px 0px 20px 20px;
     .cart-item {
         margin: 1em 0;
         padding: 5px 16px;
+        display: flex;
+        justify-content: space-around;
         background-color: rgb(191, 191, 191);
         a {
             margin: 0 0.5em;
         }
     }
+    .row>a {
+        display: inline-block;
+    }
+}
+
+.cart-tail {
+    position: absolute;
+    font-size: 23px;
+    right: 0;
+    color: #ffc626;
 }
 
 
