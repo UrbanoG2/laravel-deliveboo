@@ -1,7 +1,7 @@
 <template>
-    <div class="">
+    <div class="background-img">
 
-        <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
+        <!-- <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
             <img class="image-banner" :src="restaurant.banner_img" alt="">
             
         </div>
@@ -9,25 +9,40 @@
             <div class="logo shadow-lg ">
                 <img  :src="restaurant.logo_img" alt="">
             </div>
-        </div>
+        </div> -->
         
 
         <div class="container container-main">
-            <div class="row">
+            <div class="row position-relative">
                 <div class="col mt-4 text-center">
-                    <h1 class="fw-bold ">{{restaurant.name}}</h1>
+                    <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
+                        <img class="image-banner col-12" :src="restaurant.banner_img" alt="">
+                        <div class="w-75 ">
+                            <div class="logo shadow-lg ">
+                                <img  :src="restaurant.logo_img" alt="">
+                            </div>
+                        </div>
+                    </div>
+                        
+                    
+                    
+                    <h1 class="fw-bold pt-4">{{restaurant.name}}</h1>
                     <h4 class="mt-3"><i class="fa-solid fa-location-dot"></i>&nbsp;{{restaurant.address}}</h4>
                     
                     <h4>{{restaurant.descrizione}}</h4>
                 </div>
+                <a class="btn btn-primary position-absolute home">
+                    <i class="fa-solid fa-arrow-right-to-bracket "></i>
+                </a>
 
             </div>
            
             
-            <div class="food">
-                <div v-for="(section, index) in plates" :key="index" class="row">
-                    <h1> {{ getNameSection(index) }}</h1>
-                    <div class="food-card col-12 col-md-4 col-lg-3 container" v-for="(plate, index) in section" :key="index">
+            <div class="food p-4">
+                <div v-for="(section, index) in plates" :key="index" class="row ">
+                    <h1 class="text-center"> {{ getNameSection(index) }}</h1>
+
+                    <div class="food-card col-10 col-md-3 col-lg-2 container " v-for="(plate, index) in section" :key="index">
                         <img
                             :src="plate.preview"
                             class="img-fluid image overlay "
@@ -50,6 +65,7 @@
                             
                         </div>
                     </div>
+                    
                 </div>
             </div>
             
@@ -158,23 +174,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.background-img{
+    // background-image: url('../../../public/images/background-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    //  background-color: white;
+    //  background: #ffe259;
+    // background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
+    // background: linear-gradient(to right, #ffa751, #ffe259); 
+    
+}
 
 .banner {
     height: 250px;
-    
+    background-size: cover;
     display: flex;
     align-items: center;
+    border-radius: 30px;
     .image-banner{
         width: 100%;
+        
         // height: 450px;
     }
     
 }
 .logo{
         position: absolute;
-        top: 24%;
-        left: 10%;
-        width: 10%;
+        top: 30%;
+        left: 5%;
+        width: 7%;
         border-radius: 50%;
         
         img{
@@ -188,13 +216,32 @@ export default {
         
     }
 .container-main{
-    margin-top: 100px;
+    margin-top: 50px;
     border: 2px solid #ffc626;
-    border-radius: 5%;
+    border-radius: 30px;
+    // background-color: #ffc626;
+    //  background-color: white;
+    background: #ffe259;
+    background: -webkit-linear-gradient(to bottom, #ffa751, #ffe259);  
+    background: linear-gradient(to bottom, #ffa751, #ffe259); 
+
+    .home{
+        top: 108%;
+        left: 85%;
+        width: 11%;
+        i{
+            transform: rotate(180deg);
+            font-size: 1.5em;
+        }
+    }
+    
 }
 
 .food {
     padding: 90px 0;
+    h1{
+        // background-color: orangered;
+    }
     
 }
 
@@ -210,6 +257,7 @@ export default {
         overflow: hidden;
         padding: 0;
         height: 250px;
+        width: 300px;
         img {
             // object-fit: contain;
             display: block;
@@ -256,13 +304,14 @@ export default {
 
     .container {
         position: relative;
-        width: 30%;
+        // width: 25%;
         margin-top: 0;
         
+        
         .image {
-        display: block;
-        width: 100%;
-        height: auto;
+            display: block;
+            width: 100%;
+            height: 100%;
         }
     }
 
