@@ -17,10 +17,21 @@
                 <p>
                     Ordine creato il: {{ $order->created_at }}
                 </p>
+<<<<<<< HEAD
                 <ul>
                     @foreach($plates as $plate)
                     <li>{{$plate->id}}</li>
                     @endforeach
+=======
+
+                <ul>
+                    @foreach ($plates as $plate)
+                        <li>
+                            {{ $plate->name }} {{ $plate->price }} &euro; {{ $order->quantity }}
+                        </li>
+                    @endforeach
+                    {{-- {{ $order->plate()->first()->name }} --}}
+>>>>>>> Dev
                 </ul>
             </div>
         </div>
