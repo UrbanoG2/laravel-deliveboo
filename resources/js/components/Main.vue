@@ -40,7 +40,7 @@
                     <div class="d-flex justify-content-center visita">
                         <div
                         class=" btn btn-color "
-                        @click="checkLastID(restaurant.id)"
+                        @click="checkLastID(restaurant.id, restaurant.slug)"
                     >
                         Visita
                     </div>
@@ -132,26 +132,28 @@ export default {
         changePage(vs) {
             this.$emit("changePage", vs);
         },
-        checkLastID(id) {
+        checkLastID(id,slug) {
             if (
                 this.lastIDRestaurant == id ||
                 localStorage.getItem("cart") == null
             ) {
                 let params = {
                     name: "restaurant",
-                    params: { id: id },
+                    params: { id: id, slug: slug },
                 };
                 this.newIDRestaurant = null;
+                this.newSLUGRestaurant = null;
                 this.$router.push(params);
             } else {
                 this.alertMessage = true;
                 this.newIDRestaurant = id;
+                this.newSLUGRestaurant = slug;
             }
         },
         removeCart() {
             let params = {
                 name: "restaurant",
-                params: { id: this.newIDRestaurant },
+                params: { id: this.newIDRestaurant, slug: this.newSLUGRestaurant },
             };
             this.alertMessage = false;
             EventBus.$emit("clear_cart");

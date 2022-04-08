@@ -76,9 +76,9 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $user = User::find($id);
+        $user = User::where("slug", "=", $slug)->first();
         $plates = $user->plates()->get();
         $plates = $plates->groupBy('tag_id');
         $tags = Tag::all();

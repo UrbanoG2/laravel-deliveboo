@@ -70,12 +70,17 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-
-        $plates = Plate::where("user_id", $order->id)->get();
-        // $data = [
-        //     'order' => $order,
-        // ];
-        return view('admin.orders.show', ["order" => $order , "plates" => $plates]);
+        $request = $order->id;
+        $reqData = Order::find($request);
+        $plates = $reqData->plates()->get();
+        foreach($plates as $plate){
+            $plate['quantity'] = $plate->pivot->quantity;
+        }
+        $data = [
+            'order' => $order,
+            'plates' => $plates,
+        ];
+        return view('admin.orders.show', $data);
     }
 
     /**
