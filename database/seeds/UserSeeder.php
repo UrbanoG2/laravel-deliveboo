@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
         $string = '12345678';
         $newUser->password = Hash::make($string);
         $newUser->address = $faker->address();
+        $newUser->descrizione = $faker->paragraph();
         $newUser->iva = $faker->numerify('###########');
         $newUser->logo_img = $faker->imageUrl(640, 480, 'logo', true);
         $newUser->banner_img = $faker->imageUrl(640, 480, 'banner', true);
@@ -37,7 +38,7 @@ class UserSeeder extends Seeder
                 'address' => 'Via Garibaldi, 13',
                 'descrizione'=> 'Specialità pugliesi in un locale rustico dalle pareti di pietra, con lampadari di ferro e travi a vista.',
                 'iva' => '60028970626',
-                'logo_img' => '/images/restaurant/la-taverna-ristorante-logo.jpg',
+                'logo_img' => '/images/restaurant/la-taverna-ristorante-logo.jpeg',
                 'banner_img' => '/images/restaurant/la-taverna-ristorante.jpg',
             ],
             [
@@ -140,6 +141,7 @@ class UserSeeder extends Seeder
             $string = '12345678';
             $newUser->password = Hash::make($string);
             $newUser->address = $user['address'];
+            $newUser->descrizione = $user['descrizione'];
             $newUser->iva = $user['iva'];
             $newUser->logo_img = $user['logo_img'];
             $newUser->banner_img = $user['banner_img'];

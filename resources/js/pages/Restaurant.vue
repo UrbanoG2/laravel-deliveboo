@@ -1,18 +1,29 @@
 <template>
-    <div>
+    <div class="">
 
-        <div class="container-fluid position-relative overflow-hidden p-0 m-0 banner">
-            <img class="w-100" :src="restaurant.banner_img" alt="">
+        <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
+            <img class="image-banner" :src="restaurant.banner_img" alt="">
+            
         </div>
+        <div class="w-75 ">
+            <div class="logo shadow-lg ">
+                <img  :src="restaurant.logo_img" alt="">
+            </div>
+        </div>
+        
 
-        <div class="container">
-
-
-            <div class="row info">
+        <div class="container container-main">
+            <div class="row">
+                <div class="col mt-4 text-center">
+                    <h1 class="fw-bold ">{{restaurant.name}}</h1>
+                    <h4 class="mt-3"><i class="fa-solid fa-location-dot"></i>&nbsp;{{restaurant.address}}</h4>
+                    
+                    <h4>{{restaurant.descrizione}}</h4>
+                </div>
 
             </div>
-
-
+           
+            
             <div class="food">
                 <div v-for="(section, index) in plates" :key="index" class="row">
                     <h1> {{ getNameSection(index) }}</h1>
@@ -41,9 +52,14 @@
                     </div>
                 </div>
             </div>
+            
 
 
         </div>
+        <div class="maps text-center mb-4 mt-4">
+                <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 250px; width: 50%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
     </div>
 </template>
 
@@ -144,14 +160,42 @@ export default {
 <style lang="scss" scoped>
 
 .banner {
-    height: 280px;
-    width: 100%;
+    height: 250px;
+    
     display: flex;
     align-items: center;
+    .image-banner{
+        width: 100%;
+        // height: 450px;
+    }
+    
+}
+.logo{
+        position: absolute;
+        top: 24%;
+        left: 10%;
+        width: 10%;
+        border-radius: 50%;
+        
+        img{
+            top: 0;
+            border-radius: 50%;
+            width: 100%;
+            
+            background-color: white;
+        }
+
+        
+    }
+.container-main{
+    margin-top: 100px;
+    border: 2px solid #ffc626;
+    border-radius: 5%;
 }
 
 .food {
-    padding: 120px 0;
+    padding: 90px 0;
+    
 }
 
 .food>div {
@@ -161,7 +205,7 @@ export default {
     padding: 20px 0;
     .food-card{
         position: relative;
-        
+        margin-top: 0;
         border-radius: 25px;
         overflow: hidden;
         padding: 0;
@@ -213,44 +257,46 @@ export default {
     .container {
         position: relative;
         width: 30%;
+        margin-top: 0;
+        
         .image {
         display: block;
         width: 100%;
         height: auto;
+        }
     }
-}
 
 
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 1;
-  transition: .5s ease;
-  background-color: grey;
-}
+    .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+    background-color: grey;
+    }
 
-.container:hover .overlay {
-  opacity: 0.3;
-  border: 3px solid red;
-  border-radius: 25px;
+    .container:hover .overlay {
+    opacity: 0.3;
+    border: 3px solid red;
+    border-radius: 25px;
 
-}
+    }
 
-.ingredienti{
-    display: none;
-}
+    .ingredienti{
+        display: none;
+    }
 
-.container:hover .ingredienti{
-    display: block;
-}
- 
-
+    .container:hover .ingredienti{
+        display: block;
+    }
+    
+    
 
  
 }

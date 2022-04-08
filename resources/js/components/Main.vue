@@ -16,7 +16,7 @@
 
                     </div>
                     
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title display-6 fw-bold ">
                             {{ restaurant.name }}
                         </h5>
@@ -24,6 +24,7 @@
                             <i class="fa-solid fa-location-dot"></i>&nbsp;
                             {{ restaurant.address }}
                         </p>
+                        <p class="fst-italic grey "> {{restaurant.descrizione}}</p>
                         <h5>Specialità del Ristorante</h5>
                         <ul
                             
@@ -34,6 +35,7 @@
                             
                             <li>{{ category.name }}</li>
                         </ul>
+                        
                     </div>
                     <div class="d-flex justify-content-center visita">
                         <div
@@ -217,8 +219,13 @@ img {
         }
         .visita{
             position: absolute;
-            top: 52%;
+            top: 45%;
             left: 70%;
+        }
+    }
+    .card-body{
+        p{
+            color: grey;
         }
     }
     
