@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <router-link class="nav-link" :to="{ name: 'home' }">
-                <img id="logo" class="w-5" :src="logo" alt="logo"
+                <img id="logo" class="my-logo" :src="logo" alt="logo"
             /></router-link>
 
             <button
@@ -80,7 +80,7 @@ export default {
             countQuantity: false,
             list: null,
             restaurantID: null,
-            logo: require("../../img/logo.png"),
+            logo: require("../../img/orizzontale.png"),
             menuItems: [
                 {
                     label: "Home",
@@ -217,8 +217,9 @@ nav{
     z-index: 1000000000000;
 }
 
-.w-5 {
-    width: 5%;
+.my-logo{
+    width: 20%;
+    padding: 10px;
 }
 .cart-box {
     opacity: 0;
