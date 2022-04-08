@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row g-4" v-if="cards != null">
+        <div class="row g-4" v-if="cards">
             <div
                 class="col-12 col-md-4"
                 v-for="(restaurant, index) in cards.restaurants"

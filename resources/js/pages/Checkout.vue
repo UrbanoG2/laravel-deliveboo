@@ -38,7 +38,7 @@
                     
                 >
                     <template v-slot:button="slotProps">
-                        <v-btn class="brain_btn" @click="slotProps.submit" color="success">Pay</v-btn>
+                        <a class="brain_btn" @click="slotProps.submit" color="success">Pay</a>
                     </template>
                 >
                 </v-braintree>

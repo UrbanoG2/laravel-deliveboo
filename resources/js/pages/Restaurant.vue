@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div v-if="restaurant != null" class="">
 
         <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
             <img class="image-banner" :src="restaurant.banner_img" alt="">

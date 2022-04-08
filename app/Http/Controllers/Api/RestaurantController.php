@@ -50,13 +50,6 @@ class RestaurantController extends Controller
 
         $users = User::where('id', '>', 0);
 
-        if (
-            array_key_exists('orderbycolumn', $data) &&
-            array_key_exists('orderbysort', $data)
-        ) {
-            $users->orderBy($data['orderbycolumn'], $data['orderbysort']);
-        }
-
         if (array_key_exists('categories', $data)) {
             foreach ($data['categories'] as $category) {
                 $users->whereHas('categories', function (Builder $query) use ($category) {
