@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Plate;
 
 class OrderController extends Controller
 {
@@ -69,10 +70,12 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $data = [
-            'order' => $order,
-        ];
-        return view('admin.orders.show', $data);
+
+        $plates = Plate::where("user_id", $order->id)->get();
+        // $data = [
+        //     'order' => $order,
+        // ];
+        return view('admin.orders.show', ["order" => $order , "plates" => $plates]);
     }
 
     /**
