@@ -238,7 +238,7 @@ export default {
 
 .food {
     padding: 90px 0;
-    h1{
+    h1 {
         // background-color: orangered;
     }
     
