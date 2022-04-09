@@ -17,19 +17,6 @@ class UserSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        $newUser = new User();
-        $newUser->name = 'Admin';
-        $newUser->slug = Str::slug($newUser->name . '-' . 666, '-');
-        $newUser->email = 'Admin@admin.it';
-        $string = '12345678';
-        $newUser->password = Hash::make($string);
-        $newUser->address = $faker->address();
-        $newUser->descrizione = $faker->paragraph();
-        $newUser->iva = $faker->numerify('###########');
-        $newUser->logo_img = $faker->imageUrl(640, 480, 'logo', true);
-        $newUser->banner_img = $faker->imageUrl(640, 480, 'banner', true);
-        $newUser->save();
-
         $restaurantList = [
             [
                 'name' => 'La Taverna',

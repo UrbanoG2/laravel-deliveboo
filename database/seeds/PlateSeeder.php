@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 use App\Plate;
+use App\User;
 
 
 class PlateSeeder extends Seeder
@@ -407,7 +408,7 @@ class PlateSeeder extends Seeder
             // aggiunta dessert
 
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Pancakes',
                 'description' => "Pancakes americani con frutta e cioccolato",
                 'price' => '6',
@@ -416,7 +417,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pancakes.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Torta Mimosa',
                 'description' => "Soffice pan di spagna aromatizzato al limone",
                 'price' => '10',
@@ -425,7 +426,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/torta-mimosa.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Torta al cioccolato',
                 'description' => "Torta a tre diversi tipi di cioccolato",
                 'price' => '10',
@@ -434,7 +435,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/torta-al-cioccolato.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Sacher Torte',
                 'description' => "Torta Sacher farcita con marmellata alle pesche, ricoperta di cioccolato fondente",
                 'price' => '16',
@@ -443,7 +444,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/sacher-torte.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Cannolo siciliano',
                 'description' => "Ricotta, cioccolato, zucchero, pistacchio",
                 'price' => '13',
@@ -452,7 +453,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/cannolo-siciliano.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Cheesecake alla fragola',
                 'description' => "Fragole, formaggio spalmabile, panna, uova, burro",
                 'price' => '7',
@@ -461,7 +462,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/cheesecake-alla-fragola.jpg',
             ],
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Devil cake',
                 'description' => "Cioccolato fondente, panna, fecola di patate, cacao",
                 'price' => '6',
@@ -471,7 +472,7 @@ class PlateSeeder extends Seeder
             ],
         
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Tiramisù',
                 'description' => "Caffè, savoiardi, mascarpone, uova, cacao",
                 'price' => '6',
@@ -481,7 +482,7 @@ class PlateSeeder extends Seeder
             ],
         
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Crostata di ciliegie',
                 'description' => "Ciliegie, zucchero, limone, vaniglia, burro, farina",
                 'price' => '5',
@@ -491,7 +492,7 @@ class PlateSeeder extends Seeder
             ],
         
             [
-                'tag_id' => 5,
+                'tag_id' => 8,
                 'name' => 'Bavarese al mandarino',
                 'description' => "Panna, gelatina, latte, tuorli d'uovo, zucchero, baccello di vaniglia, mandarino",
                 'price' => '5',
@@ -505,7 +506,7 @@ class PlateSeeder extends Seeder
 
             // sezione pizze
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Marinara',
                 'description' => "Pomodoro S.Marzano, aglio, origano, basilico, olio Evo",
                 'price' => '6',
@@ -514,7 +515,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pizza-marinara.jpg',    /*    /images/restaurant/pizza-marinara.jpg    */
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Margherita',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, basilico, olio Evo",
                 'price' => '6',
@@ -523,7 +524,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pizza-margherita.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Americana',
                 'description' => "Pomodoro S.Marzano, Fior di Latte, Patatine, basilico, olio Evo",
                 'price' => '8',
@@ -532,7 +533,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pizza-americana.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Napoli',
                 'description' => "Pomodoro S.Marzano DOP, Fior di Latte, Olive di Gaeta, Acciughe di Sciacca",
                 'price' => '8',
@@ -541,7 +542,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pizza-napoli.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Bufalina',
                 'description' => "Pomodoro S.Marzano DOP, Bufala Campana DOP, basilico, olio Evo",
                 'price' => '8',
@@ -550,7 +551,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/pizza-Bufala.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Focaccia',
                 'description' => "Focaccia, Sale, Olio, ingredienti a scelta",
                 'price' => '5',
@@ -559,7 +560,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/focaccia.png',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Capricciosa',
                 'description' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive",
                 'price' => '7',
@@ -568,7 +569,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/capricciosa.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Quattro formaggi',
                 'description' => "Mozzarella, parmigiano, gorgonzola e provola (quarto formaggio variabile)",
                 'price' => '6',
@@ -577,7 +578,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/quattro-formaggi.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Quattro stagioni',
                 'description' => "Pomodoro, mozzarella, carciofi, prosciutto cotto, funghi e olive. Condimento diviso in quattro spicchi.",
                 'price' => '8',
@@ -586,7 +587,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/quattro-stagioni.jpg',
             ],
             [
-                'tag_id' => 6,
+                'tag_id' => 4,
                 'name' => 'Diavola',
                 'description' => "Pomodoro, mozzarella e salame piccante",
                 'price' => '8',
@@ -602,7 +603,7 @@ class PlateSeeder extends Seeder
             //sezione hamburger
             [
                 'user_id' => 8,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Hamburger di Pollo Kid',
                 'description' => "Petto di pollo, lattuga, pepe bianco, timo",
                 'price' => '6',
@@ -612,7 +613,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Classico',
                 'description' => "Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'price' => '6',
@@ -622,7 +623,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Hamburger di Pollo',
                 'description' => "Pane al Sesamo, Petto di Pollo impanato, Insalata, Pomodoro, *salse",
                 'price' => '6',
@@ -632,7 +633,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'BaconBurger',
                 'description' => "Pane al Sesamo, Hamburger di Maiale, Formaggio, Bacon, *salse",
                 'price' => '6',
@@ -642,7 +643,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Carbonaro',
                 'description' => "Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'price' => '6',
@@ -652,7 +653,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 10,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Veggie Burger',
                 'description' => "Lenticchie secche, sale fino, paprika dolce, uova, erba cipollina, pepe nero",
                 'price' => '8',
@@ -662,7 +663,7 @@ class PlateSeeder extends Seeder
             ],
             [
                 'user_id' => 4,
-                'tag_id' => 7,
+                'tag_id' => 5,
                 'name' => 'Hamburger di ceci',
                 'description' => "Pane al Sesamo, Hamburger di Ceci, Formaggio, Bacon, *salse",
                 'price' => '8',
@@ -675,7 +676,7 @@ class PlateSeeder extends Seeder
 
             //sezione vegetariana
             [ 
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Veggie Burger',
                 'description' => "Lenticchie secche, sale fino, paprika dolce, uova, erba cipollina, pepe nero",
                 'price' => '8',
@@ -684,7 +685,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/veggie-burger.jpg',
             ],
             [
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Hamburger di ceci',
                 'description' => "Pane al Sesamo, Hamburger di Ceci, Formaggio, Bacon, *salse",
                 'price' => '8',
@@ -693,7 +694,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/hamburger-di-ceci.jpg',
             ],
             [
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Verdure Grigliate',
                 'description' => "Zucchine, Melanzane, Zucca, Peperoni, Olio, Sale, Prezzemolo",
                 'price' => '5',
@@ -702,7 +703,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/verdure-grigliate.jpg',
             ],
             [
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Patate al Forno',
                 'description' => "Patate, Rosmarino, Olio, Sale",
                 'price' => '5',
@@ -711,7 +712,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/patate-al-forno.webp',
             ],
             [
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Samosa',
                 'description' => "Triangolo fritto, ripieno di verdure ",
                 'price' => '6',
@@ -720,7 +721,7 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/restaurant/samosa.jpg',
             ],
             [
-                'tag_id' => 9,
+                'tag_id' => 7,
                 'name' => 'Involtini di Melanzane al forno',
                 'description' => "Involtini di Melanzane con Pomodoro e Zucca",
                 'price' => '8',
@@ -728,55 +729,11 @@ class PlateSeeder extends Seeder
                 'visible' => true,
                 'preview' => '/images/restaurant/involtini-di-melanzane-al-forno.jpg',
             ],
-            [ 
-                'tag_id' => 9,
-                'name' => 'Pancakes',
-                'description' => "Pancakes americani con frutta e cioccolato",
-                'price' => '6',
-                'ingredients' =>"Pancakes americani con frutta e cioccolato",
-                'visible' => true,
-                'preview' => '/images/restaurant/pancakes.jpg',
-            ],
-            [ 
-                'tag_id' => 9,
-                'name' => 'Torta Mimosa',
-                'description' => "Soffice pan di spagna aromatizzato al limone",
-                'price' => '10',
-                'ingredients' =>"Soffice pan di spagna aromatizzato al limone",
-                'visible' => true,
-                'preview' => '/images/restaurant/torta-mimosa.jpg',
-            ],
-            [ 
-                'tag_id' => 9,
-                'name' => 'Torta al cioccolato',
-                'description' => "Torta a tre diversi tipi di cioccolato",
-                'price' => '10',
-                'ingredients' =>"Torta a tre diversi tipi di cioccolato",
-                'visible' => true,
-                'preview' => '/images/restaurant/torta-al-cioccolato.jpg',
-            ],
-            [ 
-                'tag_id' => 9,
-                'name' => 'Torta al cioccolato',
-                'description' => "Torta a tre diversi tipi di cioccolato",
-                'price' => '10',
-                'ingredients' =>"Torta a tre diversi tipi di cioccolato",
-                'visible' => true,
-                'preview' => '/images/restaurant/torta-al-cioccolato.jpg',
-            ],
-            [ 
-                'tag_id' => 9,
-                'name' => 'Insalata di Spinaci',
-                'description' => "Spinaci, Pere, Noci, Melograno, Feta",
-                'price' => '10',
-                'ingredients' =>"Spinaci, Pere, Noci, Melograno, Feta",
-                'visible' => true,
-                'preview' => '/images/restaurant/insalata-spinaci.jpg',
-            ],
 
             // sezione sushi
 
             [
+<<<<<<< HEAD
                 'tag_id' => 8,
                 'name' => 'Temaki Roll',
                 'description' => "Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
@@ -841,18 +798,92 @@ class PlateSeeder extends Seeder
             ],
             [
                 'tag_id' => 8,
+=======
+                'tag_id' => 6,
+               'name' => 'Temaki Roll',
+               'description' => "Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
+               'price' => '5',
+               'ingredients' =>"Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
+               'visible' => true,
+               'preview' => '/images/restaurant/temaki-roll.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Sashimi di salmone',
+               'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'price' => '12',
+               'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'visible' => true,
+               'preview' => '/images/restaurant/sashimi-salmone.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Sashimi di tonno',
+               'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'price' => '12',
+               'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'visible' => true,
+               'preview' => '/images/restaurant/sashimi-tonno.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Sashimi di Anguilla',
+               'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'price' => '12',
+               'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
+               'visible' => true,
+               'preview' => '/images/restaurant/sashimi-anguilla.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Uramaki Roll',
+               'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'price' => '8',
+               'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'visible' => true,
+               'preview' => '/images/restaurant/uramaki-roll.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Nigiri',
+               'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'price' => '8',
+               'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'visible' => true,
+               'preview' => '/images/restaurant/nigiri.jpg',
+           ],
+           [
+                'tag_id' => 6,
+               'name' => 'Hosomaki',
+               'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'price' => '8',
+               'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
+               'visible' => true,
+               'preview' => '/images/restaurant/hosomaki.jpg',
+           ],
+           [
+                'tag_id' => 6,
+>>>>>>> origin/Dev
                 'name' => 'Futumaki',
                 'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
                 'price' => '8',
                 'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
                 'visible' => true,
                 'preview' => '/images/restaurant/futumaki.jpg',
+<<<<<<< HEAD
             ],
+=======
+           ],
+>>>>>>> origin/Dev
 
 
             //   sezione bevande
             [
+<<<<<<< HEAD
                 'tag_id' => 10,
+=======
+                'tag_id' => 9,
+>>>>>>> origin/Dev
                 'name' => 'Acqua Gasata',
                 'description' => " acqua potabile nella quale è stata immessa anidride carbonica",
                 'price' => '3',
@@ -861,7 +892,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/acqua-gasata.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 10,
+=======
+                'tag_id' => 9,
+>>>>>>> origin/Dev
                 'name' => 'Acqua Minerale',
                 'description' => " acqua potabile naturale",
                 'price' => '3',
@@ -870,7 +905,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/acqua-naturale.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 10,
+=======
+                'tag_id' => 9,
+>>>>>>> origin/Dev
                 'name' => 'Coca-cola',
                 'description' => "una bevanda industriale analcolica di tipo bibita",
                 'price' => '4',
@@ -879,7 +918,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/coca-cola.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 10,
+=======
+                'tag_id' => 9,
+>>>>>>> origin/Dev
                 'name' => 'Fanta',
                 'description' => "Fanta è una bibita di aranciata prodotta dalla The Coca-Cola Company.",
                 'price' => '4',
@@ -889,7 +932,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/fanta.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 10,
+=======
+                'tag_id' => 9,
+>>>>>>> origin/Dev
                 'name' => 'Pepsi',
                 'description' => "La Pepsi-Cola, più comunemente conosciuta come Pepsi, è una bevanda analcolica di tipo soft drink prodotta dalla PepsiCo",
                 'price' => '4',
@@ -902,7 +949,11 @@ class PlateSeeder extends Seeder
 
             // sezione vini
             [
+<<<<<<< HEAD
                 'tag_id' => 4,
+=======
+                'tag_id' => 10,
+>>>>>>> origin/Dev
                 'name' => 'Chardonnay',
                 'description' => " Lo Chardonnay è il vitigno a bacca bianca più famoso al mondo. Le sue caratteristiche enologiche fanno si che con lo Chardonnay si possano tipologie di vini bianchi, anche molto diverse tra loro",
                 'price' => '55',
@@ -911,7 +962,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/vino-chardonnay.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 4,
+=======
+                'tag_id' => 10,
+>>>>>>> origin/Dev
                 'name' => 'Due Palme',
                 'description' => "Colore rosso rubino cupo con intensi riflessi violacei, note fruttate con sentori speziati ed eterei. al palato è morbido, giustamente tannico, di buona struttura e decisa persistenza gusto-olfattiva",
                 'price' => '22',
@@ -920,7 +975,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/vino-due-palme.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 4,
+=======
+                'tag_id' => 10,
+>>>>>>> origin/Dev
                 'name' => 'Grange',
                 'description' => "Nato in via sperimentale nel 1951 e inizialmente prodotto quasi di nascosto, è diventato in breve tempo il più celebre e desiderato vino di tutta l'Australia",
                 'price' => '30',
@@ -929,7 +988,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/vino-grange.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 4,
+=======
+                'tag_id' => 10,
+>>>>>>> origin/Dev
                 'name' => 'Marchesi',
                 'description' => "Nel cuore delle Langhe, protette da dolci colline, si trovano le Cantine dei Marchesi di Barolo, la cui storia ha inizio più di due secoli fa, più precisamente nel 1807",
                 'price' => '15',
@@ -938,7 +1001,11 @@ class PlateSeeder extends Seeder
                 'preview' => '/images/bevande/vino-marchesi.jpg',
             ],
             [
+<<<<<<< HEAD
                 'tag_id' => 4,
+=======
+                'tag_id' => 10,
+>>>>>>> origin/Dev
                 'name' => 'Sassicaia',
                 'description' => "Il Bolgheri Sassicaia, comunemente noto come Sassicaia, è un vino DOC la cui produzione è consentita in una specifica zona del comune di Castagneto Carducci nella provincia di Livorno",
                 'price' => '8',
@@ -946,39 +1013,70 @@ class PlateSeeder extends Seeder
                 'visible' => true,
                 'preview' => '/images/bevande/vino-sassicaia.jpg',
             ],
+<<<<<<< HEAD
+=======
+
+            
+>>>>>>> origin/Dev
 
 
         ];
 
-        foreach($plates as $key=>$plate) 
-        {
-            $newPlate = new Plate();
-            $newPlate->name = $plate['name'];
-            $newPlate->slug = Str::slug($newPlate->name . '-' . $key, '-');
-            $newPlate->user_id = $plate['user_id'];
-            $newPlate->tag_id = $plate['tag_id'];
-            $newPlate->description = $plate['description'];
-            $newPlate->price = $plate['price'];
-            $newPlate->ingredients = $plate['ingredients'];
-            $newPlate->visible = 1;
-            $newPlate->preview = $plate['preview'];
-            $newPlate->save();
+        
+        $users = User::all();
+        foreach ($users as $key => $user) {
+            $index = $user->id;
+            $completePlate = $plates;
+            switch (true) {
+                case $index == 1 || $index == 3 || $index == 4:
+                    // italiano, pizzeria, dolci
+                    $filtredPlates = array_filter($completePlate, function($v, $k) {
+                        return $v['tag_id'] == 1 || $v['tag_id'] == 2 || $v['tag_id'] == 3 || $v['tag_id'] == 4 || $v['tag_id'] == 8 || $v['tag_id'] == 9 || $v['tag_id'] == 10;
+                    }, ARRAY_FILTER_USE_BOTH);
+                    break;
+                case $index == 2 || $index == 8:
+                    // pizzeria
+                    $filtredPlates = array_filter($completePlate, function($v, $k) {
+                        return $v['tag_id'] == 1 || $v['tag_id'] == 4 || $v['tag_id'] == 9;
+                    }, ARRAY_FILTER_USE_BOTH);
+                    break;
+                case $index == 6 || $index == 7:
+                    // burger, dolci
+                    $filtredPlates = array_filter($completePlate, function($v, $k) {
+                        return $v['tag_id'] == 1 || $v['tag_id'] == 5 || $v['tag_id'] == 8 || $v['tag_id'] == 10;
+                    }, ARRAY_FILTER_USE_BOTH);
+                    break;
+                case $index == 9:
+                    // vegetariano, dolci
+                    $filtredPlates = array_filter($completePlate, function($v, $k) {
+                        return $v['tag_id'] == 7 || $v['tag_id'] == 8 || $v['tag_id'] == 9 || $v['tag_id'] == 10;
+                    }, ARRAY_FILTER_USE_BOTH);
+                    break;
+                case $index == 5 || $index == 10:
+                    // giapponese, dolci
+                    $filtredPlates = array_filter($completePlate, function($v, $k) {
+                        return $v['tag_id'] == 6 || $v['tag_id'] == 8 || $v['tag_id'] == 9 || $v['tag_id'] == 10;
+                    }, ARRAY_FILTER_USE_BOTH);
+                    break;
+
+                
+            }
+            $rand_int = random_int(1,100) * random_int(1,100);
+            foreach ($filtredPlates as $key => $plate) {
+                $rand = $index * $rand_int / random_int(1,10);
+                $newPlate = new Plate();
+                $newPlate->name = $plate['name'];
+                $newPlate->slug = Str::slug($newPlate->name . '-' . $key . '-' . $rand);
+                $newPlate->user_id = $index;
+                $newPlate->tag_id = $plate['tag_id'];
+                $newPlate->description = $plate['description'];
+                $newPlate->price = $plate['price'];
+                $newPlate->ingredients = $plate['ingredients'];
+                $newPlate->visible = 1;
+                $newPlate->preview = $plate['preview'];
+                $newPlate->save();
+            }
         }
 
-        // for ($i = 0; $i < 1; $i++) {
-        //     for ($x = 0; $x < 5; $x++) {
-        //         $newPlate = new Plate();
-        //         $newPlate->user_id = $i + 1;
-        //         $newPlate->tag_id = $faker->numberBetween(1, 7);
-        //         $newPlate->name = $faker->words(2, true);
-        //         $newPlate->slug = Str::slug($newPlate->name . '-' . $i, '-');
-        //         $newPlate->description = $faker->paragraph(5, true);
-        //         $newPlate->price = $faker->randomFloat(null, 0, 1000);
-        //         $newPlate->ingredients = $faker->paragraph(3, true);
-        //         $newPlate->visible = $faker->boolean();
-        //         $newPlate->preview = $faker->imageUrl(640, 480, 'food', true);
-        //         $newPlate->save();
-        //     }
-        // }
     }
 }
