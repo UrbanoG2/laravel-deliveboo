@@ -17,66 +17,38 @@ class CategorySeeder extends Seeder
 
             [
                 'id' => 1,
-                'name' => 'Italian',
+                'name' => 'Italiano',
                 'img_category'=> '/images/category/italian.png',
-                
-                
             ],
             [
                 'id' => 2,
-                'name' => 'Chinese',
-                'img_category'=> '/images/category/chinese.png'
-                
+                'name' => 'Giapponese',
+                'img_category'=> '/images/category/japanese.png'
             ],
             [
                 'id' => 3,
-                'name' => 'Fish',
-                'img_category'=> '/images/category/seafood.png'
-                
-            ],
+                'name' => 'Vegetariano',
+                'img_category'=> '/images/category/healthy.png',
+            ], 
             [
                 'id' => 4,
-                'name' => 'Vegetarian',
-                'img_category'=> '/images/category/healthy.png',
-                
-            ],
-            [
-                'id' => 5,
-                'name' => 'Indian',
-                'img_category'=> '/images/category/indian.png',
-                
-            ],
-            [
-                'id' => 6,
-                'name' => 'Chicken',
-                'img_category'=> '/images/category/american.png',
-                
-            ],
-            [
-                'id' => 7,
-                'name' => 'Pizza',
+                'name' => 'Pizzeria',
                 'img_category'=> '/images/category/pizza.png',
                 
             ],
             [
-                'id' => 8,
-                'name' => 'Dessert',
-                'img_category'=> '/images/category/japanese.png',
-                
+                'id' => 5,
+                'name' => 'Dolci',
+                'img_category'=> '/images/category/japanese.png',  
             ],
             [
-                'id' => 9,
-                'name' => 'Burgers',
+                'id' => 6,
+                'name' => 'Burger',
                 'img_category'=> '/images/category/burger.png',
-            
             ],
+
         ];
-    //     for ($i = 0; $i < 8; $i++) {
-    //         $newCategory = new Category();
-    //         $newCategory->name = $faker->words(2, true);
-    //         $newCategory->save();
-    //     }
-    // }
+     
      foreach($restaurantCategory as $key=>$category)  {
             $newCategory = new Category();
             $newCategory->name = $category['name'];
