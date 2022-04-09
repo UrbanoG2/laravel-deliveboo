@@ -733,72 +733,6 @@ class PlateSeeder extends Seeder
             // sezione sushi
 
             [
-<<<<<<< HEAD
-                'tag_id' => 8,
-                'name' => 'Temaki Roll',
-                'description' => "Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
-                'price' => '5',
-                'ingredients' =>"Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
-                'visible' => true,
-                'preview' => '/images/restaurant/temaki-roll.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Sashimi di salmone',
-                'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'price' => '12',
-                'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'visible' => true,
-                'preview' => '/images/restaurant/sashimi-salmone.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Sashimi di tonno',
-                'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'price' => '12',
-                'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'visible' => true,
-                'preview' => '/images/restaurant/sashimi-tonno.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Sashimi di Anguilla',
-                'description' => "Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'price' => '12',
-                'ingredients' =>"Salmone o Tonno fresco abbattuto con Salsa di Soia agli Agrumi",
-                'visible' => true,
-                'preview' => '/images/restaurant/sashimi-anguilla.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Uramaki Roll',
-                'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'price' => '8',
-                'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'visible' => true,
-                'preview' => '/images/restaurant/uramaki-roll.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Nigiri',
-                'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'price' => '8',
-                'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'visible' => true,
-                'preview' => '/images/restaurant/nigiri.jpg',
-            ],
-            [
-                'tag_id' => 8,
-                'name' => 'Hosomaki',
-                'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'price' => '8',
-                'ingredients' =>"Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
-                'visible' => true,
-                'preview' => '/images/restaurant/hosomaki.jpg',
-            ],
-            [
-                'tag_id' => 8,
-=======
                 'tag_id' => 6,
                'name' => 'Temaki Roll',
                'description' => "Salmone, Riso, Avocado, Philadelphia, Alga Nori, Maionese",
@@ -863,7 +797,6 @@ class PlateSeeder extends Seeder
            ],
            [
                 'tag_id' => 6,
->>>>>>> origin/Dev
                 'name' => 'Futumaki',
                 'description' => "Roll di Riso con Salmone, Tonno o Gamberi, Avocado",
                 'price' => '8',
