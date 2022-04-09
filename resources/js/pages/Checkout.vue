@@ -187,9 +187,13 @@ export default {
 
     },
     watch: {
-        list:
-            function() {
-                this.getTotPrice();
+        list: {
+                handler()
+                {
+                    this.getTotPrice();
+                    console.log("ciao");
+                },
+                deep: true,
             }
     }
 
