@@ -1,12 +1,7 @@
 <template>
     <div class="total d-flex justify-content-center">
-<<<<<<< HEAD
         <div class="row p-4 big_container margin-top mb-4">
-            <div class="col-8">
-=======
-        <div class="row p-4 big_container mt-4 mb-4">
             <div class="col-5">
->>>>>>> origin/Dev
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
                         <div class="input-group mb-3 form-outline">
@@ -73,19 +68,11 @@
                             </td>
                             <td><a class="trash" @click="EditCheckout('remove', item)"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>{{totPrice}}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                {{totPrice}}
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+                <div>
+                    <p>Prezzo Totale: {{totPrice}}&euro; </p>
+                </div>
             </div>
         </div>
     </div>
