@@ -1,82 +1,66 @@
 <template>
-    <div class="background-img">
-
-        <!-- <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
-            <img class="image-banner" :src="restaurant.banner_img" alt="">
-            
-        </div>
-        <div class="w-75 ">
-            <div class="logo shadow-lg ">
-                <img  :src="restaurant.logo_img" alt="">
-            </div>
-        </div> -->
-        
-
-        <div class="container container-main">
-            <div class="row position-relative">
-                <div class="col mt-4 text-center">
-                    <div class="container-fluid  overflow-hidden  p-0 m-0 banner position-relative">
-                        <img class="image-banner col-12" :src="restaurant.banner_img" alt="">
-                        <div class="w-75 ">
-                            <div class="logo shadow-lg ">
-                                <img  :src="restaurant.logo_img" alt="">
-                            </div>
-                        </div>
+    <div class="container-fluid my-padding">
+        <div class="container white p-0">
+            <div class="relative">
+                <div class="my-banner">
+                    <img :src="restaurant.banner_img" alt="">
+                </div>
+                <div class="my-absolute-logo shadow">
+                    <img  :src="restaurant.logo_img" alt="">
+                </div>
+                <div class="title">
+                    <div class="name">
+                        <h1 class="fw-bold">{{restaurant.name}}</h1>
                     </div>
-                        
-                    
-                    
-                    <h1 class="fw-bold pt-4">{{restaurant.name}}</h1>
-                    <h4 class="mt-3"><i class="fa-solid fa-location-dot"></i>&nbsp;{{restaurant.address}}</h4>
-                    
+                    <div class="address">
+                        <h4 class="mt-1"><i class="fa-solid fa-location-dot"></i>&nbsp;{{restaurant.address}}</h4>
+                    </div>
+                </div>            
+            </div>
+            <div class="content text-center p-5">
+                <div class="mb-4">
                     <h4>{{restaurant.descrizione}}</h4>
                 </div>
-                <a class="btn btn-primary position-absolute home">
-                    <i class="fa-solid fa-arrow-right-to-bracket "></i>
-                </a>
-
-            </div>
-           
-            
-            <div class="food p-4">
-                <div v-for="(section, index) in plates" :key="index" class="row ">
-                    <h1 class="text-center"> {{ getNameSection(index) }}</h1>
-
-                    <div class="food-card col-10 col-md-3 col-lg-2 container " v-for="(plate, index) in section" :key="index">
-                        <img
-                            :src="plate.preview"
-                            class="img-fluid image overlay "
-                            :alt="plate.name"
-                        />
-                        <div class="food-info  ">
-                            <h3 class="bold">{{ plate.name }}</h3>
-                            
-                            <div class="food-info ingredienti ">
-                                <p class="ms-2">
-                                    {{ plate.ingredients }}
-                                </p>
-                                <h6 class="ms-1">{{ plate.price }} &euro;</h6>
-                                <a
-                                    class="btn-add-cart"
-                                    @click="addItemToCart(plate.id, plate.price, plate.name)"
-                                    ><i class="fa-solid fa-plus"></i>
-                                </a>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
+                <div class="section-title pt-5">
+                    <h3 class="fw-bold">Menù</h3>
                 </div>
-            </div>
-            
-
-
+                <div class="container">
+                            <div v-for="(section, index) in plates" :key="index" class="row row-col-3 mt-3 p-5 pt-0">
+                            <div class="mt-4 mb-4">
+                                <h4 class="section-subtitle text-center fw-bold"> {{ getNameSection(index) }}</h4>
+                            </div>
+                            <div v-for="(plate, index) in section" :key="index" class="col-4 mb-4">
+                                <div class="my-card relative">
+                                    
+                                    <img
+                                        :src="plate.preview"
+                                        class="img-box"
+                                        :alt="plate.name"
+                                    />
+                                    <div class="overlay">
+                                        <h3 class="bold">{{ plate.name }}</h3>
+                                        <div class="food-info ingredienti ">
+                                            <p class="ms-2">
+                                                {{ plate.ingredients }}
+                                            </p>
+                                            <h6 class="ms-1">{{ plate.price }} &euro;</h6>
+                                            <a
+                                                class="btn-add-cart"
+                                                @click="addItemToCart(plate.id, plate.price, plate.name)"
+                                                ><i class="fa-solid fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="maps text-center mb-4 mt-4">
+                    <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 250px; width: 50%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>        
         </div>
-        <div class="maps text-center mb-4 mt-4">
-                <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 250px; width: 50%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            </div>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -173,180 +157,94 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.background-img{
-    // background-image: url('../../../public/images/background-2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    //  background-color: white;
-    //  background: #ffe259;
-    // background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
-    // background: linear-gradient(to right, #ffa751, #ffe259); 
-    
-}
-
-.banner {
-    height: 250px;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    .image-banner{
-        width: 100%;
-        
-        // height: 450px;
+.my-padding{
+    // padding-top: 100px;
+    padding: 80px  0px;
+    padding-bottom: 0px;
+    background-color: #fafafa;
+    .white{
+        background-color: white;
     }
-    
-}
-.logo{
-        position: absolute;
-        top: 30%;
-        left: 5%;
-        width: 7%;
-        border-radius: 50%;
-        
-        img{
-            top: 0;
+    .relative{
+        position: relative;
+        .my-absolute-logo{
+            margin: 0 auto;
+            transform: translate(-0, -50%);
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            width: 100%;
-            
-            background-color: white;
-        }
-
-        
-    }
-.container-main{
-    margin-top: 50px;
-    border: 2px solid #ffc626;
-    border-radius: 30px;
-    // background-color: #ffc626;
-    //  background-color: white;
-    background: #ffe259;
-    background: -webkit-linear-gradient(to bottom, #ffa751, #ffe259);  
-    background: linear-gradient(to bottom, #ffa751, #ffe259); 
-
-    .home{
-        top: 108%;
-        left: 85%;
-        width: 11%;
-        i{
-            transform: rotate(180deg);
-            font-size: 1.5em;
-        }
-    }
-    
-}
-
-.food {
-    padding: 90px 0;
-    h1 {
-        // background-color: orangered;
-    }
-    
-}
-
-.food>div {
-    column-gap: 20px;
-    row-gap: 20px;
-    z-index: 300;
-    padding: 20px 0;
-    .food-card{
-        position: relative;
-        margin-top: 0;
-        border-radius: 25px;
-        overflow: hidden;
-        padding: 0;
-        height: 250px;
-        width: 300px;
-        img {
-            // object-fit: contain;
-            display: block;
-            margin: auto ;
-            height: 20%;
-            // width: 100%;
-        }
-        .food-info {
-            position: absolute;
-            z-index: 500;
-            height: 100%;
-            width: 100%;
-            top: 0%;
-            border-radius: 25px;
-            padding: 10px;
-            .ingredienti{
-                color: black;
-                font-size: 1.2em;
-                
-                margin-top: 25%;
-                
-            }
-            .btn-add-cart{
-                background-color: #ffc626;
-                color: black;
-                padding: 10px 15px;
-                border-radius: 5px;
-                text-decoration: none;
-            }
-            .bold{
+            img{
+                border-radius: 50%;
                 width: 100%;
-                text-align: center;
-                margin: 0 auto;
-                font-weight: bold;
-                background-color: rgba(233, 243, 252, 0.411);
-                
+                height: 100%; 
+                object-fit: cover;
             }
         }
-       
-    }
-
-
-
-
-    .container {
-        position: relative;
-        // width: 25%;
-        margin-top: 0;
-        
-        
-        .image {
-            display: block;
-            width: 100%;
-            height: 100%;
+        .title{
+            margin: 0 auto;
+            text-align: center;
+            transform: translate(-0, -70%);
+            .name{
+                h1{
+                    font-size: 3em;
+                }
+            }
+            .address{
+                h4{
+                    color: lightgrey;
+                    font-size: 1.2em;
+                }
+            }
         }
     }
-
-
-
-    .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-    transition: .5s ease;
-    background-color: grey;
+    .my-banner{
+        height: 400px;
+        width: 100%;
+        padding: 0;
+        img{
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+        }
     }
-
-    .container:hover .overlay {
-    opacity: 0.3;
-    border: 3px solid red;
-    border-radius: 25px;
-
+    .my-card{
+        width: 316px;
+        height: 316px;
+        position: relative;
+        .img-box{
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+        }
+        .overlay{
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            color: white;
+        }
     }
-
-    .ingredienti{
-        display: none;
+    .my-card:hover .overlay{
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-
-    .container:hover .ingredienti{
-        display: block;
+    .section-title{
+        h3{
+            font-size: 3em;
+        }
     }
-    
-    
-
- 
-}
+    .section-subtitle{
+        text-transform: uppercase;
+    }
+    .content{
+        margin: 0 auto;
+    }
+ }
 
 </style>
