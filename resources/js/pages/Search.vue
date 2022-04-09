@@ -235,7 +235,7 @@ export default {
         border: 2px solid grey;
         border-radius: 4px;
         transition: all 0.4s;
-        width: 190px;
+        width: calc(100% / 4);
         flex: 1 0 auto;
         position: relative;
 

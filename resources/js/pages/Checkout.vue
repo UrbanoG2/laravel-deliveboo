@@ -1,6 +1,6 @@
 <template>
     <div class="total d-flex justify-content-center">
-        <div class="row p-4 big_container mt-4 mb-4">
+        <div class="row p-4 big_container margin-top mb-4">
             <div class="col-5">
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
@@ -68,14 +68,11 @@
                             </td>
                             <td><a class="trash" @click="EditCheckout('remove', item)"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>{{totPrice}}</td>
-                            <td></td>
-                        </tr>
                     </tbody>
                 </table>
+                <div>
+                    <p>Prezzo Totale: {{totPrice}}&euro; </p>
+                </div>
             </div>
         </div>
     </div>
@@ -159,11 +156,11 @@ export default {
                 EventBus.$emit("clear_cart");
                 this.$router.push({ name: 'success', params: {data: params} });
                 this.sending = false;
-             })
-             .catch(error=>{
-                 console.log(error.response.data);
-                 this.sending = false;
-             })
+            })
+            .catch(error=>{
+                console.log(error.response.data);
+                this.sending = false;
+            })
         },
         EditCheckout(string, item){
             let data = {option: string, plate: item}
@@ -194,8 +191,11 @@ export default {
 <style lang="scss" scoped>
  .total {
 
-    background-image: url("../../../public/images/background_y&o.jpg");
+    // background-image: url("../../../public/images/background_y&o.jpg");
     // background-size: 300px 100px;
+     background: #ffe259;
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
+    background: linear-gradient(to right, #ffa751, #ffe259); 
     background-position: center;
     .big_container {
 
@@ -209,7 +209,6 @@ export default {
 
         .form-control:focus {
         border-color: #ff4c31d6;   
-        // box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 8px #ff4d31;
         box-shadow:5px 10px 10px #ffc526c0;
         }
         
@@ -238,6 +237,9 @@ export default {
         .brain_btn:hover {
             cursor: pointer;
         }
+    }
+    .margin-top{
+        margin-top: 7em;
     }
  }
 

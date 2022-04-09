@@ -237,11 +237,7 @@ export default {
 }
 
 .food {
-    padding: 90px 0;
-    h1 {
-        // background-color: orangered;
-    }
-    
+    padding: 90px 0; 
 }
 
 .food>div {

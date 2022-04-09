@@ -1,7 +1,7 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row">
-            <div class="jumbo p-4 mb-2">
+            <div class="jumbo p-4 mb-2 mt-5">
                 <div class="row h-100">
                     <div
                         class="col d-flex flex-column align-items-center justify-content-center"
@@ -13,21 +13,21 @@
                     </div>
                 </div>
             </div>
-                <div class="container-tel">
+                <div class="container-tel ">
                     <div class="row pt-5">
-                        <div class="col-6 d-flex justify-content-center">
+                        <div class="col-6 d-flex justify-content-center mt-5">
                             <div class="apple d-flex ">
                                 <img src="../../../public/images/apple.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center">
+                                <div class="d-flex flex-column  justify-content-center p-3">
                                     <span>Scarica da qui</span>
-                                    <span>Apple Store</span>
+                                    <span class="fw-bold fs-3">Apple Store</span>
                                 </div>
                             </div>
-                            <div class="play-store d-flex ">
+                            <div class="play-store d-flex ps-3 ">
                                 <img src="../../../public/images/play-store.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center">
+                                <div class="d-flex flex-column  justify-content-center p-3">
                                     <span>Scarica da qui</span>
-                                    <span>Play Store</span>
+                                    <span class="fw-bold fs-3">Play Store</span>
                                 </div>
                             </div>
 
@@ -111,6 +111,30 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row mb-5 ">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="new text-center pt-3">
+                    <h3>Inscriviti alla Newsletter</h3>
+                    <div>
+                        "Non perderti le nuove creazioni dei nostri ristoranti "
+                        <h4>Registrati qui</h4>
+                    </div>
+                    <div class="input-group mb-3 sletter  w-50 ">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control text-center " placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="pb-3 ">
+                        <input class="rounded-pill inscriviti" type="submit" value="Inscriviti Ora!">
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+
+        </div>
+        
+        
     </div>
 </template>
 
@@ -229,7 +253,20 @@ export default {
             }
         }
     }
-    
+    .new{
+        width: 100%;
+        // height: 100px;
+        background-color: #f2c53d33;
+
+        
+    }
+    .sletter{
+            width: 30%;
+            margin: 0 auto;
+        }
+    .inscriviti{
+        background-color: #f2c53d;
+    }
 }
 
 .profile-card-2 {

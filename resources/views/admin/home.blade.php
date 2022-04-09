@@ -23,7 +23,7 @@
 
 <div class="container">
     <div class="row p-4 ">
-        <div class="col-5">
+        <div class="col-6">
             <div class="card">
                 <div class="card-image">
                     <img src="{{ asset('images/food.jpg') }}" class="card-img-top" alt="...">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-6">
             <div class="card">
                 <div class="card-image">
                     <img src="{{ asset('images/orders.jpg') }}" class="card-img-top" alt="...">
