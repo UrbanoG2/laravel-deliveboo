@@ -24,7 +24,7 @@
 <body>
     <div id="app" class="my-bg vh-100">
         <div class="home">
-            <a href="/" class="btn btn-white">Homepage</a>
+            <a href="/" class="btn btn-light">Homepage</a>
         </div>
         <main>
             @yield('content')
@@ -37,9 +37,14 @@
 </html>
 <style>
     .my-bg {
-        background-image: url("{{ asset('/images/cover3.jpg') }}");
+        background-image: url("{{ asset('/images/cover4.jpg') }}");
         background-size: 100%;
         background-position: center;
         background-repeat: no-repeat;
+    }
+    .home{
+        position: absolute;
+        top: 20;
+        left: 30;
     }
 </style>

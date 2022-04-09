@@ -3,7 +3,7 @@
         <div class="container">
             <div class="logo-box">
                 <router-link class="nav-link" :to="{ name: 'home' }">
-                    <img id="logo" class="w-5" :src="logo" alt="logo"/>
+                    <img id="logo" class="my-logo" :src="logo" alt="logo"/>
                 </router-link>
             </div>
             
@@ -123,7 +123,7 @@ export default {
             countQuantity: false,
             list: null,
             restaurantID: null,
-            logo: require("../../img/logo.png"),
+            logo: require("../../img/logo1.png"),
             menuItems: [
                 {
                     label: "Home",
@@ -311,6 +311,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .delive-nav {
     position: fixed;
     top: 0%;
@@ -326,7 +327,7 @@ export default {
             display: flex;
             align-items: center;
             img {
-                width: 50px;
+                width: 120px;
             }
         }
         .navigation-option {
