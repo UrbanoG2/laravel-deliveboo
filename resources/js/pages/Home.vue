@@ -15,19 +15,19 @@
             </div>
                 <div class="container-tel">
                     <div class="row pt-5">
-                        <div class="col-6 d-flex justify-content-center">
+                        <div class="col-6 d-flex justify-content-center ">
                             <div class="apple d-flex ">
                                 <img src="../../../public/images/apple.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center">
+                                <div class="d-flex flex-column  justify-content-center ps-2">
                                     <span>Scarica da qui</span>
-                                    <span>Apple Store</span>
+                                    <span class="fw-bold fs-5">Apple Store</span>
                                 </div>
                             </div>
                             <div class="play-store d-flex ">
                                 <img src="../../../public/images/play-store.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center">
+                                <div class="d-flex flex-column  justify-content-center ps-2">
                                     <span>Scarica da qui</span>
-                                    <span>Play Store</span>
+                                    <span class="fw-bold fs-5">Play Store</span>
                                 </div>
                             </div>
 
@@ -212,17 +212,21 @@ export default {
         background-color: #f2c53d33;
         padding-bottom: 2em;
         .apple{
-            width: 30%;
-            height: 70px;
+            width: 15em;
+            height: 6em;
+            padding: 1.5em;
+            margin-top: 10em;
             background-color: white;
             img{
                 width: 30%;
             }
         }
         .play-store{
-            width: 30%;
-            height: 70px;
+            width: 15em;
+            height: 6em;
+            padding: 1.5em;
             margin-left: 30px;
+            margin-top: 10em;
             background-color: white;
             img{
                 width: 30%;

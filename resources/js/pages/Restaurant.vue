@@ -31,7 +31,7 @@
                     
                     <h4>{{restaurant.descrizione}}</h4>
                 </div>
-                <a class="btn btn-primary position-absolute home">
+                <a class="btn  position-absolute home">
                     <i class="fa-solid fa-arrow-right-to-bracket "></i>
                 </a>
 
@@ -227,7 +227,8 @@ export default {
     .home{
         top: 108%;
         left: 85%;
-        width: 11%;
+        width: 8%;
+        background-color: #ffa751;
         i{
             transform: rotate(180deg);
             font-size: 1.5em;
