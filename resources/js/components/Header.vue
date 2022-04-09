@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="register"> Registrati </a>
                         </li>
                         <li v-if="log" class="nav-item">
-                                <a class="nav-link" href="logout"> logout </a>
+                                <a class="nav-link" href="logout"> Esci </a>
                         </li>
                     </ul>
                 </div>
@@ -41,23 +41,35 @@
                     </transition>
                     <transition @before-enter="CartBE" @enter="CartEN" @leave="CartLE" :css="false">
                         <div v-if="clicked != false && list != '' && list != null" class="cart-box">
-                            <div v-for="(item, index) in list" :key="index" class="cart-item">  
-                                    <div class="cart-item-section">
-                                        {{ item.name }} 
-                                    </div>
-                                    <div class="cart-item-section">
-                                        <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
-                                        {{ item.quantity }}
-                                        <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
-                                    </div>
-                                    <div class="cart-item-section">
-                                        price: {{ item.price }}&euro;
-                                    </div>
-                                    <a @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a>
-                            </div>
-                            <div class="row justify-content-between">
-                                <a @click="clearCart">clear</a>
-                                <a @click="checkout">checkout</a>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Quantità</th>
+                                        <th scope="col">Prezzo</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in list" :key="index">
+                                        <td>
+                                            {{ item.name }} 
+                                        </td>
+                                        <td class="quantity">
+                                            <a class="quant" @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
+                                            {{ item.quantity }}
+                                            <a class="quant" @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
+                                        </td>
+                                        <td>
+                                            {{ item.price }}&euro;
+                                        </td>
+                                        <td><a class="trash" @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row justify-content-around">
+                                <span class="col text-center" @click="clearCart">clear</span>
+                                <span class="col text-center" @click="checkout">checkout</span>
                             </div>
                         </div>
                     </transition>
@@ -93,64 +105,9 @@
                 </div>
                 </transition>
 
-
-                
-
             </div>
         </div>
     </nav>
-    <!-- <div class="container">
-            <router-link class="nav-link" :to="{ name: 'home' }">
-                <img id="logo" class="w-5" :src="logo" alt="logo"
-            /></router-link>
-
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li
-                        class="nav-item"
-                        v-for="item in menuItems"
-                        :key="item.id"
-                    >
-                        <router-link
-                            class="nav-link"
-                            :to="{ name: item.routeName }"
-                            >{{ item.label }}</router-link
-                        >
-                    </li>
-                    <li v-if="!log" class="nav-item">
-                            <a class="nav-link" href="login">Accedi</a>
-                    </li>
-                    <li v-if="!log" class="nav-item">
-                            <a class="nav-link" href="register"> Registrati </a>
-                    </li>
-                    <li v-if="log" class="nav-item">
-                            <a class="nav-link" href="logout"> logout </a>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" @click="clicked = !clicked">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-                            
-                            
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            
-        </div> -->
 </template>
 
 <script>
@@ -173,7 +130,7 @@ export default {
                     routeName: "home",
                 },
                 {
-                    label: "Search",
+                    label: "Cerca",
                     routeName: "search",
                 },
             ],
@@ -190,6 +147,22 @@ export default {
             else
             {
                 this.list = null;
+            }
+        });
+        EventBus.$on("update_header", (data) => {
+            switch (data.option) {
+                case 'add':
+                    this.addCartItem(data.plate);
+                    break;
+                case 'minus':
+                    this.minusCartItem(data.plate);
+                    break;
+                case 'remove':
+                    this.removeCartItem(data.plate);
+                    break;
+                default:
+                    console.log('update_header');
+                    break;
             }
         });
         EventBus.$on("clear_cart", this.clearCart);
@@ -235,6 +208,7 @@ export default {
                     if(item.quantity == 0)
                     {
                         this.removeCartItem(element);
+                        EventBus.$emit("update_checkout", this.list);
                         this.countQuantity = true
                     }
                 }
@@ -242,6 +216,7 @@ export default {
             if(this.countQuantity)
             {
                 this.countQuantity = false
+                EventBus.$emit("update_checkout", this.list);
             }
             else
             {
@@ -260,13 +235,17 @@ export default {
             });
             localStorage.setItem("cart", JSON.stringify(this.list)); 
             EventBus.$emit("updated_cart", this.list);
+            EventBus.$emit("update_checkout", this.list);
         },
         handleScroll() {
             this.clicked = false;
             this.showNavbar = false;
         },
         checkout() {
-            this.$router.push({ name: 'checkout' });
+            if(this.list.length != 0)
+            {
+                this.$router.push({ name: 'checkout' });
+            }
         },
 
         CartBE: function (el) {
@@ -416,18 +395,41 @@ export default {
     opacity: 0;
     background-color:  #ffc626;
     border-radius: 20px 0px 20px 20px;
-    .cart-item {
-        margin: 1em 0;
-        padding: 5px 16px;
-        display: flex;
-        justify-content: space-around;
-        background-color: rgb(191, 191, 191);
-        a {
-            margin: 0 0.5em;
+    table {
+        thead {
+            th:nth-child(2){
+                padding: 0.5rem 2.1rem;
+            }
+        }
+        tr {
+            border-color: black;
+            td {
+                padding: 1rem 1rem;
+                a {
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: black;
+                    &.quant {
+                        margin: 0 0.5em;
+                        padding: 2px 5px;
+                        border: 1px solid black;
+                        border-radius: 50%;
+                    }
+                    &.trash {
+                        font-size: 1.3em;
+                    }
+                }
+            }
         }
     }
-    .row>a {
-        display: inline-block;
+    .row {
+        margin-top: 2em;
+        &>span {
+            padding: 10px 20px;
+            margin: 0 50px;
+            border: 1px solid black;
+            border-radius: 25px;
+        }
     }
 }
 
