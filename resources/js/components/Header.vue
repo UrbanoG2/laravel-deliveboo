@@ -173,7 +173,7 @@ export default {
                     routeName: "home",
                 },
                 {
-                    label: "Search",
+                    label: "Cerca",
                     routeName: "search",
                 },
             ],

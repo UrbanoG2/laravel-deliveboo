@@ -39,7 +39,7 @@
                     </div>
                     <div class="d-flex justify-content-center visita">
                         <div
-                        class=" btn btn-color "
+                        class=" btn btn-color" data-bs-toggle="modal"  data-bs-target="#exampleModal"
                         @click="checkLastID(restaurant.id, restaurant.slug)"
                     >
                         Visita
@@ -99,18 +99,43 @@
         <div class="delete-mes text-center" v-if="alertMessage">
             <div class="container">
                 <div class="row">
-                    <h1>Conferma cancellazione</h1>
+                    <h1>Cambiando ristorante perderai tutti gli elementi salvati nel carrello <br> Vuoi procedere?</h1>
                 </div>
                 <div class="row justify-content-around">
-                    <button class="btn-primary" @click="alertMessage = false">
-                        Chiudi
+                    <button class="action-btn" @click="alertMessage = false">
+                        Torna indietro
                     </button>
-                    <button class="btn-primary" @click="removeCart()">
-                        Conferma
+                    <button class="action-btn" @click="removeCart()">
+                        Procedi
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- <div v-if="alertMessage" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cambiando ristorante perderai gli elementi attualmente salvati nel carrello.
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Vuoi continuare?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-primary" @click="alertMessage = false">
+                            Chiudi
+                        </button>
+                        <button class="btn-primary" @click="removeCart()">
+                            Conferma
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
 </template>
 
@@ -147,7 +172,7 @@ export default {
             } else {
                 this.alertMessage = true;
                 this.newIDRestaurant = id;
-                this.newSLUGRestaurant = slug;
+                this.newSLUGRestaurant = slug;4
             }
         },
         removeCart() {
@@ -190,9 +215,28 @@ ul {
     position: fixed;
     width: 450px;
     height: 300px;
-    top: 10%;
-    right: 30%;
-    background-color: green;
+    top: 20%;
+    right: 35.3%;
+    background-color: #fcbd10ea;
+    border-radius:20px;
+
+    h1 {
+        padding: 40px;
+        font-size: 1.9em;
+        font-weight: bold;
+    }
+
+    .action-btn {
+        width: 30%;
+        border: 1px solid #ff4c31d6;
+        background-color: #ffc526c0;
+        padding: 10px 0px;
+    }
+
+    .action-btn:hover {
+        color: white;
+        background-color: #ff4c31d6;
+    }
 }
 
 img {
@@ -238,6 +282,6 @@ img {
 
     .btn-page{
         
-                background-color: orange ;
-            } 
+        background-color: orange ;
+    } 
 </style>
