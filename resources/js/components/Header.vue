@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="register"> Registrati </a>
                         </li>
                         <li v-if="log" class="nav-item">
-                                <a class="nav-link" href="logout"> logout </a>
+                                <a class="nav-link" href="logout"> Esci </a>
                         </li>
                     </ul>
                 </div>
@@ -47,6 +47,7 @@
                                         <th scope="col">Nome</th>
                                         <th scope="col">Quantità</th>
                                         <th scope="col">Prezzo</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,13 +56,14 @@
                                             {{ item.name }} 
                                         </td>
                                         <td class="quantity">
-                                            <a @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
+                                            <a class="quant" @click="addCartItem(item)"><i class="fa-solid fa-plus"></i></a>
                                             {{ item.quantity }}
-                                            <a @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
+                                            <a class="quant" @click="minusCartItem(item)"><i class="fa-solid fa-minus"></i></a>
                                         </td>
                                         <td>
                                             {{ item.price }}&euro;
                                         </td>
+                                        <td><a class="trash" @click="removeCartItem(item)"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -128,7 +130,7 @@ export default {
                     routeName: "home",
                 },
                 {
-                    label: "Search",
+                    label: "Cerca",
                     routeName: "search",
                 },
             ],
@@ -145,6 +147,22 @@ export default {
             else
             {
                 this.list = null;
+            }
+        });
+        EventBus.$on("update_header", (data) => {
+            switch (data.option) {
+                case 'add':
+                    this.addCartItem(data.plate);
+                    break;
+                case 'minus':
+                    this.minusCartItem(data.plate);
+                    break;
+                case 'remove':
+                    this.removeCartItem(data.plate);
+                    break;
+                default:
+                    console.log('update_header');
+                    break;
             }
         });
         EventBus.$on("clear_cart", this.clearCart);
@@ -190,6 +208,7 @@ export default {
                     if(item.quantity == 0)
                     {
                         this.removeCartItem(element);
+                        EventBus.$emit("update_checkout", this.list);
                         this.countQuantity = true
                     }
                 }
@@ -197,6 +216,7 @@ export default {
             if(this.countQuantity)
             {
                 this.countQuantity = false
+                EventBus.$emit("update_checkout", this.list);
             }
             else
             {
@@ -215,13 +235,17 @@ export default {
             });
             localStorage.setItem("cart", JSON.stringify(this.list)); 
             EventBus.$emit("updated_cart", this.list);
+            EventBus.$emit("update_checkout", this.list);
         },
         handleScroll() {
             this.clicked = false;
             this.showNavbar = false;
         },
         checkout() {
-            this.$router.push({ name: 'checkout' });
+            if(this.list.length != 0)
+            {
+                this.$router.push({ name: 'checkout' });
+            }
         },
 
         CartBE: function (el) {
@@ -382,10 +406,18 @@ export default {
             td {
                 padding: 1rem 1rem;
                 a {
-                    margin: 0 0.5em;
-                    padding: 2px 5px;
-                    border: 1px solid black;
-                    border-radius: 50%;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: black;
+                    &.quant {
+                        margin: 0 0.5em;
+                        padding: 2px 5px;
+                        border: 1px solid black;
+                        border-radius: 50%;
+                    }
+                    &.trash {
+                        font-size: 1.3em;
+                    }
                 }
             }
         }
