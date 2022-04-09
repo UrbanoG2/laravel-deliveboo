@@ -1,7 +1,12 @@
 <template>
     <div class="total d-flex justify-content-center">
+<<<<<<< HEAD
         <div class="row p-4 big_container margin-top mb-4">
             <div class="col-8">
+=======
+        <div class="row p-4 big_container mt-4 mb-4">
+            <div class="col-5">
+>>>>>>> origin/Dev
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
                         <div class="input-group mb-3 form-outline">
@@ -43,20 +48,36 @@
                 >
                 </v-braintree>
             </div>
-            <div class="col-4">
+            <div class="col-7">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Quantità</th>
+                            <th scope="col">Prezzo</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in list" :key="index">
-                            <td>{{item.name}}</td>
-                            <td>{{item.quantity}}</td>
-                            <td>{{item.price}}&euro;</td>
+                            <td>
+                                {{ item.name }} 
+                            </td>
+                            <td class="quantity">
+                                <a class="quant" @click="EditCheckout('add', item)"><i class="fa-solid fa-plus"></i></a>
+                                {{ item.quantity }}
+                                <a class="quant" @click="EditCheckout('minus', item)"><i class="fa-solid fa-minus"></i></a>
+                            </td>
+                            <td>
+                                {{ item.price }}&euro;
+                            </td>
+                            <td><a class="trash" @click="EditCheckout('remove', item)"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>{{totPrice}}</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>
@@ -91,6 +112,9 @@ export default {
     created(){
         this.list = JSON.parse(localStorage.getItem("cart"));
         EventBus.$emit("close_cart");
+        EventBus.$on("update_checkout", (data) => {
+            this.list = data;
+        });
     },
     methods: {
         onSuccess (payload) {
@@ -106,7 +130,6 @@ export default {
         sendGuest(){
             this.sending = true;
             this.success = false;
-            this.getTotPrice();
             axios.post('/api/guest', {
                 'data': {
                     'guest': {
@@ -152,6 +175,10 @@ export default {
                 this.sending = false;
             })
         },
+        EditCheckout(string, item){
+            let data = {option: string, plate: item}
+            EventBus.$emit("update_header", data);
+        },
         getTotPrice() {
             this.list.forEach(element => {
                 this.totPrice += element.price;
@@ -162,7 +189,7 @@ export default {
     watch: {
         list:
             function() {
-                
+                this.getTotPrice();
             }
     }
 
@@ -224,4 +251,32 @@ export default {
         margin-top: 7em;
     }
  }
+
+ table {
+        thead {
+            th:nth-child(2){
+                padding: 0.5rem 2.1rem;
+            }
+        }
+        tr {
+            border-color: black;
+            td {
+                padding: 1rem 1rem;
+                a {
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: black;
+                    &.quant {
+                        margin: 0 0.5em;
+                        padding: 2px 5px;
+                        border: 1px solid black;
+                        border-radius: 50%;
+                    }
+                    &.trash {
+                        font-size: 1.3em;
+                    }
+                }
+            }
+        }
+    }
 </style>
