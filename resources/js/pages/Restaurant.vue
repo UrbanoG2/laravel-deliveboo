@@ -197,23 +197,9 @@ export default {
             }
         }
     }
-    
-}
-
-.food {
-    padding: 90px 0; 
-}
-
-.food>div {
-    column-gap: 20px;
-    row-gap: 20px;
-    z-index: 300;
-    padding: 20px 0;
-    .food-card{
-        position: relative;
-        margin-top: 0;
-        border-radius: 25px;
-        overflow: hidden;
+    .my-banner{
+        height: 400px;
+        width: 100%;
         padding: 0;
         img{
             width: 100%;
