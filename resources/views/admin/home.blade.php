@@ -23,17 +23,17 @@
 
 <div class="container">
     <div class="row p-4 ">
-        <div class="col-5">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ asset('images/food.jpg') }}" class="card-img-top" alt="...">
+        <div class="col-6 " >
+            <div class="card ">
+                <div class="card-image ">
+                    <img src="{{ asset('images/food.jpg') }}" class="card-img-top  " alt="...">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
-                       <h5 class="card-title">Latest plates added</h5>
-                       <div class="card-text">
-                           Questa è una lista degli ultimi piatti inseriti
-                       </div>
+                        <h5 class="card-title">Latest plates added</h5>
+                        <div class="card-text">
+                            Questa è una lista degli ultimi piatti inseriti
+                        </div>
                         <ul class="list-group list-group-flush">
                             @foreach($plates as $plate)
                                 <li class="list-group-item">{{ $plate->name }}</li>
@@ -43,20 +43,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ asset('images/orders.jpg') }}" class="card-img-top" alt="...">
+        <div class="col-6 " >
+            <div class="card" >
+                <div class="card-image " >
+                    <img src="{{ asset('images/orders.jpg') }}" class="card-img-top food"  alt="...">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
-                       <h5 class="card-title">Latest orders received</h5>
-                       <div class="card-text">
-                           Questa è una lista degli ultimi ordini ricevuti
-                       </div>
+                        <h5 class="card-title">Latest orders received</h5>
+                        <div class="card-text">
+                            Questa è una lista degli ultimi ordini ricevuti
+                        </div>
                         <ul class="list-group list-group-flush">
                             @foreach($orders as $order)
-                                <li class="list-group-item">Prezzo totale:{{ $order->totalPrice }} &euro;  Ordine creato il:{{ $order->created_at }}</li>
+                                <li class="list-group-item">Prezzo totale: {{ $order->totalPrice }} &euro;  Ordine creato il: {{ $order->created_at }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -124,3 +124,9 @@
     </div>
 </div>
 @endsection
+
+<style lang="scss" scoped>
+    
+
+
+</style>
