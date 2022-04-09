@@ -101,7 +101,7 @@
                                     class="btn my-btn"
                                     :to="{
                                         name: 'restaurant',
-                                        params: { id: restaurant.id },
+                                        params: { id: restaurant.id, slug: restaurant.slug },
                                     }"
                                     >View</router-link
                                 >

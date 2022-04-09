@@ -175,10 +175,6 @@ export default {
     
 }
 
-// .card {
-//     z-index: 500;
-
-// }
 ul {
     display: inline;
     padding: 1%;
