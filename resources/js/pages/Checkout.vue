@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <!-- {{item.totalPrice}} -->
+                                {{totPrice}}
                             </td>
                         </tr>
                     </tbody>
@@ -146,11 +146,11 @@ export default {
                 EventBus.$emit("clear_cart");
                 this.$router.push({ name: 'success', params: {data: params} });
                 this.sending = false;
-             })
-             .catch(error=>{
-                 console.log(error.response.data);
-                 this.sending = false;
-             })
+            })
+            .catch(error=>{
+                console.log(error.response.data);
+                this.sending = false;
+            })
         },
         getTotPrice() {
             this.list.forEach(element => {
@@ -191,7 +191,6 @@ export default {
 
         .form-control:focus {
         border-color: #ff4c31d6;   
-        // box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 8px #ff4d31;
         box-shadow:5px 10px 10px #ffc526c0;
         }
         
