@@ -1,6 +1,6 @@
 <template>
     <div class="total d-flex justify-content-center">
-        <div class="row p-4 big_container mt-4 mb-4">
+        <div class="row p-4 big_container margin-top mb-4">
             <div class="col-8">
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
@@ -57,6 +57,11 @@
                             <td>{{item.name}}</td>
                             <td>{{item.quantity}}</td>
                             <td>{{item.price}}&euro;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!-- {{item.totalPrice}} -->
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -168,8 +173,11 @@ export default {
 <style lang="scss" scoped>
  .total {
 
-    background-image: url("../../../public/images/background_y&o.jpg");
+    // background-image: url("../../../public/images/background_y&o.jpg");
     // background-size: 300px 100px;
+     background: #ffe259;
+    background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
+    background: linear-gradient(to right, #ffa751, #ffe259); 
     background-position: center;
     .big_container {
 
@@ -212,6 +220,9 @@ export default {
         .brain_btn:hover {
             cursor: pointer;
         }
+    }
+    .margin-top{
+        margin-top: 7em;
     }
  }
 </style>
