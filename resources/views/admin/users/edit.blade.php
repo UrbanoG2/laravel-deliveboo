@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+    <div class="container">
         <div class="row">
             <form action="{{ route('admin.users.update', $user) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                 
+
                 <!-- Anteprima immagine di preview -->
                 @if (!empty($user->logo_img))
                     <div class="mb-3">
-                        <img class="w-50" src="{{ asset('storage/' . $user->logo_img) }}" alt="{{ $user->logo_img }}">
+                        <img class="w-50" src="{{ $user->logo_img }}" alt="{{ $user->logo_img }}">
                     </div>
                 @endif
 
@@ -29,7 +29,7 @@
 
                 @if (!empty($user->banner_img))
                     <div class="mb-3">
-                        <img class="w-50" src="{{ asset('storage/' . $user->banner_img) }}" alt="{{ $user->name }}">
+                        <img class="w-50" src="{{ $user->banner_img }}" alt="{{ $user->name }}">
                     </div>
                 @endif
 
@@ -47,6 +47,6 @@
 
                 <input class="btn btn-primary" type="submit" value="Save">
             </form>
+        </div>
     </div>
-</div>       
 @endsection
