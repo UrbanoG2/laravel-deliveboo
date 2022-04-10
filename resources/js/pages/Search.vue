@@ -5,8 +5,8 @@
                 <div class="col-12">
                     <form>
                        
-                        <div class="row">
-                            <div class="mb-3 col">
+                        <div class="row ">
+                            <div class="mb-3 ">
                                 <!-- <div
                                     class="d-flex align-items-center justify-content-around"
                                 >
@@ -29,12 +29,12 @@
                                         </label>
                                     </div>
                                 </div> -->
-                                <div class="home-categories-carousel">
-                                    <div class="mycontainer">
+                                <div class="home-categories-carousel mt-5">
+                                    <div class="mycontainer col-5 col-sm-6 col-md-12  col-lg-12">
                                         <h2>
                                             Scegli la tua categoria preferita
                                         </h2>
-                                        <div class="carousel-container">
+                                        <div class="carousel-container  mt-5 ">
                                             <!-- <div
                                                 :key="'categories-' + index"
                                                 v-for="(
@@ -77,7 +77,7 @@
                                         </div>
                                         <input class="btn align-middle mt-3 " 
                                             type="button"
-                                            value="filtra"
+                                            value="FILTRA"
                                             @click.prevent="searchRestaurants"
                                         />
                                     </div>
@@ -224,8 +224,8 @@ export default {
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 10px;
-
-        border: 2px solid grey;
+        width: 100%;
+        // border: 2px solid grey;
     }
 
     .category-card {
@@ -233,7 +233,7 @@ export default {
         margin: 10px;
         background-color: rgba(239, 242, 244, 0.8);
         border: 2px solid grey;
-        border-radius: 4px;
+        border-radius: 30px;
         transition: all 0.4s;
         width: calc(100% / 4);
         flex: 1 0 auto;
@@ -249,7 +249,7 @@ export default {
         height: 100%;
         width: 100%;
         position: absolute;
-        border-radius: 4px;
+        border-radius: 30px;
         border: 2px solid rgba(255, 168, 3, 0.7);
         box-shadow: 0 0 10px orange;
     }
@@ -265,6 +265,16 @@ export default {
     .btn{
         padding: 0.5em 2em;
         background-color: orange;
+    }
+
+    @media (min-width: 300px) and  (max-width: 768px){
+
+       .carousel-container{
+            .category-card{
+                width: 45%;
+            }
+
+       } 
     }
 }
     
