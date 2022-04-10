@@ -25,47 +25,48 @@
                     <h3 class="fw-bold">Menù</h3>
                 </div>
                 <div class="container">
-                            <div v-for="(section, index) in plates" :key="index" class="row row-col-3 mt-3 p-5 pt-0">
-                            <div class="mt-4 mb-4">
-                                <h4 class="section-subtitle text-center fw-bold"> {{ getNameSection(index) }}</h4>
-                            </div>
-                            <div v-for="(plate, index) in section" :key="index" class="col-4 mb-4">
-                                <div class="my-card relative">
-                                    
-                                    <img
-                                        :src="plate.preview"
-                                        class="img-box"
-                                        :alt="plate.name"
-                                    />
-                                    <div class="overlay">
-                                        <h3 class="bold">{{ plate.name }}</h3>
-                                        <div class="food-info ingredienti ">
-                                            <p class="ms-2">
-                                                {{ plate.ingredients }}
-                                            </p>
-                                            <h6 class="ms-1">{{ plate.price }} &euro;</h6>
-                                            <a
-                                                class="btn-add-cart"
-                                                @click="addItemToCart(plate.id, plate.price, plate.name)"
-                                                ><i class="fa-solid fa-plus"></i>
-                                            </a>
-                                        </div>
+                    <div v-for="(section, index) in plates" :key="index" class="row mt-3 p-5 pt-0">
+                        <div class="mt-4 mb-4">
+                            <h4 class="section-subtitle text-center fw-bold"> {{ getNameSection(index) }}</h4>
+                        </div>
+                        <div v-tilt="{reverse: true, max: 8, scale: 1.07, speed: 1000, perspective: 1200}" v-for="(plate, index) in section" :key="index" class="col-12 col-md-6 col-lg-4 mb-4">
+                            <div class="my-card relative">
+                                
+                                <img
+                                    :src="plate.preview"
+                                    class="img-box"
+                                    :alt="plate.name"
+                                />
+                                <div class="overlay">
+                                    <h3 class="bold">{{ plate.name }}</h3>
+                                    <div class="food-info ingredienti ">
+                                        <p class="ms-2">
+                                            {{ plate.ingredients }}
+                                        </p>
+                                        <h6 class="ms-1">{{ plate.price }} &euro;</h6>
+                                        <a
+                                            class="btn-add-cart"
+                                            @click="addItemToCart(plate.id, plate.price, plate.name)"
+                                            ><i class="fa-solid fa-plus"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="maps text-center mb-4 mt-4">
-                    <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 250px; width: 50%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>        
+        </div>
+        
+        <div class="maps text-center">
+            <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.792869463778!2d12.480764051214418!3d41.897311472088276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f604d442317b9%3A0x98e404577e346793!2sPalazzo%20Guglielmi%2C%2000187%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sfr!4v1649344199687!5m2!1sit!2sfr" width="600" height="450" style="border:0; height: 100%; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>    
 </template>
 
 <script>
 import Axios from "axios";
-import EventBus from "../bus.js";
+import EventBus from "../bus.js";;
 export default {
     name: "Restaurant",
     props: ["id", "slug"],
@@ -91,6 +92,7 @@ export default {
         EventBus.$on("updated_cart", (data) => {
             this.cartItem = data;
         });
+        
     },
     methods: {
         getProduct(url) {
@@ -157,6 +159,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+
+
 .my-padding{
     // padding-top: 100px;
     padding: 80px  0px;
@@ -208,8 +214,6 @@ export default {
         }
     }
     .my-card{
-        width: 316px;
-        height: 316px;
         position: relative;
         .img-box{
             width: 100%;
@@ -228,7 +232,7 @@ export default {
         }
     }
     .my-card:hover .overlay{
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.598);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -245,6 +249,42 @@ export default {
     .content{
         margin: 0 auto;
     }
- }
+}
+
+.maps {
+    height: 300px;
+}
+
+.food-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn-add-cart {
+        margin-top: 0.4em;
+        padding: 6px 11px;
+        max-width: 37px;
+        background-color: #ff4d31;
+        border-radius: 25px;
+        i {
+            color: #fafafa;
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 992px)
+{
+    .my-card {
+        height: 240px;
+    }  
+}
+
+@media screen and (min-width: 992px)
+{
+    .my-card {
+        height: 316px;
+    }  
+}
 
 </style>

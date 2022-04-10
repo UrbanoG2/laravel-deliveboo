@@ -31,11 +31,15 @@
         "bootstrap-icons": "^1.8.1",
         "braintree-web": "^3.85.2",
         "chart.js": "^3.7.1",
+        "google-geocoder": "^0.2.1",
+        "google-maps": "^4.3.3",
         "paypal-checkout": "^4.0.334",
         "velocity-animate": "^1.5.2",
         "velocityjs": "^2.0.6",
         "vue-animejs": "^2.1.1",
         "vue-braintree": "^2.1.0",
-        "vue-router": "^3.5.3"
+        "vue-router": "^3.5.3",
+        "vue-tilt": "^0.0.1",
+        "vue-tilt.js": "^1.1.1"
     }
 }
