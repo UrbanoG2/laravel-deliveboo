@@ -68,8 +68,8 @@
                                 </tbody>
                             </table>
                             <div class="row justify-content-around">
-                                <span class="col text-center" @click="clearCart">clear</span>
-                                <span class="col text-center" @click="checkout">checkout</span>
+                                <span class="col text-center cart-button" @click="clearCart">Svuota</span>
+                                <span class="col text-center cart-button" @click="checkout">Checkout</span>
                             </div>
                         </div>
                     </transition>
@@ -439,6 +439,10 @@ export default {
     font-size: 23px;
     right: 0;
     color: #ffc626;
+}
+
+.cart-button:hover {
+    cursor:pointer;
 }
 
 

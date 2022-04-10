@@ -48,35 +48,35 @@
                     <ul class="navbar-nav ml-auto">
 
                         @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                                @if (Route::has('register'))
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            </li>
+                                            @if (Route::has('register'))
     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                </li>
     @endif
 @else
     <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a>
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    {{ Auth::user()->name }}
+                                                </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                                                                                                 document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                        {{ __('Logout') }}
+                                                    </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                        class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                </div>
 
-                                </li>
+                                            </li>
 
                         @endguest
                     </ul>
@@ -119,15 +119,10 @@
                         <!-- Rotte future  -->
 
                         <li>
-                            <a href="{{ route('admin.users.show', Auth::user()->slug) }}" class="nav-link text-white">
+                            <a href="{{ route('admin.users.show', Auth::user()->slug) }}"
+                                class="nav-link text-white {{ 'admin.users.show' === Route::currentRouteName() ? 'active' : '' }}">
                                 <i class="fa-solid fa-id-card"></i>
                                 Preview Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white">
-                                <i class="fa-solid fa-chart-line"></i>
-                                Statistics
                             </a>
                         </li>
                     </ul>

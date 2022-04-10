@@ -14,7 +14,9 @@
             </ul>
         </div>
 
-        <div class="footer_image"></div>
+        <div class="footer_image">
+            <img class="img-fluid" src="/images/footer_img.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -37,6 +39,9 @@ export default {
 
     .footer_contained {
         padding: 1.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center
         // margin-left: 20%;
     }
     .list_title {
@@ -68,11 +73,8 @@ export default {
     }
 
     .footer_image {
-        height: 150px;
         width: 17%;
         background-position: center;
         background-size: cover;
-        background-image: url("../../../public/images/footer_img.png");
-        margin-top: 15px;
     }
 </style>

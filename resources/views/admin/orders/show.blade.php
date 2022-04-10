@@ -20,21 +20,21 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Quantità</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Prezzo</th>
+                            <th scope="col">Quantità</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($plates as $plate)
-                        <tr>
-                            <td>{{$plate->name}}</td>
-                            <td>{{$plate->price}}</td>
-                            <td>{{$plate->quantity}}</td>
-                        </tr>
+                        @foreach ($plates as $plate)
+                            <tr>
+                                <td>{{ $plate->name }}</td>
+                                <td>{{ $plate->price }} &euro;</td>
+                                <td>{{ $plate->quantity }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
-                    </table>
+                </table>
             </div>
         </div>
     </div>

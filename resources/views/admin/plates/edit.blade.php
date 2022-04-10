@@ -42,7 +42,8 @@
                 <!--Nome piatto-->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value=" {{ old('name', $plate->name) }}">
+                    <input type="text" class="form-control" id="name" name="name"
+                        value=" {{ old('name', $plate->name) }}">
                     @error('name')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -53,7 +54,8 @@
                 <!--Descrizione piatto-->
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" rows="3" name="description"> {{ old('description', $plate->description) }}</textarea>
+                    <textarea class="form-control" id="description" rows="3"
+                        name="description"> {{ old('description', $plate->description) }}</textarea>
                     @error('description')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -66,14 +68,16 @@
                     <label for="price" class="form-label">Price</label>
                     <div class="input-group">
                         <span class="input-group-text">&euro;</span>
-                        <input type="number" class="form-control" aria-label="Amount (to the nearest euro)" step="0.01" value="{{ old('price', $plate->price) }}" name="price" id="price">
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest euro)" step="0.01"
+                            value="{{ old('price', $plate->price) }}" name="price" id="price">
                     </div>
                 </div>
 
                 <!--Ingredienti piatto-->
                 <div class="mb-3">
                     <label for="ingredients" class="form-label">Ingredients</label>
-                    <textarea class="form-control" id="ingredients" rows="3" name="ingredients"> {{ old('ingredients', $plate->ingredients) }}</textarea>
+                    <textarea class="form-control" id="ingredients" rows="3"
+                        name="ingredients"> {{ old('ingredients', $plate->ingredients) }}</textarea>
                     @error('ingredients')
                         <div class="alert alert-danger mt-3">
                             {{ $message }}
@@ -97,11 +101,11 @@
                         </label>
                     </div>
                 </div>
-                 
+
                 <!-- Anteprima immagine di preview -->
                 @if (!empty($plate->preview))
                     <div class="mb-3">
-                        <img class="w-50" src="{{ asset('storage/' . $plate->preview) }}" alt="{{ $plate->name }}">
+                        <img class="w-50" src="{{ $plate->preview }}" alt="{{ $plate->name }}">
                     </div>
                 @endif
 
