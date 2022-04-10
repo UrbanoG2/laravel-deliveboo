@@ -39,7 +39,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => 5,
                 'name' => 'Dolci',
-                'img_category'=> '/images/category/japanese.png',  
+                'img_category'=> '/images/category/dessert.png',  
             ],
             [
                 'id' => 6,

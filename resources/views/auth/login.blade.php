@@ -52,14 +52,6 @@
                                     </div>
 				                </div>        
                             </div>
-                            <input id="password" placeholder="Password" type="password"
-                                class="form-control @error('password') is-invalid @enderror my-input" name="password"
-                                required autocomplete="current-password">
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
 					</form>
 				</div>
