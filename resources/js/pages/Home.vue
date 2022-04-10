@@ -111,20 +111,20 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row mb-5 ">
-            <div class="col-12 d-flex justify-content-center">
-                <div class="new text-center pt-3">
+        <div class="container-fluid p-0 mt-5">
+            <div class="row  ">
+            <div class="col-12 d-flex justify-content-center p-0 ">
+                <div class="new text-center pt-5">
                     <h3>Inscriviti alla Newsletter</h3>
-                    <div>
+                    <div class="p-3">
                         "Non perderti le nuove creazioni dei nostri ristoranti "
-                        <h4>Registrati qui</h4>
+                        <h4 class="p-3">Registrati qui</h4>
                     </div>
-                    <div class="input-group mb-3 sletter  w-50 ">
+                    <div class="input-group mb-3 sletter  w-25 p-3">
                         <span class="input-group-text" id="basic-addon1">@</span>
                         <input type="text" class="form-control text-center " placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
-                    <div class="pb-3 ">
+                    <div class="pb-5 ">
                         <input class="rounded-pill inscriviti" type="submit" value="Inscriviti Ora!">
                     </div>
                 </div>

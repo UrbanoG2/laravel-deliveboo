@@ -70,7 +70,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div>
+                <div class="d-flex justify-content-end">
                     <p>Prezzo Totale: {{totPrice}}&euro; </p>
                 </div>
             </div>
@@ -176,12 +176,12 @@ export default {
     },
     watch: {
         list: {
-            handler()
-            {
-                this.getTotPrice();
-            },
-            deep: true,
-        }
+                handler()
+                {
+                    this.getTotPrice();
+                },
+                deep: true,
+            }
     }
 
 }
@@ -190,13 +190,16 @@ export default {
 
 <style lang="scss" scoped>
  .total {
-
-    // background-image: url("../../../public/images/background_y&o.jpg");
-    // background-size: 300px 100px;
-     background: #ffe259;
-    background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
-    background: linear-gradient(to right, #ffa751, #ffe259); 
+     width: 100%;
+    height: 100%; 
+    background-image: url("../../../public/images/ristorante2.jpg");
     background-position: center;
+    background-size: cover;
+    // background-size: 100% 100%;
+    //  background: #ffe259;
+    // background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
+    // background: linear-gradient(to right, #ffa751, #ffe259); 
+    // background-position: center;
     .big_container {
 
         background-color: white;
@@ -239,7 +242,7 @@ export default {
         }
     }
     .margin-top{
-        margin-top: 7em;
+        margin-top: 10em;
     }
  }
 

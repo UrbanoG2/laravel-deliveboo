@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container ">
 
     <div class="success_card">
-        <div v-if="success" class="alert alert-success" role="alert">
+        <!-- <div v-if="success" class="alert alert-success" role="alert">
             Mail inviata con successo!
-        </div>
+        </div> -->
         <div class="d-flex justify-content-center">
             <i class="checkmark">✓</i>
         </div>
@@ -70,6 +70,7 @@ export default {
 
 
     .container {
+        height: calc(100vh - 252px);
         display: flex;
         justify-content: center;
         .success_card {
