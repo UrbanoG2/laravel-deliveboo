@@ -176,12 +176,12 @@ export default {
     },
     watch: {
         list: {
-                handler()
-                {
-                    this.getTotPrice();
-                },
-                deep: true,
-            }
+            handler()
+            {
+                this.getTotPrice();
+            },
+            deep: true,
+        }
     }
 
 }

@@ -9,6 +9,7 @@ use App\User;
 use App\Plate;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -79,9 +80,10 @@ class RestaurantController extends Controller
     public function show($slug)
     {
         $user = User::where("slug", "=", $slug)->first();
-        $plates = $user->plates()->get();
-        $plates = $plates->groupBy('tag_id');
+        $plates = Plate::where("user_id", '=', $user->id)->where("visible", '=', 1)->get();
+        $plates =  $plates->groupBy('tag_id');
         $tags = Tag::all();
+
         return response()->json([
             'response' => true,
             'count' => $user ? 1 : 0,

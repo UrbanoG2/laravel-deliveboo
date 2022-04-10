@@ -16,6 +16,7 @@ class Order extends Model
         return $this->belongsToMany('App\Plate')->withPivot('quantity');
     }
 
+
     public function guest()
     {
         return $this->hasOne('App\Guest');

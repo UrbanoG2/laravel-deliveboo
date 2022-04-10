@@ -161,7 +161,7 @@
                             @endif
                             <div>
                                 <strong>&nbsp; {{ Auth::user()->name }} &nbsp;</strong>
-                                <span>{{ __(' welcome to control panel') }}</span>
+                                <span>{{ __(' Benvenuto nel pannello di controllo') }}</span>
                             </div>
 
                             <div>

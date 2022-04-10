@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row g-4" v-if="cards != null">
             <div
-                class="col-12 col-md-4"
+                class="col-12 col-md-6 col-lg-3"
                 v-for="(restaurant, index) in cards.restaurants"
                 :key="index"
             >
@@ -16,7 +16,7 @@
 
                     </div>
                     
-                    <div class="card-body ">
+                    <div class="card-body mt-2">
                         <h5 class="card-title display-6 fw-bold ">
                             {{ restaurant.name }}
                         </h5>
@@ -35,16 +35,18 @@
                             
                             <li>{{ category.name }}</li>
                         </ul>
-                        
-                    </div>
-                    <div class="d-flex justify-content-center visita">
-                        <div
-                        class=" btn btn-color" data-bs-toggle="modal"  data-bs-target="#exampleModal"
-                        @click="checkLastID(restaurant.id, restaurant.slug)"
-                    >
-                        Visita
-                    </div>
 
+                        
+                        <div class="d-flex justify-content-center visita">
+                            <div
+                            class=" btn btn-color" data-bs-toggle="modal"  data-bs-target="#exampleModal"
+                            @click="checkLastID(restaurant.id, restaurant.slug)"
+                        >
+                            Visita
+                        </div>
+
+                        </div>
+                        
                     </div>
                     
                 </div>
@@ -249,7 +251,7 @@ img {
         border-radius: 10px;
         position: relative;
         .button {
-        width: 20%;
+            width: 20%;
         }
         .btn-color{
             
@@ -259,15 +261,16 @@ img {
             
             height: 250px;
         }
-        .visita{
-            position: absolute;
-            top: 45%;
-            left: 70%;
-        }
     }
     .card-body{
+        position: relative;
         p{
             color: grey;
+        }
+        .visita{
+            position: absolute;
+            top: -8%;
+            left: 70%;
         }
     }
     
