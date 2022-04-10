@@ -29,7 +29,7 @@
                         <div class="mt-4 mb-4">
                             <h4 class="section-subtitle text-center fw-bold"> {{ getNameSection(index) }}</h4>
                         </div>
-                        <div v-tilt="{reverse: true, max: 8, scale: 1.07, speed: 1000, perspective: 1200}" v-for="(plate, index) in section" :key="index" class="col-12 col-md-6 col-lg-4 mb-4">
+                        <div v-tilt="{reverse: true, max: 5, scale: 1.08, speed: 1000, perspective: 1200}" v-for="(plate, index) in section" :key="index" class="col-12 col-md-6 col-lg-4 mb-4">
                             <div class="my-card relative">
                                 
                                 <img

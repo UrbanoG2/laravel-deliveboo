@@ -10,7 +10,9 @@ import Restaurant from './pages/Restaurant.vue';
 import Success from './pages/Success.vue';
 import VueRouter from 'vue-router';
 import VueBraintree from 'vue-braintree';
+import VueTilt from 'vue-tilt.js';
 
+Vue.use(VueTilt)
 Vue.use(VueBraintree)
 Vue.use(VueRouter);
 
