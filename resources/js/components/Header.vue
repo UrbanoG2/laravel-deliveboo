@@ -21,15 +21,6 @@
                             >{{ item.label }}</router-link
                         >
                         </li>
-                        <li  class="nav-item">
-                                <a class="nav-link" href="login">Accedi</a>
-                        </li>
-                        <li  class="nav-item">
-                                <a class="nav-link" href="register"> Registrati </a>
-                        </li>
-                        <li  class="nav-item">
-                                <a class="nav-link" href="logout"> Esci </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -91,15 +82,6 @@
                             :to="{ name: item.routeName }"
                             >{{ item.label }}</router-link
                         >
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="login">Accedi</a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="register"> Registrati </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link" href="logout"> logout </a>
                         </li>
                     </ul>
                 </div>

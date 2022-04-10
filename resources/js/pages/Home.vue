@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid ">
         <div class="row">
-            <div class="jumbo p-4 mb-2 mt-5">
+            <div class="jumbo p-4 mt-5">
                 <div class="row h-100">
                     <div
                         class="col d-flex flex-column align-items-center justify-content-center"
@@ -16,23 +16,31 @@
                 <div class="container-tel ">
                     <div class="container">
                         <div class="row pt-5">
-                            <div class="col-6 d-flex justify-content-center mt-5">
-                                <div class="apple d-flex ">
-                                    <img src="../../../public/images/apple.png" alt="">
-                                    <div class="d-flex flex-column  justify-content-center p-1">
+                            <div class="col-12 col-xl-6 d-flex justify-content-center mt-5 button-container">
+                                <div class="apple col-5 d-flex">
+                                    <img class="img-fluid" src="../../../public/images/apple.png" alt="">
+                                    <div class="d-flex flex-column d-none d-md-inline  justify-content-center p-1">
                                         <span>Scarica da qui</span>
-                                        <span class="fw-bold fs-3">Apple Store</span>
+                                        <span class="fs-5 fw-bold">Apple Store</span>
                                     </div>
                                 </div>
-                                <div class="play-store d-flex ps-3 ">
-                                    <img src="../../../public/images/play-store.png" alt="">
-                                    <div class="d-flex flex-column  justify-content-center p-1">
+                                <div class="play-store col-5 d-flex ps-3 ">
+                                    <img class="img-fluid" src="../../../public/images/play-store.png" alt="">
+                                    <div class="d-flex flex-column d-none d-md-inline justify-content-center p-1">
                                         <span>Scarica da qui</span>
-                                        <span class="fw-bold fs-3">Play Store</span>
+                                        <span class="fs-5 fw-bold">Play Store</span>
+                                    </div>
+                                </div>
+                                <div class="log-option col-12">
+                                    <div class="register">
+                                        <a href="register">Registrati</a>
+                                    </div>
+                                    <div class="login">
+                                        <a href="login">Accedi</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6 d-flex justify-content-center">
+                            <div class="col-12 col-xl-6 d-flex justify-content-center">
                                 <div class="tel  position-relative">
                                     <div class="d-flex justify-content-between">
                                         <div>
@@ -65,20 +73,6 @@
                         v-for="(restaurant, index) in cards.restaurants"
                         :key="index"
                     >
-                        <!-- <div class="card">
-                <img src="\storage\app\uploads\default.png" :alt="restaurant.banner_img">
-                <div class="card-body">
-                  <h5 class="card-title">{{ restaurant.name }}</h5>
-                  <p class="card-text">{{ restaurant.description }}</p>
-                  <router-link
-                        class="btn btn-secondary"
-                        :to="{
-                            name: 'restaurant',
-                            params: { id: restaurant.id },
-                        }"
-                  >View</router-link>
-                </div>
-              </div> -->
 
                         <!-- Qui inseriremo il banner-img del ristorante con eventuale ternario per gestire la mancanza di quest'ultimo  -->
                         <div class="profile-card-2">
@@ -230,21 +224,39 @@ export default {
     .container-tel{
         background-color: #f2c53d33;
         padding-bottom: 2em;
-        .apple{
-            
-            height: 70px;
+    }
+    .button-container{
+        gap: 1em;
+        flex-wrap: wrap;
+        .apple, .play-store{
+            align-items: center;
+            padding: 10px;
+            padding-right: 30px;
+            max-height: 100px;
             background-color: white;
-            img{
-                width: 30%;
+            border-radius: 50px;
+            cursor: pointer;
+            img {
+                max-height: 60px;
+                padding-left: 30px;
             }
         }
-        .play-store{
-            
-            height: 70px;
-            margin-left: 30px;
-            background-color: white;
-            img{
-                width: 30%;
+
+        .log-option {
+            display: flex;
+            justify-content: center;
+            align-self: flex-start;
+            gap: 4em;
+            .register, .login {
+                padding: 15px 30px;
+                background-color:#ff4d31;
+                border-radius: 50px;
+                text-transform: uppercase;
+                cursor: pointer;
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -333,5 +345,11 @@ export default {
 }
 .section-title {
     text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .tel {
+        margin: 5em 0;
+    }
 }
 </style>
