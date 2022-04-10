@@ -649,7 +649,7 @@ class PlateSeeder extends Seeder
                 'price' => '6',
                 'ingredients' =>"Pane al Sesamo, Hamburger di Fassona 320g, Insalata, Pomodoro, *salse",
                 'visible' => true,
-                'preview' => '/images/restaurant/carbonaro.jpeg',
+                'preview' => '/images/restaurant/carbonaro.jpg',
             ],
             [
                 'user_id' => 10,
