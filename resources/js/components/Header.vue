@@ -21,13 +21,13 @@
                             >{{ item.label }}</router-link
                         >
                         </li>
-                        <li v-if="!log" class="nav-item">
+                        <li  class="nav-item">
                                 <a class="nav-link" href="login">Accedi</a>
                         </li>
-                        <li v-if="!log" class="nav-item">
+                        <li  class="nav-item">
                                 <a class="nav-link" href="register"> Registrati </a>
                         </li>
-                        <li v-if="log" class="nav-item">
+                        <li  class="nav-item">
                                 <a class="nav-link" href="logout"> Esci </a>
                         </li>
                     </ul>
@@ -92,13 +92,13 @@
                             >{{ item.label }}</router-link
                         >
                         </li>
-                        <li v-if="!log" class="nav-item">
+                        <li class="nav-item">
                                 <a class="nav-link" href="login">Accedi</a>
                         </li>
-                        <li v-if="!log" class="nav-item">
+                        <li class="nav-item">
                                 <a class="nav-link" href="register"> Registrati </a>
                         </li>
-                        <li v-if="log" class="nav-item">
+                        <li class="nav-item">
                                 <a class="nav-link" href="logout"> logout </a>
                         </li>
                     </ul>
