@@ -167,6 +167,7 @@ export default {
             EventBus.$emit("update_header", data);
         },
         getTotPrice() {
+            this.totPrice = 0;
             this.list.forEach(element => {
                 this.totPrice += element.price;
             });
@@ -178,7 +179,6 @@ export default {
                 handler()
                 {
                     this.getTotPrice();
-                    console.log("ciao");
                 },
                 deep: true,
             }
