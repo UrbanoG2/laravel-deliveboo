@@ -47,7 +47,8 @@
                                         <a
                                             class="btn-add-cart"
                                             @click="addItemToCart(plate.id, plate.price, plate.name)"
-                                            ><i class="fa-solid fa-plus"></i>
+                                            ><i class="fa-solid fa-plus plus-hover"></i>
+                                            <i class="fa-solid fa-cart-shopping cart-hover"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -261,15 +262,85 @@ export default {
     align-items: center;
     .btn-add-cart {
         margin-top: 0.4em;
-        padding: 6px 11px;
+        padding: 11px 11px;
         max-width: 37px;
         background-color: #ff4d31;
         border-radius: 25px;
-        i {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        // align-items: center;
+
+        .plus-hover {
+            color: #fafafa;
+            visibility: hidden;
+            position: absolute;
+        }
+
+        .cart-hover {
             color: #fafafa;
         }
+
     }
+
+    // .btn-add-cart:hover .plus-hover {
+    //     display: inline-block;
+    // }
+
+    // .btn-add-cart:hover .cart-hover {
+    //     display: none;
+        
+    // }
+
+
+
+
+    .btn-add-cart:hover {
+
+        @keyframes cartAnimation{
+
+            0%{
+                opacity: 1;
+                transform: rotateX(90deg);
+            }
+
+            50%{
+                opacity: 0.8;
+                transform: rotateX(0deg);
+            }
+
+            100%{
+                display: none;
+                opacity: 0;
+                transform: rotateX(180deg);
+            }
+        }
+
+        .cart-hover {
+            animation-name: cartAnimation;
+            animation-duration: 1000ms;
+            animation-fill-mode: forwards;
+        }
+    }
+
+
+    .btn-add-cart:hover {
+        @keyframes plusAnimation {
+            to   {visibility: visible;}
+        }
+
+        .plus-hover {
+            animation: plusAnimation 0s 1s forwards;
+            visibility: hidden;
+        }
+    }
+
+   
+
+    
 }
+
+    
 
 
 
