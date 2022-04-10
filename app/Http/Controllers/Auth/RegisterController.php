@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -77,43 +78,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        //     $user = new User();
-        //     $user->fill($data);
-        //     $user->save();
-
-
-        //     if (!empty($data['categories'])) {
-        //         $categories = explode(", ", $data['categories']);
-        //         $category_id = [];
-        //         foreach ($categories as $element) {
-        //             $category = rtrim($element, ".");
-        //             $checkCategory = Category::where('name', $category)->first();
-        //             if (empty($checkCategory)) {
-        //                 $newCategory = new Category();
-        //                 $newCategory->name = $category;
-        //                 $newCategory->save();
-        //             }
-        //             $item_id = Category::where('name', $category)->first();
-        //             array_push($category_id, $item_id->id);
-        //         }
-
-
-
-        //         $user->categories()->associate($category_id);
-        //     } else {
-        //         //if we don't have tags we detach all
-        //         $user->categories()->detach();
-        //     }
-
-
-
-
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'address' => $data['address'],
             'iva' => $data['iva'],
+            'slug' => Str::slug($data['name'] . '-' .Hash::make($data['name']) . '-'),
             'password' => Hash::make($data['password']),
         ]);
 
