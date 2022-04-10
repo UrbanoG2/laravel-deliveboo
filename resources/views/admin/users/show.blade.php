@@ -19,12 +19,20 @@
                 </p>
                 <div class="images">
                     <div class="single_image">
-                        <img src="{{ $user->logo_img }}" alt="{{ $user->name }}">
-                        <img src="{{ asset('storage/' . $user->logo_img) }}" alt="{{ $user->name }}">
+                        @if($path == 'images')
+                            <img src="{{ $user->logo_img }}" alt="{{ $user->name }}">
+                        @endif
+                        @if($path == 'uploads')
+                            <img src="{{ asset('storage/' . $user->logo_img) }}" alt="{{ $user->name }}">
+                        @endif
                     </div>
                     <div class="single_image">
-                        <img src="{{ $user->banner_img }}" alt="{{ $user->descrizione }}">
-                        <img src="{{ asset('storage/' . $user->banner_img) }}" alt="{{ $user->descrizione }}">
+                        @if($path == 'images')
+                            <img src="{{ $user->banner_img }}" alt="{{ $user->descrizione }}">
+                        @endif
+                        @if($path == 'uploads')
+                            <img src="{{ asset('storage/' . $user->banner_img) }}" alt="{{ $user->descrizione }}">
+                        @endif
                     </div>
                 </div>
             </div>

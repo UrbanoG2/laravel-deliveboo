@@ -13,7 +13,19 @@ class UserController extends Controller
 {
      public function show(User $user)
     {
-        return view('admin.users.show', ["user" => $user]);
+        if(strpos($user->banner_img, 'images'))
+        {
+            $path = 'images';
+        }
+        else
+        {
+            $path = 'uploads';
+        }
+        $data = [
+            'user' => $user,
+            'path' => $path
+        ];
+        return view('admin.users.show', $data );
     }
 
     public function edit(User $user)
