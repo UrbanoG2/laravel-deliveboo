@@ -14,46 +14,43 @@
                 </div>
             </div>
                 <div class="container-tel ">
-                    <div class="row pt-5">
-                        <div class="col-6 d-flex justify-content-center mt-5">
-                            <div class="apple d-flex ">
-                                <img src="../../../public/images/apple.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center p-3">
-                                    <span>Scarica da qui</span>
-                                    <span class="fw-bold fs-3">Apple Store</span>
-                                </div>
-                            </div>
-                            <div class="play-store d-flex ps-3 ">
-                                <img src="../../../public/images/play-store.png" alt="">
-                                <div class="d-flex flex-column  justify-content-center p-3">
-                                    <span>Scarica da qui</span>
-                                    <span class="fw-bold fs-3">Play Store</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-6 d-flex justify-content-center">
-                            <div class="tel  position-relative">
-                                <div class="d-flex justify-content-between">
-                                    <div>
-                                        9:27
+                    <div class="container">
+                        <div class="row pt-5">
+                            <div class="col-6 d-flex justify-content-center mt-5">
+                                <div class="apple d-flex ">
+                                    <img src="../../../public/images/apple.png" alt="">
+                                    <div class="d-flex flex-column  justify-content-center p-1">
+                                        <span>Scarica da qui</span>
+                                        <span class="fw-bold fs-3">Apple Store</span>
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-signal"></i>
-                                        <i class="fa-solid fa-phone-flip"></i>
-                                        <i class="fa-solid fa-headphones"></i>
+                                </div>
+                                <div class="play-store d-flex ps-3 ">
+                                    <img src="../../../public/images/play-store.png" alt="">
+                                    <div class="d-flex flex-column  justify-content-center p-1">
+                                        <span>Scarica da qui</span>
+                                        <span class="fw-bold fs-3">Play Store</span>
                                     </div>
-                                </div> 
-                                <div class="food">
-                                    <img src="../../../public/images/restaurant/hamburger.jpeg" alt="">
-
                                 </div>
                             </div>
-                        
+                            <div class="col-6 d-flex justify-content-center">
+                                <div class="tel  position-relative">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            9:27
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-signal"></i>
+                                            <i class="fa-solid fa-phone-flip"></i>
+                                            <i class="fa-solid fa-headphones"></i>
+                                        </div>
+                                    </div> 
+                                    <div class="food">
+                                        <img src="../../../public/images/restaurant/hamburger.jpeg" alt="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
             <div class="container w-75 p-5 bg-section mt-4">
                 <div class="row p-4">
@@ -113,25 +110,23 @@
         </div>
         <div class="container-fluid p-0 mt-5">
             <div class="row  ">
-            <div class="col-12 d-flex justify-content-center p-0 ">
-                <div class="new text-center pt-5">
-                    <h3>Inscriviti alla Newsletter</h3>
-                    <div class="p-3">
-                        "Non perderti le nuove creazioni dei nostri ristoranti "
-                        <h4 class="p-3">Registrati qui</h4>
+                <div class="col-12 d-flex justify-content-center p-0 ">
+                    <div class="new text-center pt-5">
+                        <h3>Inscriviti alla Newsletter</h3>
+                        <div class="p-3">
+                            "Non perderti le nuove creazioni dei nostri ristoranti "
+                            <h4 class="p-3">Registrati qui</h4>
+                        </div>
+                        <div class="input-group mb-3 sletter  w-25 p-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" class="form-control text-center " placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="pb-5 ">
+                            <input class="rounded-pill inscriviti" type="submit" value="Inscriviti Ora!">
+                        </div>
                     </div>
-                    <div class="input-group mb-3 sletter  w-25 p-3">
-                        <span class="input-group-text" id="basic-addon1">@</span>
-                        <input type="text" class="form-control text-center " placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="pb-5 ">
-                        <input class="rounded-pill inscriviti" type="submit" value="Inscriviti Ora!">
-                    </div>
-                </div>
-            </div> 
-
-        </div>
-
+                </div> 
+            </div>
         </div>
         
         
@@ -236,7 +231,7 @@ export default {
         background-color: #f2c53d33;
         padding-bottom: 2em;
         .apple{
-            width: 30%;
+            
             height: 70px;
             background-color: white;
             img{
@@ -244,7 +239,7 @@ export default {
             }
         }
         .play-store{
-            width: 30%;
+            
             height: 70px;
             margin-left: 30px;
             background-color: white;
