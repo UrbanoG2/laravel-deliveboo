@@ -112,11 +112,10 @@
                             <h4 class="p-3">Registrati qui</h4>
                         </div>
                         <div class="input-group mb-3 sletter  w-25 p-3">
-                            <span class="input-group-text" id="basic-addon1">@</span>
                             <input type="text" class="form-control text-center " placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="pb-5 ">
-                            <input class="rounded-pill inscriviti" type="submit" value="Inscriviti Ora!">
+                            <input class="rounded-pill iscriviti" type="submit" value="Iscriviti Ora!">
                         </div>
                     </div>
                 </div> 
@@ -271,8 +270,10 @@ export default {
             width: 30%;
             margin: 0 auto;
         }
-    .inscriviti{
+    .iscriviti{
         background-color: #f2c53d;
+        padding: 8px 16px;
+        border: none;
     }
 }
 
