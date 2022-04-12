@@ -42,18 +42,8 @@
                             </div>
                             <div class="col-12 col-xl-6 d-flex justify-content-center">
                                 <div class="tel  position-relative">
-                                    <div class="d-flex justify-content-between">
-                                        <div>
-                                            9:27
-                                        </div>
-                                        <div>
-                                            <i class="fa-solid fa-signal"></i>
-                                            <i class="fa-solid fa-phone-flip"></i>
-                                            <i class="fa-solid fa-headphones"></i>
-                                        </div>
-                                    </div> 
                                     <div class="food">
-                                        <img src="../../../public/images/restaurant/hamburger.jpeg" alt="">
+                                        <img src="../../../public/images/phone.jpg" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -191,19 +181,19 @@ export default {
 .container-fluid{
     .tel{
         height: 450px;
-        width: 300px;
-        border: 4px solid black;
+        width: 100%;
+        // border: 4px solid black;
         border-radius: 10px;
         .profile{
             display: block;
             // width: 30%;
-            height: 100px;
+            // height: 100px;
             .logo-profile{
                 top: 5%;
                 right: -10%;
                 img{
                 width: 100%;
-                height: 60px;
+                height: 100%;
                 border-radius: 50%;
                 }
             }
