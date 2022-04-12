@@ -23,14 +23,14 @@
 
 <div class="container">
     <div class="row p-4 ">
-        <div class="col-6">
+        <div class="col-5">
             <div class="card">
                 <div class="card-image">
                     <img src="{{ asset('images/food.jpg') }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
-                       <h5 class="card-title">Ultimi Piatto aggiunti</h5>
+                       <h5 class="card-title">Latest plates added</h5>
                        <div class="card-text">
                            Questa è una lista degli ultimi piatti inseriti
                        </div>
@@ -43,20 +43,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-7">
             <div class="card">
                 <div class="card-image">
                     <img src="{{ asset('images/orders.jpg') }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
                     <div class="card-title">
-                       <h5 class="card-title">Ultimi piatti ricevuti</h5>
+                       <h5 class="card-title">Latest orders received</h5>
                        <div class="card-text">
                            Questa è una lista degli ultimi ordini ricevuti
                        </div>
                         <ul class="list-group list-group-flush">
                             @foreach($orders as $order)
-                                <li class="list-group-item">Prezzo totale:{{ $order->totalPrice }} &euro;  Ordine avvenuto il:{{ $order->created_at }}</li>
+                                <li class="list-group-item">Prezzo totale:{{ $order->totalPrice }} &euro;  Ordine creato il:{{ $order->created_at }}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -69,33 +69,19 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-area me-1"></i>
-                    Piatti più popolari
+                    Prenotazioni
                 </div>
                 <div class="card-body">
-                    
                     <canvas id="myChart1" width="100%" height="40"></canvas>
                     <script>
                         var ctx = document.getElementById('myChart1').getContext('2d');
                         var myChart = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'line',
                             data: {
-                                labels: [
-                                    <?php 
-                                        foreach($populars as $popular) 
-                                        {
-                                            echo "'".$popular->name."',";
-                                        }
-                                    ?>
-                                ],
+                                labels: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto' , 'settembre' , 'ottobre', 'dicembre'],
                                 datasets: [{
-                                    data: [
-                                        <?php 
-                                            foreach($populars as $popular) 
-                                            {
-                                                echo "'".$popular->Tot."',";
-                                            }
-                                        ?>
-                                    ],
+                                    label: '# of Votes',
+                                    data: [12, 19, 3, 5, 2, 3, 12, 5, 12, 10, 11, 1],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',

@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Order;
-use App\User;
 
 class OrderSeeder extends Seeder
 {
@@ -14,15 +13,11 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $users = User::all();
-        foreach ($users as $key => $user) {
-            $rand = random_int(1, 15);
-            for ($i = 0; $i < $rand; $i++) {
-                $newOrder = new Order();
-                $newOrder->totalPrice = $faker->randomFloat(null, 20, 200);
-                $newOrder->state_id = 1;
-                $newOrder->save();
-            }
+        for ($i = 0; $i < 8; $i++) {
+            $newOrder = new Order();
+            $newOrder->totalPrice = $faker->randomFloat(null, 0, 1000);
+            $newOrder->state_id = 1;
+            $newOrder->save();
         }
     }
 }

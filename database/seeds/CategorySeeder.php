@@ -17,42 +17,68 @@ class CategorySeeder extends Seeder
 
             [
                 'id' => 1,
-                'name' => 'Italiano',
-                'img_category'=> '/images/category/italian.png',
+                'name' => 'Italian',
+                
+                
             ],
             [
                 'id' => 2,
-                'name' => 'Giapponese',
-                'img_category'=> '/images/category/japanese.png'
+                'name' => 'Chinese',
+                
+                
             ],
             [
                 'id' => 3,
-                'name' => 'Vegetariano',
-                'img_category'=> '/images/category/healthy.png',
-            ], 
+                'name' => 'Fish',
+                
+                
+            ],
             [
                 'id' => 4,
-                'name' => 'Pizzeria',
-                'img_category'=> '/images/category/pizza.png',
+                'name' => 'Vegetarian',
+                
                 
             ],
             [
                 'id' => 5,
-                'name' => 'Dolci',
-                'img_category'=> '/images/category/dessert.png',  
+                'name' => 'Indian',
+                
+                
             ],
             [
                 'id' => 6,
-                'name' => 'Burger',
-                'img_category'=> '/images/category/burger.png',
+                'name' => 'Chicken',
+                
+                
             ],
-
+            [
+                'id' => 7,
+                'name' => 'Pizza',
+                
+                
+            ],
+            [
+                'id' => 8,
+                'name' => 'Dessert',
+                
+                
+            ],
+            [
+                'id' => 9,
+                'name' => 'Burgers',
+                
+            
+            ],
         ];
-     
+    //     for ($i = 0; $i < 8; $i++) {
+    //         $newCategory = new Category();
+    //         $newCategory->name = $faker->words(2, true);
+    //         $newCategory->save();
+    //     }
+    // }
      foreach($restaurantCategory as $key=>$category)  {
             $newCategory = new Category();
             $newCategory->name = $category['name'];
-            $newCategory->img_category = $category['img_category'];
             $newCategory->save();
         }
     }

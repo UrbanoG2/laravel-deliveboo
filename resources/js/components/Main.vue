@@ -2,53 +2,31 @@
     <div class="container">
         <div class="row g-4" v-if="cards != null">
             <div
-                class="col-12 col-md-6 col-lg-3"
+                class="col-12 col-md-4"
                 v-for="(restaurant, index) in cards.restaurants"
                 :key="index"
             >
-                <div class="color-cart h-100">
-                    <div class="container-image">
-                        <img
+                <div class="card h-100">
+                    <img
                         :src="restaurant.banner_img"
                         class="card-img-top"
                         :alt="restaurant.name"
                     />
-
-                    </div>
-                    
-                    <div class="card-body mt-2">
-                        <h5 class="card-title display-6 fw-bold ">
-                            {{ restaurant.name }}
-                        </h5>
-                        <p class="card-text">
-                            <i class="fa-solid fa-location-dot"></i>&nbsp;
-                            {{ restaurant.address }}
-                        </p>
-                        <p class="fst-italic grey "> {{restaurant.descrizione}}</p>
-                        <h5>Specialità del Ristorante</h5>
-                        <ul
-                            
-                            class="card-text flex"
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.name }}</h5>
+                        <h5
+                            class="card-title"
                             v-for="(category, id) in restaurant.categories"
                             :key="id"
                         >
-                            
-                            <li>{{ category.name }}</li>
-                        </ul>
-
-                        
-                        <div class="d-flex justify-content-center visita">
-                            <div
-                            class=" btn btn-color" data-bs-toggle="modal"  data-bs-target="#exampleModal"
-                            @click="checkLastID(restaurant.id, restaurant.slug)"
-                        >
-                            Visita
-                        </div>
-
-                        </div>
-                        
+                            {{ category.name }}
+                        </h5>
+                        <p class="card-text">{{ restaurant.description }}</p>
                     </div>
-                    
+                    <div 
+                        class="btn btn-secondary"
+                        @click="checkLastID(restaurant.id)"
+                    >View</div>
                 </div>
             </div>
         </div>
@@ -57,11 +35,11 @@
                 <h1>Nessun risultato</h1>
             </div>
         </div>
-        <div class="row bottom" v-if="cards != null">
-            <ul
-                v-if="cards.prev_page_url || cards.next_page_url"
-                class="list-inline d-flex justify-content-center align-items-center"
-            >
+        <div
+            class="row bottom"
+            v-if="cards != null"
+        >
+            <ul v-if="cards.prev_page_url || cards.next_page_url" class="list-inline d-flex justify-content-center align-items-center">
                 <li
                     v-if="!cards.next_page_url && cards.prev_page_url"
                     class="list-inline-item"
@@ -71,7 +49,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.prev_page_url"
-                        class="btn btn-page"
+                        class="btn btn-primary"
                         @click="changePage('prev_page_url')"
                     >
                         Prev
@@ -86,7 +64,7 @@
                 <li class="list-inline-item">
                     <button
                         v-if="cards.next_page_url"
-                        class="btn btn-page"
+                        class="btn btn-primary"
                         @click="changePage('next_page_url')"
                     >
                         Next
@@ -101,43 +79,14 @@
         <div class="delete-mes text-center" v-if="alertMessage">
             <div class="container">
                 <div class="row">
-                    <h1>Cambiando ristorante perderai tutti gli elementi salvati nel carrello <br> Vuoi procedere?</h1>
+                    <h1>Conferma cancellazione</h1>
                 </div>
                 <div class="row justify-content-around">
-                    <button class="action-btn" @click="alertMessage = false">
-                        Torna indietro
-                    </button>
-                    <button class="action-btn" @click="removeCart()">
-                        Procedi
-                    </button>
+                    <button class="btn-primary" @click="alertMessage = false">Chiudi</button>
+                    <button class="btn-primary" @click="removeCart()">Conferma</button>
                 </div>
             </div>
         </div>
-
-        <!-- <div v-if="alertMessage" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Cambiando ristorante perderai gli elementi attualmente salvati nel carrello.
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close">
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Vuoi continuare?
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn-primary" @click="alertMessage = false">
-                            Chiudi
-                        </button>
-                        <button class="btn-primary" @click="removeCart()">
-                            Conferma
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </template>
 
@@ -150,42 +99,40 @@ export default {
         return {
             lastIDRestaurant: null,
             alertMessage: false,
-        };
+        }
     },
     created() {
-        this.lastIDRestaurant = localStorage.getItem("id");
+        this.lastIDRestaurant = localStorage.getItem('id');
     },
     methods: {
         changePage(vs) {
             this.$emit("changePage", vs);
         },
-        checkLastID(id,slug) {
-            if (
-                this.lastIDRestaurant == id ||
-                localStorage.getItem("cart") == null
-            ) {
+        checkLastID(id) {
+            if(this.lastIDRestaurant == id || localStorage.getItem('cart') == null)
+            {
                 let params = {
-                    name: "restaurant",
-                    params: { id: id, slug: slug },
-                };
+                            name: 'restaurant',
+                            params: { id: id },
+                        }
                 this.newIDRestaurant = null;
-                this.newSLUGRestaurant = null;
                 this.$router.push(params);
-            } else {
+            }
+            else
+            {
                 this.alertMessage = true;
-                this.newIDRestaurant = id;
-                this.newSLUGRestaurant = slug;4
+                this.newIDRestaurant = id
             }
         },
-        removeCart() {
+        removeCart(){
             let params = {
-                name: "restaurant",
-                params: { id: this.newIDRestaurant, slug: this.newSLUGRestaurant },
-            };
+                            name: 'restaurant',
+                            params: { id: this.newIDRestaurant },
+                        }
             this.alertMessage = false;
             EventBus.$emit("clear_cart");
             this.$router.push(params);
-        },
+        }
     },
     watch: {
         cards: {
@@ -199,88 +146,17 @@ export default {
 <style lang="scss" scoped>
 .bottom {
     margin-top: 3em;
-    
 }
 
-ul {
-    display: inline;
-    padding: 1%;
-    li {
-        display: inline;
-    }
+.card {
+    z-index: 500;
 }
-.delete-mes {
+.delete-mes{
     position: fixed;
     width: 450px;
     height: 300px;
-    top: 20%;
-    right: 35.3%;
-    background-color: #fcbd10ea;
-    border-radius:20px;
-
-    h1 {
-        padding: 40px;
-        font-size: 1.9em;
-        font-weight: bold;
-    }
-
-    .action-btn {
-        width: 30%;
-        border: 1px solid #ff4c31d6;
-        background-color: #ffc526c0;
-        padding: 10px 0px;
-    }
-
-    .action-btn:hover {
-        color: white;
-        background-color: #ff4c31d6;
-    }
+    top: 10%;
+    right: 30%;
+    background-color: green;
 }
-
-img {
-    height: 100%;
-}
-.card-text {
-    font-size: 1.2em;
-    color: grey;
-}
-
-.col-12 {
-    .color-cart {
-        background-color: #f8d574  ;
-        border-radius: 10px;
-        position: relative;
-        .button {
-            width: 20%;
-        }
-        .btn-color{
-            
-            background-color: orange !important;
-        } 
-        .container-image{
-            
-            height: 250px;
-        }
-    }
-    .card-body{
-        position: relative;
-        p{
-            color: grey;
-        }
-        .visita{
-            position: absolute;
-            top: -8%;
-            left: 70%;
-        }
-    }
-    
-    
-    
-    
-}
-
-    .btn-page{
-        
-        background-color: orange ;
-    } 
 </style>

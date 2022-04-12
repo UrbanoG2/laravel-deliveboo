@@ -23,7 +23,6 @@ class User extends Authenticatable
         'email',
         'password',
         'address',
-        'descrizione',
         'iva',
         'category',
         'logo-img',

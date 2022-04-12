@@ -1,7 +1,7 @@
 <template>
     <div class="total d-flex justify-content-center">
-        <div class="row p-4 big_container margin-top mb-4">
-            <div class="col-5">
+        <div class="row p-4 big_container mt-4 mb-4">
+            <div class="col-8">
                 <div class="my-form">
                     <!-- <form @submit="sendGuest"> -->
                         <div class="input-group mb-3 form-outline">
@@ -43,36 +43,23 @@
                 >
                 </v-braintree>
             </div>
-            <div class="col-7">
+            <div class="col-4">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Quantità</th>
-                            <th scope="col">Prezzo</th>
-                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in list" :key="index">
-                            <td>
-                                {{ item.name }} 
-                            </td>
-                            <td class="quantity">
-                                <a class="quant" @click="EditCheckout('add', item)"><i class="fa-solid fa-plus"></i></a>
-                                {{ item.quantity }}
-                                <a class="quant" @click="EditCheckout('minus', item)"><i class="fa-solid fa-minus"></i></a>
-                            </td>
-                            <td>
-                                {{ item.price }}&euro;
-                            </td>
-                            <td><a class="trash" @click="EditCheckout('remove', item)"><i class="fa-solid fa-trash"></i></a></td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price}}&euro;</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-end">
-                    <p>Prezzo Totale: {{totPrice}}&euro; </p>
-                </div>
             </div>
         </div>
     </div>
@@ -99,9 +86,6 @@ export default {
     created(){
         this.list = JSON.parse(localStorage.getItem("cart"));
         EventBus.$emit("close_cart");
-        EventBus.$on("update_checkout", (data) => {
-            this.list = data;
-        });
     },
     methods: {
         onSuccess (payload) {
@@ -117,6 +101,7 @@ export default {
         sendGuest(){
             this.sending = true;
             this.success = false;
+            this.getTotPrice();
             axios.post('/api/guest', {
                 'data': {
                     'guest': {
@@ -156,18 +141,13 @@ export default {
                 EventBus.$emit("clear_cart");
                 this.$router.push({ name: 'success', params: {data: params} });
                 this.sending = false;
-            })
-            .catch(error=>{
-                console.log(error.response.data);
-                this.sending = false;
-            })
-        },
-        EditCheckout(string, item){
-            let data = {option: string, plate: item}
-            EventBus.$emit("update_header", data);
+             })
+             .catch(error=>{
+                 console.log(error.response.data);
+                 this.sending = false;
+             })
         },
         getTotPrice() {
-            this.totPrice = 0;
             this.list.forEach(element => {
                 this.totPrice += element.price;
             });
@@ -175,12 +155,9 @@ export default {
 
     },
     watch: {
-        list: {
-                handler()
-                {
-                    this.getTotPrice();
-                },
-                deep: true,
+        list:
+            function() {
+                
             }
     }
 
@@ -190,16 +167,10 @@ export default {
 
 <style lang="scss" scoped>
  .total {
-     width: 100%;
-    height: 100%; 
-    background-image: url("../../../public/images/ristorante2.jpg");
+
+    background-image: url("../../../public/images/background_y&o.jpg");
+    // background-size: 300px 100px;
     background-position: center;
-    background-size: cover;
-    // background-size: 100% 100%;
-    //  background: #ffe259;
-    // background: -webkit-linear-gradient(to right, #ffa751, #ffe259);  
-    // background: linear-gradient(to right, #ffa751, #ffe259); 
-    // background-position: center;
     .big_container {
 
         background-color: white;
@@ -212,6 +183,7 @@ export default {
 
         .form-control:focus {
         border-color: #ff4c31d6;   
+        // box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.075), 0 0 8px #ff4d31;
         box-shadow:5px 10px 10px #ffc526c0;
         }
         
@@ -241,36 +213,5 @@ export default {
             cursor: pointer;
         }
     }
-    .margin-top{
-        margin-top: 10em;
-    }
  }
-
- table {
-        thead {
-            th:nth-child(2){
-                padding: 0.5rem 2.1rem;
-            }
-        }
-        tr {
-            border-color: black;
-            td {
-                padding: 1rem 1rem;
-                a {
-                    text-decoration: underline;
-                    cursor: pointer;
-                    color: black;
-                    &.quant {
-                        margin: 0 0.5em;
-                        padding: 2px 5px;
-                        border: 1px solid black;
-                        border-radius: 50%;
-                    }
-                    &.trash {
-                        font-size: 1.3em;
-                    }
-                }
-            }
-        }
-    }
 </style>

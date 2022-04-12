@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\User;
 use App\Plate;
-use App\Tag;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -68,7 +66,7 @@ class RestaurantController extends Controller
 
 
         $users = $users->with(['categories']);
-        $users = $users->paginate(4);
+        $users = $users->paginate(3);
 
         return response()->json([
             'response' => true,
@@ -77,20 +75,16 @@ class RestaurantController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $user = User::where("slug", "=", $slug)->first();
-        $plates = Plate::where("user_id", '=', $user->id)->where("visible", '=', 1)->get();
-        $plates =  $plates->groupBy('tag_id');
-        $tags = Tag::all();
-
+        $user = User::find($id);
+        $plates = $user->plates()->get();
         return response()->json([
             'response' => true,
             'count' => $user ? 1 : 0,
             'results' =>  [
                 'restaurant' => $user,
-                'plates'=> $plates,
-                'tags'=> $tags
+                'plates'=> $plates
             ],
         ]);
     }

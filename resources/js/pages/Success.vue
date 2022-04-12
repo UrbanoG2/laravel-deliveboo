@@ -1,19 +1,10 @@
 <template>
-  <div class="container ">
-
-    <div class="success_card">
-        <!-- <div v-if="success" class="alert alert-success" role="alert">
-            Mail inviata con successo!
-        </div> -->
-        <div class="d-flex justify-content-center">
-            <i class="checkmark">✓</i>
-        </div>
-        <div class="success_text text-center">
-            <h1>Success</h1> 
-            <p>We received your purchase request<br/> we'll be in touch shortly!</p>
-        </div>
+  <div class="container">
+    <div v-if="success" class="alert alert-success" role="alert">
+        Mail inviata con successo!
     </div>
     
+
   </div>
 </template>
 
@@ -66,43 +57,6 @@ export default {
 }
 </script>
 
- <style lang="scss" scoped>
+<style>
 
-
-    .container {
-        height: calc(100vh - 252px);
-        display: flex;
-        justify-content: center;
-        .success_card {
-            width: 60%;
-            margin: 0 auto;
-            padding: 60px;
-            display: inline-block;
-
-            h1 {
-                color: #ffc526c0;
-                font-weight: 900;
-                font-size: 40px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                font-size:20px;
-                margin: 0;
-            }
-
-            i {
-                text-align: center;
-                color: #ffc526c0;
-                font-size: 100px;
-                line-height: 200px;
-                margin-left:-15px;
-            }
-
-        }
-    }
-
-  
-
-       
-    </style>
+</style>

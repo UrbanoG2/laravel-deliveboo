@@ -19,8 +19,7 @@ class OrderPlateSeeder extends Seeder
         $orders = Order::all();
         foreach ($orders as $order) {
             $randInt = random_int(1, count(User::all()));
-            $random = random_int(1, 7);
-            $randomPlates = Plate::inRandomOrder()->where('user_id', $randInt)->limit($random)->get();
+            $randomPlates = Plate::inRandomOrder()->where('user_id', $randInt)->get();
             foreach ($randomPlates as $plate) {
                 $randomQuantity = $faker->numberBetween(1,10);
                 $order->plates()->attach($plate, ['quantity'=> $randomQuantity]);

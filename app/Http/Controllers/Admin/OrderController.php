@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Order;
-use App\Plate;
 
 class OrderController extends Controller
 {
@@ -70,15 +69,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $request = $order->id;
-        $reqData = Order::find($request);
-        $plates = $reqData->plates()->get();
-        foreach($plates as $plate){
-            $plate['quantity'] = $plate->pivot->quantity;
-        }
         $data = [
             'order' => $order,
-            'plates' => $plates,
         ];
         return view('admin.orders.show', $data);
     }
