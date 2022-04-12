@@ -39,10 +39,7 @@
                             </td>
                             <td>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal{{ $order->id }}">
-                                    Delete
-                                </button>
+
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal{{ $order->id }}" tabindex="-1"
@@ -50,15 +47,10 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 
-                                                    class="modal-title" 
-                                                    id="exampleModalLabel{{ $order->id }}">
+                                                <h5 class="modal-title" id="exampleModalLabel{{ $order->id }}">
                                                     Conferma cancellazione
                                                 </h5>
-                                                <button 
-                                                    type="button" 
-                                                    class="btn-close"         
-                                                    data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close">
                                                 </button>
                                             </div>
@@ -72,8 +64,7 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input class="btn btn-danger" type="submit"
-                                                        value="Delete">
+                                                    <input class="btn btn-danger" type="submit" value="Delete">
                                                 </form>
                                             </div>
                                         </div>
@@ -85,7 +76,7 @@
                 </tbody>
             </table>
             <div class="col-3">
-                <a  class="btn btn-danger"  aria-current="page" href="{{ route('admin.home') }}">Go to Home</a>
+                <a class="btn btn-danger" aria-current="page" href="{{ route('admin.home') }}">Go to Home</a>
             </div>
         </div>
     </div>

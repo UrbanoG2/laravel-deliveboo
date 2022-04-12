@@ -48,35 +48,35 @@
                     <ul class="navbar-nav ml-auto">
 
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                @if (Route::has('register'))
+    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+    @endif
+@else
+    <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                                                                                                 document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-                            </li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+
+                                </li>
 
                         @endguest
                     </ul>
@@ -86,56 +86,64 @@
 
         <div class="row m-0">
             <div class="col-2 p-0 vh-100">
-                    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
-                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-4">Admin Panel</span>
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark h-100">
+                    <a href="/"
+                        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-4">Admin Panel</span>
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a href="{{route('admin.home')}}" class="nav-link text-white {{'admin.home' === Route::currentRouteName() ? 'active' : '' }}" aria-current="page">
-                        <i class="fa-solid fa-house"></i>
-                        Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.plates.index')}}" class="nav-link text-white {{'admin.plates.index' === Route::currentRouteName() ? 'active' : '' }}">
-                        <i class="fa-solid fa-pizza-slice"></i>
-                        Plates
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.orders.index')}}" class="nav-link text-white {{'admin.orders.index' === Route::currentRouteName() ? 'active' : '' }}">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        Orders
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.home') }}"
+                                class="nav-link text-white {{ 'admin.home' === Route::currentRouteName() ? 'active' : '' }}"
+                                aria-current="page">
+                                <i class="fa-solid fa-house"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.plates.index') }}"
+                                class="nav-link text-white {{ 'admin.plates.index' === Route::currentRouteName() ? 'active' : '' }}">
+                                <i class="fa-solid fa-pizza-slice"></i>
+                                Plates
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orders.index') }}"
+                                class="nav-link text-white {{ 'admin.orders.index' === Route::currentRouteName() ? 'active' : '' }}">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                Orders
+                            </a>
+                        </li>
 
-                    <!-- Rotte future  -->
-                    
-                    <li>
-                        <a href="{{route('admin.users.show', Auth::user()->slug)}}" class="nav-link text-white">
-                        <i class="fa-solid fa-id-card"></i>
-                        Preview Profile
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-white">
-                        <i class="fa-solid fa-chart-line"></i>
-                        Statistics
-                        </a>
-                    </li>
+                        <!-- Rotte future  -->
+
+                        <li>
+                            <a href="{{ route('admin.users.show', Auth::user()->slug) }}" class="nav-link text-white">
+                                <i class="fa-solid fa-id-card"></i>
+                                Preview Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white">
+                                <i class="fa-solid fa-chart-line"></i>
+                                Statistics
+                            </a>
+                        </li>
                     </ul>
                     <hr>
                     <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('storage/' . Auth::user()->logo_img) }}" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>{{ Auth::user()->name }}</strong>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="{{route('admin.users.edit', Auth::user()->slug)}}">Edit profile</a></li>
-                        <li><a class="dropdown-item" href="{{route('logout')}}">Log out</a></li>
-                    </ul>
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ Auth::user()->logo_img }}" alt="" width="32" height="32"
+                                class="rounded-circle me-2">
+                            <strong>{{ Auth::user()->name }}</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item"
+                                    href="{{ route('admin.users.edit', Auth::user()->slug) }}">Edit profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}">Log out</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -143,21 +151,22 @@
                 <header class="p-3 bg-dark text-white">
                     <div class="container">
                         <div class="d-flex flex-wrap align-items-center justify-content-between">
-                        <!-- Bottone per entrare nella vue  -->
-                            
-                            
+                            <!-- Bottone per entrare nella vue  -->
+
+
                             @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
                             @endif
                             <div>
-                                <strong>&nbsp; {{ Auth::user()->name }} &nbsp;</strong> 
-                                <span>{{ __(' welcome to control panel') }}</span> 
+                                <strong>&nbsp; {{ Auth::user()->name }} &nbsp;</strong>
+                                <span>{{ __(' welcome to control panel') }}</span>
                             </div>
 
                             <div>
-                                <a href="/" class="d-flex text-left align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                                <a href="/"
+                                    class="d-flex text-left align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                                     Visualizza come ospite
                                 </a>
                             </div>
@@ -168,7 +177,7 @@
                     @yield('content')
                 </main>
             </div>
-        </div>    
+        </div>
     </div>
 
 </body>
